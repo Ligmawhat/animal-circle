@@ -10,12 +10,6 @@ const persistedState = window.localStorage.getItem('redux') ? JSON.parse(window.
 
 const store = createStore(rootReducer, persistedState, composeWithDevTools(applyMiddleware(thunk)))
 
-// export const store = configureStore({
-//   reducer: { [dndApi.reducerPath]: dndApi.reducer },
-//   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(dndApi.middleware)
-// });
-
-
 store.subscribe(() => {
   window.localStorage.setItem('redux', JSON.stringify(store.getState()))
 })

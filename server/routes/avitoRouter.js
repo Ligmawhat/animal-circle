@@ -9,7 +9,6 @@ router.route("/").get(async (req, res) => {
       include: [Category, User],
     });
     const allAGoodsFromBack = allGoods.map((el) => new Goods(el));
-    console.log(allAGoodsFromBack);
     res.json({ allCategoryFromBack, allAGoodsFromBack });
   } catch (err) {
     res.sendStatus(501);

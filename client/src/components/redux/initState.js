@@ -1,5 +1,7 @@
 const initState = {
- currUser: {}, modal: null, 
+ currUser: {},
+ modal: null,
+ items: {}
 }
 
 export default initState
