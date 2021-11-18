@@ -8,6 +8,7 @@ class Animals {
     this.type = Obj.Type.type_title;
     this.createdAt = Obj.createdAt;
     this.updatedAt = Obj.updatedAt;
+    this.login = Obj.User.login;
   }
 }
 

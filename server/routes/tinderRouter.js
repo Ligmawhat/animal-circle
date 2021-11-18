@@ -1,27 +1,39 @@
 const router = require("express").Router();
-const e = require("connect-flash");
-const { Animal, Breed, Type } = require("../src/db/models");
+const { Animal, Breed, Type, User } = require("../src/db/models");
 const Animals = require("../src/DTO/AnimalsClass");
 
 router.route("/").get(async (req, res) => {
-  const allAnimalsOld = await Animal.findAll({
-    include: [Breed, Type],
-  });
-  // const allAnimal = allAnimalOld.map((el) => {
-  //   return {
-  //     name: el.name,
-  //     sex: el.sex,
-  //     desc: el.desc,
-  //     url: el.url,
-  //     breed: el.Breed.breed_title,
-  //     type: el.Type.type_title,
-  //     createdAt: el.createdAt,
-  //     updatedAt: el.updatedAt,
-  //   };
-  // });
-  const allAnimals = allAnimalsOld.map((el) => new Animals(el));
-  console.log(allAnimals);
-  res.json(allAnimals);
+  try {
+    const allBreedFromBack = await Breed.findAll();
+    const allTypeFromBack = await Type.findAll();
+    const allAnimals = await Animal.findAll({
+      include: [Breed, Type, User],
+    });
+    const allAnimalsFromBack = allAnimals.map((el) => new Animals(el));
+    res.json({ allAnimals, allBreedFromBack, allTypeFromBack });
+  } catch (err) {
+    res.sendStatus(501);
+  }
 });
+router
+  .route("/new")
+  .get(async (req, res) => {
+    try {
+      const allBreedFromBack = await Breed.findAll();
+      const allTypeFromBack = await Type.findAll();
+      res.json({ allBreedFromBack, allTypeFromBack });
+    } catch (err) {
+      res.sendStatus(501);
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const newAnimalFromFront = req.body;
+      const newAnimal = await Animal.create(newAnimalFromFront);
+      res.sendStatus(200);
+    } catch (err) {
+      res.sendStatus(501);
+    }
+  });
 
 module.exports = router;
