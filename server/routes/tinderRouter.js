@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Animal, Breed, Type, User, Like } = require("../src/db/models");
 const Animals = require("../src/DTO/AnimalsClass");
+const Likes = require("../src/DTO/Likes");
 
 router.route("/").get(async (req, res) => {
   try {
@@ -37,8 +38,24 @@ router
   });
 
 router.route("/like").get(async (req, res) => {
-  const allLike = await Like.findAll();
-  console.log(allLike);
+  const allLike = await Like.findAll(requestForLikes);
+  const allLikeFromBack = allLike.map((el) => new Likes(el));
+  res.json(allLikeFromBack);
 });
 
 module.exports = router;
+
+const requestForLikes = {
+  include: [
+    {
+      model: Animal,
+      include: [
+        { model: User, attributes: ["login"] },
+        { model: Breed, attributes: ["breed_title"] },
+        { model: Type, attributes: ["type_title"] },
+      ],
+    },
+    User,
+  ],
+  attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt"],
+};
