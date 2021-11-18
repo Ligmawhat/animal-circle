@@ -8,6 +8,7 @@ const session = require("express-session");
 const { User, Sequelize } = require("./src/db/models");
 const LocalStrategy = require("passport-local").Strategy;
 const Op = Sequelize.Op;
+const morgan = require('morgan')
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/tinder", tinderRouter);
 app.use("/prodavito", avitoRouter);
 
 // middleware
+app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
