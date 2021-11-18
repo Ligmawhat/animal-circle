@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -10,7 +10,28 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
+    await queryInterface.bulkInsert(
+      "Types",
+      [
+        {
+          type_title: "Собака",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          type_title: "Кошка",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          type_title: "Попугай",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -20,5 +41,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+    await queryInterface.bulkDelete("Types", null, {});
+  },
 };
