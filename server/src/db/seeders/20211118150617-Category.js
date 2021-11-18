@@ -12,19 +12,25 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "Users",
+      "Categories",
       [
         {
-          login: "admin",
-          password: "123",
-          userType: "admin",
+          category_title: "корм",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          login: "ne admin",
-          password: "123",
-          userType: "user",
+          category_title: "другое",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          category_title: "канцелярия",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          category_title: "электроника",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -38,8 +44,8 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * await queryInterface.bulkDelete('Categories', null, {});
      */
-    await queryInterface.bulkDelete("Users", null, {});
+    await queryInterface.bulkDelete("Categories", null, {});
   },
 };

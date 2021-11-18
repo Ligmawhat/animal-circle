@@ -1,5 +1,6 @@
 class Animals {
   constructor(Obj) {
+    this.id = Obj.id;
     this.name = Obj.name;
     this.sex = Obj.sex;
     this.desc = Obj.desc;

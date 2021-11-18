@@ -14,11 +14,14 @@ const app = express();
 //require router
 const indexRouter = require("./routes/indexRouter");
 const userRouter = require("./routes/userRouter");
-const tinderrouter = require("./routes/tinderRouter");
+const tinderRouter = require("./routes/tinderRouter");
+const avitoRouter = require("./routes/avitoRouter");
+
 //connect router
 app.use("/", indexRouter);
 app.use("/user", userRouter);
-app.use("/tinder", tinderrouter);
+app.use("/tinder", tinderRouter);
+app.use("/prodavito", avitoRouter);
 
 // middleware
 app.use(express.json());
