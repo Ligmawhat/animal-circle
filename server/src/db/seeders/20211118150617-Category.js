@@ -15,22 +15,37 @@ module.exports = {
       "Categories",
       [
         {
-          category_title: "корм",
+          category_title: "Корм",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          category_title: "другое",
+          category_title: "Лакомства",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          category_title: "канцелярия",
+          category_title: "Игрушки",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          category_title: "электроника",
+          category_title: "Клетки",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          category_title: "Аксессуары",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          category_title: "Клетки",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          category_title: "Средства для ухода",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
