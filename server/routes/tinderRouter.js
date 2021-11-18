@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Animal, Breed, Type, User } = require("../src/db/models");
+const { Animal, Breed, Type, User, Like } = require("../src/db/models");
 const Animals = require("../src/DTO/AnimalsClass");
 
 router.route("/").get(async (req, res) => {
@@ -10,7 +10,7 @@ router.route("/").get(async (req, res) => {
       include: [Breed, Type, User],
     });
     const allAnimalsFromBack = allAnimals.map((el) => new Animals(el));
-    res.json({ allAnimals, allBreedFromBack, allTypeFromBack });
+    res.json({ allAnimalsFromBack, allBreedFromBack, allTypeFromBack });
   } catch (err) {
     res.sendStatus(501);
   }
@@ -35,5 +35,10 @@ router
       res.sendStatus(501);
     }
   });
+
+router.route("/like").get(async (req, res) => {
+  const allLike = await Like.findAll();
+  console.log(allLike);
+});
 
 module.exports = router;
