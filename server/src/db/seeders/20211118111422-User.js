@@ -21,6 +21,13 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          login: "ne admin",
+          password: "123",
+          userType: "user",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

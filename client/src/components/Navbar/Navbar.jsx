@@ -19,7 +19,7 @@ import MenuItem from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 
 const useStyles = makeStyles({
-  butto: {
+  button: {
     margin: '1em',
     fontSize: '100px',
   },
@@ -122,7 +122,7 @@ export default function NavBar() {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            React Forum
+            Logo/PetProject
           </Typography>
 
           {currUser.id ? (

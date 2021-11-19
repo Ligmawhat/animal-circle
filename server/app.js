@@ -8,19 +8,24 @@ const session = require("express-session");
 const { User, Sequelize } = require("./src/db/models");
 const LocalStrategy = require("passport-local").Strategy;
 const Op = Sequelize.Op;
+const morgan = require('morgan')
 
 const app = express();
 
 //require router
 const indexRouter = require("./routes/indexRouter");
 const userRouter = require("./routes/userRouter");
-const tinderrouter = require("./routes/tinderRouter");
+const tinderRouter = require("./routes/tinderRouter");
+const avitoRouter = require("./routes/avitoRouter");
+
 //connect router
 app.use("/", indexRouter);
 app.use("/user", userRouter);
-app.use("/tinder", tinderrouter);
+app.use("/tinder", tinderRouter);
+app.use("/prodavito", avitoRouter);
 
 // middleware
+app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
