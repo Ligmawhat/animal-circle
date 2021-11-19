@@ -1,7 +1,9 @@
 const initState = {
- currUser: {},
- modal: null,
- items: {}
-}
+  currUser: {},
+  modal: null,
+  goods: {},
+  categories: {},
+  goodsForOneCategories: {},
+};
 
-export default initState
+export default initState;

@@ -24,11 +24,17 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 
+
+
+
+
+
 export const TextInput = ({sendMessage, messageHandler}) => {
     const classes = useStyles();
     return (
         <>
             <form className={classes.wrapForm}  noValidate autoComplete="off">
+
                 <TextField
                     id="standard-text"
                     label="メッセージを入力"

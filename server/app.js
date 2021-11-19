@@ -30,6 +30,7 @@ app.use(
   })
 );
 
+<<<<<<< HEAD
 const sessionConfig = {
     secret: "secretcode",
     resave: true,
@@ -40,6 +41,30 @@ const sessionConfig = {
 const sessionParser = session(sessionConfig)
 
 app.use(sessionParser)
+=======
+// app.use(
+//   session({
+//     secret: "secretcode",
+//     resave: true,
+//     saveUninitialized: false,
+//     cookie: { _expires: 10 * 60 * 1000 },
+//   })
+// );
+
+const sessionConfig = {
+  secret: "secretcode",
+  resave: true,
+  saveUninitialized: false,
+  cookie: { _expires: 10 * 60 * 1000 },
+}
+
+const sessionParse = session(sessionConfig)
+app.use(sessionParse)
+
+// console.log(pass, 'SSASS')
+
+
+>>>>>>> ee8404deedc4517101968c8df39e5913518c0933
 
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
@@ -72,10 +97,13 @@ passport.deserializeUser(function (user, done) {
   User.findByPk(user.id).then(() => done(null, user));
 });
 
+<<<<<<< HEAD
 // app.listen(PORT, () => {
 //   console.log("Server has been started on PORT " + PORT);
 // });
 
+=======
+>>>>>>> ee8404deedc4517101968c8df39e5913518c0933
 //connect router
 app.use("/", indexRouter);
 app.use("/user", userRouter);
@@ -83,4 +111,10 @@ app.use("/tinder", tinderRouter);
 app.use("/prodavito", avitoRouter);
 
 
+<<<<<<< HEAD
 module.exports = { app, sessionParser };
+=======
+app.listen(PORT, () => {
+  console.log("Server has been started on PORT " + PORT);
+});
+>>>>>>> ee8404deedc4517101968c8df39e5913518c0933

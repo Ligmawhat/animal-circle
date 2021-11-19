@@ -763,27 +763,32 @@
 //   hintContent:'70 p/c',
 // },
 
+<<<<<<< HEAD
 import { Box, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import { YMaps, Map, GeoObject, Placemark } from 'react-yandex-maps'
+=======
+import { Box, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import { YMaps, Map, GeoObject, Placemark } from "react-yandex-maps";
+>>>>>>> ee8404deedc4517101968c8df39e5913518c0933
 import Chatik from "../Chatik/Chatik";
 
-const mapState = { center: [56.76, 37.64], zoom: 10 }
+const mapState = { center: [56.76, 37.64], zoom: 10 };
 
 const db = [
-  { geometry: { coordinates: [60.801773, 37.697725], type: 'Point' } },
+  { geometry: { coordinates: [60.801773, 37.697725], type: "Point" } },
   {
-    geometry: { coordinates: [50.801773, 35.697725], type: 'Point' },
+    geometry: { coordinates: [50.801773, 35.697725], type: "Point" },
     properties: {
-      iconContent: 'Я тащусь',
+      iconContent: "Я тащусь",
     },
-    options: { preset: 'islands#blackStretchyIcon', draggable: true },
+    options: { preset: "islands#blackStretchyIcon", draggable: true },
   },
-]
+];
 
 const PlacemarkDemo = () => {
-  const [point, setPoint] = useState([])
-
+  const [point, setPoint] = useState([]);
 
   // function createPlacemark(coords) {
   //   return new window.ymaps.Placemark(
@@ -798,102 +803,73 @@ const PlacemarkDemo = () => {
   //   );
   // }
 
-//   myPlacemark = createPlacemark(newCoords);
-//   myMap.geoObjects.add(myPlacemark);
-//   // Слушаем событие окончания перетаскивания на метке.
-//   myPlacemark.events.add("dragend", function () {
-//     getAddress(myPlacemark.geometry.getCoordinates());
-//   });
-// }
-// setPlacemarkCoords(myPlacemark.geometry._coordinates);
-// getAddress(newCoords);
+  //   myPlacemark = createPlacemark(newCoords);
+  //   myMap.geoObjects.add(myPlacemark);
+  //   // Слушаем событие окончания перетаскивания на метке.
+  //   myPlacemark.events.add("dragend", function () {
+  //     getAddress(myPlacemark.geometry.getCoordinates());
+  //   });
+  // }
+  // setPlacemarkCoords(myPlacemark.geometry._coordinates);
+  // getAddress(newCoords);
 
+  // console.log(point)
+  // const pointerHandler = () => {
 
-
-
-// console.log(point)
-// const pointerHandler = () => {
-
-
-
-// }
-
+  // }
 
   return (
-    <YMaps
-      query={{
-        apikey: 'a1d74d39-8cef-45bf-b08e-15d2c7d52345',
-      }}
-      version={'2.1'}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-
-          alignItems: 'center',
-          my: 10,
+    <>
+      <YMaps
+        query={{
+          apikey: "a1d74d39-8cef-45bf-b08e-15d2c7d52345",
         }}
+        version={"2.1"}
       >
-        <Typography>Pisya</Typography>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
 
-          alignItems: 'center',
-          my: 10,
-        }}
-      >
-        <Map
-          defaultState={mapState}
-          width="500px"
-          height="400px"
-          onLoad={(ymaps) => console.log(ymaps)}
-          instanceRef={(ref) => {}}
-          onClick={(event) => {
-            try {
-              if (event?.get('coords')) {setPoint(event.get('coords'))
-                console.log(event.get('coords'))
-                setPoint(<Placemark key={Date.now()} geometry={[event.get('coords')[0],event.get('coords')[1] ]} /> )
-                // pointerHandler()
-              }
-            } catch (error) {
-              console.log('ERRORRRRR', error)
-            }
+            alignItems: "center",
+            my: 5,
           }}
         >
-          {/* Creating a geo object with the "Point" geometry type. */}
-          <GeoObject
-            // The geometry description.
-            geometry={{
-              type: 'Point',
-              coordinates: [55.8, 37.8],
+          <Typography>найди себе друга</Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+
+            alignItems: "center",
+            my: 5,
+          }}
+        >
+          <Map
+            defaultState={mapState}
+            width="500px"
+            height="400px"
+            onLoad={(ymaps) => console.log(ymaps)}
+            instanceRef={(ref) => {}}
+            onClick={(event) => {
+              try {
+                if (event?.get("coords")) {
+                  setPoint(event.get("coords"));
+                  console.log(event.get("coords"));
+                  setPoint(
+                    <Placemark
+                      key={Date.now()}
+                      geometry={[event.get("coords")[0], event.get("coords")[1]]}
+                    />
+                  );
+                  // pointerHandler()
+                }
+              } catch (error) {
+                console.log("ERRORRRRR", error);
+              }
             }}
-            // Properties.
-            properties={{
-              // The placemark content.
-              iconContent: 'Я тащусь',
-              hintContent: 'Ну давай уже тащи',
-            }}
-            // Options.
-            options={{
-              // The placemark's icon will stretch to fit its contents.
-              preset: 'islands#blackStretchyIcon',
-              // The placemark can be moved.
-              draggable: true,
-            }}
-          />
-          {point}
-          <Placemark
-            key={1}
-            modules={['geoObject.addon.balloon']}
-            defaultGeometry={[55.75, 37.57]}
-            properties={{
-              balloonContentBody:
-                'This is balloon loaded by the Yandex.Maps API module system',
-            }}
+<<<<<<< HEAD
           />
 
           {db.map((placemarkParams, i) => (
@@ -917,3 +893,60 @@ const PlacemarkDemo = () => {
 }
 
 export default PlacemarkDemo
+=======
+          >
+            {/* Creating a geo object with the "Point" geometry type. */}
+            <GeoObject
+              // The geometry description.
+              geometry={{
+                type: "Point",
+                coordinates: [55.8, 37.8],
+              }}
+              // Properties.
+              properties={{
+                // The placemark content.
+                iconContent: "Я тащусь",
+                hintContent: "Ну давай уже тащи",
+              }}
+              // Options.
+              options={{
+                // The placemark's icon will stretch to fit its contents.
+                preset: "islands#blackStretchyIcon",
+                // The placemark can be moved.
+                draggable: true,
+              }}
+            />
+            {point}
+            <Placemark
+              key={1}
+              modules={["geoObject.addon.balloon"]}
+              defaultGeometry={[55.75, 37.57]}
+              properties={{
+                balloonContentBody: "This is balloon loaded by the Yandex.Maps API module system",
+              }}
+            />
+
+            {db.map((placemarkParams, i) => (
+              <Placemark key={i} {...placemarkParams} />
+            ))}
+          </Map>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            my: 0,
+          }}
+        >
+          <Typography>Чатик</Typography>
+          <Chatik />
+        </Box>
+      </YMaps>
+    </>
+  );
+};
+
+export default PlacemarkDemo;
+>>>>>>> ee8404deedc4517101968c8df39e5913518c0933

@@ -1,8 +1,11 @@
+
 import React, {useEffect, useState} from "react";
+
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 import { TextInput } from './TextInput';
 import { MessageLeft, MessageRight } from "./Message";
+
 const URL = 'ws://localhost:3001'
 
 
@@ -94,4 +97,6 @@ const [messages, setMessages] = useState([]);
             </Paper>
         </div>
     );
+
+
 }
