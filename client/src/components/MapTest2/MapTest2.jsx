@@ -766,6 +766,7 @@
 import { Box, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import { YMaps, Map, GeoObject, Placemark } from 'react-yandex-maps'
+import Chatik from "../Chatik/Chatik";
 
 const mapState = { center: [56.76, 37.64], zoom: 10 }
 
@@ -909,6 +910,7 @@ const PlacemarkDemo = () => {
         }}
       >
         <Typography>Чатик</Typography>
+          <Chatik />
       </Box>
     </YMaps>
   )

@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const { User, Sequelize } = require("../src/db/models");
 const Op = Sequelize.Op;
+const brcypt = require("bcryptjs");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
 router.route("/login").post((req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
