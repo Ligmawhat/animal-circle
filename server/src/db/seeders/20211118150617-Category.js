@@ -40,7 +40,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          category_title: "Клетки",
+          category_title: "Ошейники",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
