@@ -21,7 +21,7 @@ const ProdavitoItem = ({ el }) => {
         sx={{ maxWidth: 300, height: 500 }}
       >
         <CardHeader
-          avatar={<Avatar aria-label="recipe">R</Avatar>}
+          avatar={<Avatar aria-label="recipe">qq</Avatar>}
           action={
             <IconButton aria-label="settings">
               {/* <MoreVertIcon /> */}
@@ -33,12 +33,8 @@ const ProdavitoItem = ({ el }) => {
         />
         <CardMedia component="img" height="194" image={el.url} alt="Paella dish" />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {el.title}
-          </Typography>
-          <Typography sx={{ fontSize: 12 }} variant="body1" color="text.secondary">
-            {el.description}
-          </Typography>
+          <Typography color="text.secondary">{el.title}</Typography>
+          <Typography color="text.secondary">{el.description}</Typography>
         </CardContent>
         <CardActions style={{ display: "grid" }} disableSpacing>
           <Typography variant="body2" color="text.secondary">
@@ -46,7 +42,7 @@ const ProdavitoItem = ({ el }) => {
           </Typography>
           <IconButton aria-label="add to favorites">
             {/* <FavoriteIcon /> */}
-            связаться с продавцом
+            купить
           </IconButton>
         </CardActions>
       </Card>

@@ -41,7 +41,7 @@ const Prodavito = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid container spacing={2} xs={8} md={9} sx={{ ml: 35 }}>
+        <Grid sx={{ fontSize: "10" }} container spacing={2} xs={8} md={9} sx={{ ml: 35 }}>
           {allAGoodsFromBack?.map((el) => (
             <Grid item xs={6} md={4}>
               <Item>
