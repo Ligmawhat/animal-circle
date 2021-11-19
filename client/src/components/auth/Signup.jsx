@@ -58,12 +58,12 @@ export default function SignUp() {
         password: regPass,
       },
       withCredentials: true,
-      url: '/api/signup',
+      url: '/user/signup',
     }).then((res) => {
       if (res.data.id) {
         return (
           localStorage.setItem('user', JSON.stringify(res.data)),
-          history.push('/topics'),
+          history.replace('/'),
           dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
         )
       } else {

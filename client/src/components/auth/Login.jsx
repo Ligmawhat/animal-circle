@@ -62,13 +62,13 @@ const Login = () => {
         password: logPass,
       },
       withCredentials: true,
-      url: '/api/login',
+      url: '/user/login',
       // }).then((res) => console.log(res.data,'DATA FROM LOGIN'))}
     }).then((res) => {
       if (res.data.id) {
         return (
           // localStorage.setItem('user', JSON.stringify(res.data)),
-          history.replace('/topics'),
+          history.replace('/'),
           dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
         )
       } else {

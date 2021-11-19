@@ -766,6 +766,7 @@
 import { Box, Typography } from '@material-ui/core'
 import React, { useState } from 'react'
 import { YMaps, Map, GeoObject, Placemark } from 'react-yandex-maps'
+import Chatik from '../Chatik/Chatik'
 
 const mapState = { center: [56.76, 37.64], zoom: 10 }
 
@@ -819,6 +820,8 @@ const PlacemarkDemo = () => {
 
 
   return (
+
+    <>
     <YMaps
       query={{
         apikey: 'a1d74d39-8cef-45bf-b08e-15d2c7d52345',
@@ -831,7 +834,7 @@ const PlacemarkDemo = () => {
           justifyContent: 'center',
 
           alignItems: 'center',
-          my: 10,
+          my: 5,
         }}
       >
         <Typography>Pisya</Typography>
@@ -842,7 +845,7 @@ const PlacemarkDemo = () => {
           justifyContent: 'center',
 
           alignItems: 'center',
-          my: 10,
+          my: 5,
         }}
       >
         <Map
@@ -903,14 +906,20 @@ const PlacemarkDemo = () => {
       <Box
         sx={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          my: 5,
+          my: 0,
         }}
       >
         <Typography>Чатик</Typography>
+        <Chatik />
       </Box>
     </YMaps>
+
+
+
+</>
   )
 }
 

@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCardItems } from "../redux/ac/itemsProdavitoAc";
 import ProdavitoItem from "../ProdavitoItem/ProdavitoItem";
 import ProdavitoCategory from "../ProdavitoCategory/ProdavitoCategory";
+
 import { styled } from "@mui/material/styles";
+
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -22,6 +24,7 @@ const Prodavito = () => {
   useEffect(() => {
     dispatch(getAllCardItems());
   }, []);
+
 
   return (
     <>
