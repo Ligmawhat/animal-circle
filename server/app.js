@@ -18,11 +18,6 @@ const userRouter = require("./routes/userRouter");
 const tinderRouter = require("./routes/tinderRouter");
 const avitoRouter = require("./routes/avitoRouter");
 
-//connect router
-app.use("/", indexRouter);
-app.use("/user", userRouter);
-app.use("/tinder", tinderRouter);
-app.use("/prodavito", avitoRouter);
 
 // middleware
 app.use(morgan('dev'))
@@ -35,14 +30,29 @@ app.use(
   })
 );
 
-app.use(
-  session({
-    secret: "secretcode",
-    resave: true,
-    saveUninitialized: false,
-    cookie: { _expires: 10 * 60 * 1000 },
-  })
-);
+// app.use(
+//   session({
+//     secret: "secretcode",
+//     resave: true,
+//     saveUninitialized: false,
+//     cookie: { _expires: 10 * 60 * 1000 },
+//   })
+// );
+
+const sessionConfig = {
+  secret: "secretcode",
+  resave: true,
+  saveUninitialized: false,
+  cookie: { _expires: 10 * 60 * 1000 },
+}
+
+const sessionParse = session(sessionConfig)
+app.use(sessionParse)
+
+// console.log(pass, 'SSASS')
+
+
+
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -73,6 +83,13 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   User.findByPk(user.id).then(() => done(null, user));
 });
+
+//connect router
+app.use("/", indexRouter);
+app.use("/user", userRouter);
+app.use("/tinder", tinderRouter);
+app.use("/prodavito", avitoRouter);
+
 
 app.listen(PORT, () => {
   console.log("Server has been started on PORT " + PORT);

@@ -5,6 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllCardItems} from "../redux/ac/itemsProdavitoAc";
 import ProdavitoItem from "../ProdavitoItem/ProdavitoItem";
 import ProdavitoCategory from "../ProdavitoCategory/ProdavitoCategory";
+import { Box, Grid } from '@material-ui/core';
+
 
 const Prodavito = () => {
 
@@ -28,15 +30,21 @@ const Prodavito = () => {
                 </Button>
             </div>
             <hr />
-            <div>
-                {allAGoodsFromBack?.map(el => <ProdavitoItem el={el}/>)}
-            </div>
-            <div>
+            <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+                {allAGoodsFromBack?.map(el => <ProdavitoItem key={el.id} el={el}/>)}
+                </Grid>
+                </Grid>
+            <Box sx={{ display: 'flex',
+            flexDirection:'row',
+            flexWrap: 'wrap'
+             }} >
                 {allCategoryFromBack?.map(el => <ProdavitoCategory el={el}/>)}
-            </div>
+            </Box>
         </div>
         </>
     );
 };
+
 
 export default Prodavito;

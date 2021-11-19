@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { User, Sequelize } = require("../src/db/models");
 const Op = Sequelize.Op;
+const brcypt = require("bcryptjs");
+
 
 router.route("/login").post((req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -21,9 +23,10 @@ router.route("/login").post((req, res, next) => {
 });
 
 router.route("/signup").post(async (req, res) => {
+  console.log(req.body, 'SIGNUP REQ BODY')
   const { login, password } = req.body;
   const hashPass = await brcypt.hash(password, 10);
-  const newUser = await User.create({ login, password: hashPass });
+  const newUser = await User.create({ login, password: hashPass, userType: 'user' });
   req.session.login = newUser.login;
   req.session.userId = newUser.id;
   req.session.userType = newUser.userType;
