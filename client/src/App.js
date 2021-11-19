@@ -4,8 +4,10 @@ import { MyPlacemark } from './components/MapTest2/MapTest2';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/Signup';
 import Logout from './components/auth/Logout';
+
 // import MapBasics from './components/MapTest2/MapTest2';
 // import PlacemarkDemo from './components/MapTest2/MapTest2';
+
 import HomePage from "./components/HomePage/HomePage";
 import Prodavito from "./components/Prodavito/Prodavito";
 import Meeting from "./components/Meeting/Meeting";
