@@ -1,83 +1,82 @@
-import React, { useState } from 'react'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
-import Container from '@material-ui/core/Container'
-import axios from 'axios'
-import { useHistory } from 'react-router-dom'
-import { getCurrUser } from '../redux/ac/currUserAc'
-import { useDispatch } from 'react-redux'
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import Container from "@material-ui/core/Container";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { getCurrUser } from "../redux/ac/currUserAc";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
-  '@global': {
+  "@global": {
     body: {
       backgroundColor: theme.palette.common.white,
     },
   },
   paper: {
     marginTop: theme.spacing(5),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(2),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
   underline: {
-    textDecoration: 'none',
+    textDecoration: "none",
   },
-}))
+}));
 
 const Login = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  let history = useHistory()
+  let history = useHistory();
 
-  const [logLogin, setLogLogin] = useState('')
-  const [logPass, setLogPass] = useState('')
-  const [userType, setUserType] = useState('')
+  const [logLogin, setLogLogin] = useState("");
+  const [logPass, setLogPass] = useState("");
+  const [userType, setUserType] = useState("");
 
   const login = (e) => {
-    e.preventDefault(e)
+    e.preventDefault(e);
     axios({
-      method: 'post',
+      method: "post",
       data: {
         login: logLogin,
         password: logPass,
       },
       withCredentials: true,
-      url: '/user/login',
+      url: "/user/login",
       // }).then((res) => console.log(res.data,'DATA FROM LOGIN'))}
     }).then((res) => {
       if (res.data.id) {
         return (
           // localStorage.setItem('user', JSON.stringify(res.data)),
-          history.replace('/'),
-          dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
-        )
+          history.replace("/"), dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
+        );
       } else {
-        history.push('/failed')
+        history.push("/failed");
       }
-    })
-  }
+    });
+  };
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -138,7 +137,7 @@ const Login = () => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/signup" className={classes.underline} underline="none">
+              <Link to="/user/signup" className={classes.underline} underline="none">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -146,7 +145,7 @@ const Login = () => {
         </form>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
