@@ -5,6 +5,8 @@ import IconCustomImage, { MyPlacemark } from './components/MapTest2/MapTest2';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/Signup';
 import Logout from './components/auth/Logout';
+import MapBasics from './components/MapTest2/MapTest2';
+import PlacemarkDemo from './components/MapTest2/MapTest2';
 
 
 
@@ -14,7 +16,7 @@ function App() {
     <Router>
 
 
-<Route exact path="/maps" component={MyPlacemark} />
+<Route exact path="/maps" component={PlacemarkDemo} />
 {/* <Route exact path="/maps2" component={MyPlacemark} /> */}
 <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
