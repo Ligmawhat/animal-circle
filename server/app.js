@@ -9,6 +9,7 @@ const { User, Sequelize } = require("./src/db/models");
 const LocalStrategy = require("passport-local").Strategy;
 const Op = Sequelize.Op;
 const morgan = require('morgan')
+require('./passport')
 
 const app = express();
 
@@ -17,7 +18,7 @@ const indexRouter = require("./routes/indexRouter");
 const userRouter = require("./routes/userRouter");
 const tinderRouter = require("./routes/tinderRouter");
 const avitoRouter = require("./routes/avitoRouter");
-
+const googleUserRouter = require('./routes/googleUserRouter')
 
 // middleware
 app.use(morgan('dev'))
@@ -49,7 +50,6 @@ const sessionConfig = {
 const sessionParse = session(sessionConfig)
 app.use(sessionParse)
 
-// console.log(pass, 'SSASS')
 
 
 
@@ -77,6 +77,26 @@ passport.use(
   )
 );
 
+
+
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: '704780611601-5a6mqenppc1okpe285dl3s7kiod67mm5.apps.googleusercontent.com',
+//       clientSecret: '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',
+//       callbackURL:
+//         '/user/google/redirect',
+//     },() => {
+
+//     }
+//     // (accessToken, refreshToken, profile, done) => {
+//     //   return done(null, profile)
+//     // }
+//   )
+// )
+
+
+
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
@@ -84,11 +104,19 @@ passport.deserializeUser(function (user, done) {
   User.findByPk(user.id).then(() => done(null, user));
 });
 
+
+
+
+
+
+
 //connect router
 app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/tinder", tinderRouter);
 app.use("/prodavito", avitoRouter);
+app.use('/googleuser', googleUserRouter)
+
 
 
 app.listen(PORT, () => {

@@ -15,6 +15,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { getCurrUser } from '../redux/ac/currUserAc'
 import { useDispatch } from 'react-redux'
+import BasicSelect from '../FormToDelete/Form'
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -52,6 +53,22 @@ const Login = () => {
   const [logLogin, setLogLogin] = useState('')
   const [logPass, setLogPass] = useState('')
   const [userType, setUserType] = useState('')
+
+
+  const loginWithGoogle =  (e) => {
+    e.preventDefault();
+// axios('/user/google')
+
+
+
+
+    window.open('http://localhost:3001/user/google')
+      }
+
+
+
+
+
 
   const login = (e) => {
     e.preventDefault(e)
@@ -135,6 +152,17 @@ const Login = () => {
             onClick={(e) => login(e)}
           >
             Login
+          </Button>
+          <Button
+            onClick={loginWithGoogle}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Авторизируйтесь через google
+
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

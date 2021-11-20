@@ -23,7 +23,7 @@ function App() {
         {/* <Route exact path="/maps" component={MyPlacemark} /> */}
         {/* <Route exact path="/maps2" component={MyPlacemark} /> */}
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/user/login" component={Login} />
         <Route exact path="/user/signup" component={SignUp} />
         <Route exact path="/logout" component={Logout} />
 
