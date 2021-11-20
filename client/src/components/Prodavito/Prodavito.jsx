@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllGoods, setAllGoods } from "../redux/ac/itemsProdavitoAc";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
+import ProdavitoForm from "../ProdavitoForm/ProdavitoForm";
 
 const Prodavito = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Prodavito = () => {
         </Grid>
         <Grid item xs={12} md={9}>
           <Grid container spacing={2}>
+            {/* <ProdavitoForm /> */}
             <ViewGoods goods={goods} />
           </Grid>
         </Grid>

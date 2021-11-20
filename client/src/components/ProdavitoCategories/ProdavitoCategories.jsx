@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllGoodsForOneCategories } from "../redux/ac/itemsProdavitoAc";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
+import { setAllGoodsForOneCategories } from "../redux/ac/itemsProdavitoAc";
 
 const ProdavitoCategories = () => {
   const { id } = useParams();
@@ -13,6 +14,9 @@ const ProdavitoCategories = () => {
   const { goodsForOneCategories } = useSelector((state) => state);
   useEffect(() => {
     dispatch(getAllGoodsForOneCategories(+id));
+    return () => {
+      dispatch(setAllGoodsForOneCategories(null));
+    };
   }, [id]);
 
   return (
