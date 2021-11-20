@@ -4,6 +4,9 @@ const initState = {
   goods: {},
   categories: {},
   goodsForOneCategories: {},
+  breed: {},
+  sex: {},
+  oneDog: {},
 };
 
 export default initState;

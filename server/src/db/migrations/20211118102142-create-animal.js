@@ -12,9 +12,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sex: {
-        type: Sequelize.STRING,
+      sex_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "Sexes",
+          key: "id",
+        },
       },
       desc: {
         type: Sequelize.TEXT,
