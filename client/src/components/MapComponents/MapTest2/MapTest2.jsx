@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { YMaps, Map, GeoObject, Placemark, withYMaps } from "react-yandex-maps";
 import Chatik from "../Chatik/Chatik";
 import MapAddPoint from "./MapAddPoint";
+import {ChatRoom} from "../../ChatRoom";
+import {Home} from "../../Home";
+import Chat from "../../Chat/Chat";
 
 const mapState = { center: [57.76, 37.64], zoom: 5 };
 
@@ -327,7 +330,7 @@ const PlacemarkDemo = () => {
         >
           {/* <MapAddPoint key={1} point={point} /> */}
           <Typography>Чатик</Typography>
-          <Chatik />
+          <Chat/>
         </Box>
       </YMaps>
     </>
