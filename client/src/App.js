@@ -7,7 +7,7 @@ import Logout from "./components/auth/Logout";
 
 // import MapBasics from './components/MapTest2/MapTest2';
 import PlacemarkDemo from "./components/MapTest2/MapTest2";
-
+import axios from "axios";
 import HomePage from "./components/HomePage/HomePage";
 import Prodavito from "./components/Prodavito/Prodavito";
 import Meeting from "./components/Meeting/Meeting";
@@ -16,6 +16,16 @@ import ProdavitoCategories from "./components/ProdavitoCategories/ProdavitoCateg
 import Profile from "./components/Profile/Profile";
 
 function App() {
+
+
+  axios.defaults.baseURL = 'http://localhost:3001';
+
+
+
+
+
+
+
   return (
     <div>
       <Router>

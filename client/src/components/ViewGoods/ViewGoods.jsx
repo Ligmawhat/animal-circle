@@ -1,13 +1,13 @@
-import { Grid, Paper } from "@mui/material";
-import ProdavitoItem from "../ProdavitoItem/ProdavitoItem";
-import { styled } from "@mui/material/styles";
+import { Grid, Paper } from '@mui/material'
+import ProdavitoItem from '../ProdavitoItem/ProdavitoItem'
+import { styled } from '@mui/material/styles'
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "center",
+  textAlign: 'center',
   color: theme.palette.text.secondary,
-}));
+}))
 
 const ViewGoods = ({ goods }) => {
   return (
@@ -20,7 +20,7 @@ const ViewGoods = ({ goods }) => {
         </Grid>
       ))}
     </Grid>
-  );
-};
+  )
+}
 
-export default ViewGoods;
+export default ViewGoods

@@ -4,6 +4,10 @@ import { Paper } from "@material-ui/core";
 import { TextInput } from './TextInput';
 import { MessageLeft, MessageRight } from "./Message";
 
+
+
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
@@ -40,8 +44,19 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+
+
+
+
 export default function Chatik() {
-  const classes = useStyles();
+    const classes = useStyles();
+
+
+
+
+
+
+    
   return (
     <div className={classes.container}>
       <Paper className={classes.paper} zDepth={2}>

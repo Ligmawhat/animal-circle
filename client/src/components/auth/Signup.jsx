@@ -49,6 +49,12 @@ export default function SignUp() {
   let history = useHistory();
   const dispatch = useDispatch();
 
+  
+
+
+
+
+
   const register = (e) => {
     e.preventDefault(e);
     axios({
@@ -126,6 +132,7 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
+          
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/user/login" className={classes.underline} variant="body2">

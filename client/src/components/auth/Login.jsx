@@ -53,6 +53,31 @@ const Login = () => {
   const [logPass, setLogPass] = useState("");
   const [userType, setUserType] = useState("");
 
+
+  const loginWithGoogle =  (e) => {
+    e.preventDefault();
+// axios('/user/google')
+
+
+
+
+    // window.open(`${process.env.REACT_APP_API_URL}/user/signIn`, "_self")
+    window.open(`${process.env.REACT_APP_API_URL}/user/google`, "_self")
+    // window.open('http://localhost:3001/user/google')
+      }
+
+
+    //   const checkAuth = async () => {
+    //     const response = await fetch(`${process.env.REACT_APP_API_URL}/user/checkAuth`, {
+    //       credentials: 'include'
+    //     });
+    //     const currentuser = await response.json();
+    //     dispatch(getCurrentUser(currentuser))
+  
+    // }
+
+
+
   const login = (e) => {
     e.preventDefault(e);
     axios({
@@ -134,6 +159,17 @@ const Login = () => {
             onClick={(e) => login(e)}
           >
             Login
+          </Button>
+          <Button
+            onClick={loginWithGoogle}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Авторизируйтесь через google
+
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
