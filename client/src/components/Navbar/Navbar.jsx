@@ -1,55 +1,54 @@
-import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
-import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux'
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
 
-
-import ClickAwayListener from '@mui/material/ClickAwayListener'
-import Grow from '@mui/material/Grow'
-import Paper from '@mui/material/Paper'
-import Popper from '@mui/material/Popper'
-import MenuItem from '@mui/material/MenuItem'
-import MenuList from '@mui/material/MenuList'
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
 
 const useStyles = makeStyles({
   button: {
-    margin: '1em',
-    fontSize: '100px',
+    margin: "1em",
+    fontSize: "100px",
   },
-})
+});
 
 export default function NavBar() {
-  const currUser = useSelector((state) => state.currUser)
-  const classes = useStyles()
+  const currUser = useSelector((state) => state.currUser);
+  const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false)
-  const anchorRef = React.useRef(null)
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen)
-  }
+    setOpen((prevOpen) => !prevOpen);
+  };
 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return
+      return;
     }
 
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault()
-      setOpen(false)
-    } else if (event.key === 'Escape') {
-      setOpen(false)
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
     }
   }
 
@@ -57,19 +56,13 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 1 }}
-          >
+          <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 1 }}>
             <div>
               <Button
                 ref={anchorRef}
                 id="composition-button"
-                aria-controls={open ? 'composition-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
+                aria-controls={open ? "composition-menu" : undefined}
+                aria-expanded={open ? "true" : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle}
                 color="inherit"
@@ -88,10 +81,7 @@ export default function NavBar() {
                   <Grow
                     {...TransitionProps}
                     style={{
-                      transformOrigin:
-                        placement === 'bottom-start'
-                          ? 'left top'
-                          : 'left bottom',
+                      transformOrigin: placement === "bottom-start" ? "left top" : "left bottom",
                     }}
                   >
                     <Paper>
@@ -110,7 +100,7 @@ export default function NavBar() {
                               Topics
                             </MenuItem>
                           ) : (
-                            ''
+                            ""
                           )}
                         </MenuList>
                       </ClickAwayListener>
@@ -127,10 +117,10 @@ export default function NavBar() {
 
           {currUser.id ? (
             <Button
-              sx={{ mr: '1em' }}
+              sx={{ mr: "1em" }}
               className={classes.butto}
               component={Link}
-              to="/logout"
+              to="/user/logout"
               variant="outlined"
               color="inherit"
             >
@@ -139,10 +129,10 @@ export default function NavBar() {
           ) : (
             <>
               <Button
-                sx={{ mr: '1em' }}
+                sx={{ mr: "1em" }}
                 className={classes.butto}
                 component={Link}
-                to="/signup"
+                to="/user/signup"
                 variant="outlined"
                 color="inherit"
                 // style={{margin: '1em' }}
@@ -151,10 +141,10 @@ export default function NavBar() {
               </Button>
 
               <Button
-                sx={{ mr: '1em' }}
+                sx={{ mr: "1em" }}
                 className={classes.butto}
                 component={Link}
-                to="/login"
+                to="/user/login"
                 variant="outlined"
                 color="inherit"
               >
@@ -165,5 +155,5 @@ export default function NavBar() {
         </Toolbar>
       </AppBar>
     </Box>
-  )
+  );
 }

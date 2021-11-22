@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const PORT = 3001;
 const cors = require("cors");
@@ -9,9 +10,19 @@ const { User, Sequelize } = require("./src/db/models");
 const LocalStrategy = require("passport-local").Strategy;
 const Op = Sequelize.Op;
 const morgan = require('morgan')
-require('./passport')
 
+const GoogleStrategy = require('passport-google-oauth')
+.OAuth2Strategy;
 const app = express();
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function (user, done) {
+  User.findByPk(user.id).then(() => done(null, user));
+});
+
+
 
 //require router
 const indexRouter = require("./routes/indexRouter");
@@ -49,8 +60,6 @@ const sessionConfig = {
 
 const sessionParse = session(sessionConfig)
 app.use(sessionParse)
-
-
 
 
 app.use(cookieParser("secretcode"));
@@ -97,17 +106,22 @@ passport.use(
 
 
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function (user, done) {
-  User.findByPk(user.id).then(() => done(null, user));
-});
 
 
 
-
-
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL:
+        process.env.GOOGLE_REDIRECT_URL,
+    },
+    (accessToken, refreshToken, profile, done) => {
+      return done(null, profile)
+    }
+  )
+)
 
 
 //connect router

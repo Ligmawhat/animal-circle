@@ -1,10 +1,11 @@
+require('dotenv').config();
 const router = require("express").Router();
 const { User, Sequelize } = require("../src/db/models");
 const Op = Sequelize.Op;
 const brcypt = require("bcryptjs");
 const passport = require("passport");
-require('../passport'
-)
+// require('../passport'
+// )
 
 router.route("/login").post((req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -47,7 +48,7 @@ router.get(
   passport.authenticate('google',
   {
       failureRedirect: '/user/google/failed',
-      successRedirect: '/user/google/success'
+      successRedirect: `${process.env.REACT_URL}`
     }
     )
     // async function (req, res) {
@@ -69,10 +70,10 @@ router.get(
 
 
 router.route("/signup").post(async (req, res) => {
-  console.log(req.body, 'SIGNUP REQ BODY')
+  console.log(req.body, "SIGNUP REQ BODY");
   const { login, password } = req.body;
   const hashPass = await brcypt.hash(password, 10);
-  const newUser = await User.create({ login, password: hashPass, userType: 'user' });
+  const newUser = await User.create({ login, password: hashPass, userType: "user" });
   req.session.login = newUser.login;
   req.session.userId = newUser.id;
   req.session.userType = newUser.userType;

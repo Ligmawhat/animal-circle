@@ -1,7 +1,13 @@
 const initState = {
- currUser: {},
- modal: null,
- items: {}
-}
+  currUser: {},
+  modal: null,
+  goods: {},
+  categories: {},
+  goodsForOneCategories: {},
+  breed: {},
+  sex: {},
+  oneDog: {},
+  map: {}
+};
 
-export default initState
+export default initState;

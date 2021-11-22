@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 import NavBar from "../Navbar/Navbar";
 import { Button, Input, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGoods, setAllGoods } from "../redux/ac/itemsProdavitoAc";
+import { getAllGoodsForOneCategories } from "../redux/ac/itemsProdavitoAc";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
-import ProdavitoForm from "../ProdavitoForm/ProdavitoForm";
+import { setAllGoodsForOneCategories } from "../redux/ac/itemsProdavitoAc";
 
-const Prodavito = () => {
+const ProdavitoCategories = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
-
-  const { goods } = useSelector((state) => state);
-
+  const { goodsForOneCategories } = useSelector((state) => state);
   useEffect(() => {
-    dispatch(getAllGoods());
+    dispatch(getAllGoodsForOneCategories(+id));
     return () => {
-      dispatch(setAllGoods(null));
+      dispatch(setAllGoodsForOneCategories(null));
     };
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -33,8 +33,7 @@ const Prodavito = () => {
         </Grid>
         <Grid item xs={12} md={9}>
           <Grid container spacing={2}>
-            {/* <ProdavitoForm /> */}
-            <ViewGoods goods={goods} />
+            <ViewGoods goods={goodsForOneCategories} />
           </Grid>
         </Grid>
       </Grid>
@@ -42,4 +41,4 @@ const Prodavito = () => {
   );
 };
 
-export default Prodavito;
+export default ProdavitoCategories;
