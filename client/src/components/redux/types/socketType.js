@@ -1,0 +1,1 @@
+export const TYPE_FROM_BACK = 'TYPE_FROM_BACK'

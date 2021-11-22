@@ -27,7 +27,7 @@ const CategoriesList = () => {
           <Button onClick={() => history.push(`/prodavito`)}>Все категории</Button>
         </Item>
       </Grid>
-      {categories.length > 0 &&
+      {categories?.length &&
         categories?.map((el) => (
           <Grid key={el.id} item>
             <Item>

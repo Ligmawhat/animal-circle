@@ -11,7 +11,7 @@ const Prodavito = () => {
   const dispatch = useDispatch();
 
   const { goods } = useSelector((state) => state);
-
+    console.log(goods)
   useEffect(() => {
     dispatch(getAllGoods());
     // console.log(goods, "goods");

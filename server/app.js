@@ -40,6 +40,7 @@ app.use(
   })
 );
 
+
 // app.use(
 //   session({
 //     secret: "secretcode",
@@ -54,7 +55,7 @@ const sessionConfig = {
   resave: true,
   saveUninitialized: false,
   cookie: { _expires: 10 * 60 * 1000 },
-};
+}
 
 const sessionParse = session(sessionConfig);
 app.use(sessionParse);
@@ -112,15 +113,12 @@ passport.use(
   )
 );
 
-//connect router
 app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/tinder", tinderRouter);
 app.use("/prodavito", avitoRouter);
+
 app.use("/map", mapRouter);
 
-// app.use("/googleuser", googleUserRouter);
 
-app.listen(PORT, () => {
-  console.log("Server has been started on PORT " + PORT);
-});
+module.exports = {app}
