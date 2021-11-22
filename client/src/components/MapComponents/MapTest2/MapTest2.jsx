@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { YMaps, Map, Placemark, GeoObject } from 'react-yandex-maps'
 import Chat from '../../Chat/Chat'
 import MapAddPoint from './MapAddPoint'
@@ -11,6 +12,11 @@ const PlacemarkDemo = () => {
   const [cords, setCords] = useState([])
 
   const [point, setPoint] = useState([])
+
+
+const tags = useSelector(state => state.map)
+
+
 
   console.log('MAPTEST RENDERED')
   console.log(cords, 'COORDS')
@@ -75,7 +81,22 @@ const PlacemarkDemo = () => {
               }}
             /> */}
         <MapAddPoint setPoint={setPoint} point={point} cords={cords} />
-
+        {tags?.length && tags?.map((el) =>  <Placemark
+          geometry={{
+            type: 'Point',
+            coordinates: [el.latitude, el.longitude],
+          }}
+          properties={{
+            hintContent: 'Stack Overflow',
+            balloonContent: 'Stack Overflow на русском',
+          }}
+          options={{
+            iconLayout: 'default#image',
+            iconImageHref: './device2.jpg',
+            iconImageSize: [100, 36],
+            iconImageOffset: [-50, -18],
+          }}
+        />      )}
         <Placemark
           geometry={{
             type: 'Point',

@@ -7,7 +7,7 @@ const initState = {
   breed: [],
   sex: [],
   oneDog: null,
-  map: {},
+  map: [],
 };
 
 export default initState;
