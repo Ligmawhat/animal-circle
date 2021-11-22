@@ -763,16 +763,11 @@
 //   hintContent:'70 p/c',
 // },
 
-<<<<<<< HEAD
-import { Box, Typography } from '@material-ui/core'
-import React, { useState } from 'react'
-import { YMaps, Map, GeoObject, Placemark } from 'react-yandex-maps'
-=======
+
 import { Box, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import { YMaps, Map, GeoObject, Placemark } from "react-yandex-maps";
->>>>>>> ee8404deedc4517101968c8df39e5913518c0933
-import Chatik from "../Chatik/Chatik";
+import Chat from "../Chat/Chat";
 
 const mapState = { center: [56.76, 37.64], zoom: 10 };
 
@@ -820,133 +815,108 @@ const PlacemarkDemo = () => {
 
   return (
     <>
-      <YMaps
-        query={{
-          apikey: "a1d74d39-8cef-45bf-b08e-15d2c7d52345",
-        }}
-        version={"2.1"}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
+      {/*<YMaps*/}
+      {/*  query={{*/}
+      {/*    apikey: "a1d74d39-8cef-45bf-b08e-15d2c7d52345",*/}
+      {/*  }}*/}
+      {/*  version={"2.1"}*/}
+      {/*>*/}
+      {/*  <Box*/}
+      {/*    sx={{*/}
+      {/*      display: "flex",*/}
+      {/*      justifyContent: "center",*/}
 
-            alignItems: "center",
-            my: 5,
-          }}
-        >
-          <Typography>найди себе друга</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
+      {/*      alignItems: "center",*/}
+      {/*      my: 5,*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <Typography>найди себе друга</Typography>*/}
+      {/*  </Box>*/}
+      {/*  <Box*/}
+      {/*    sx={{*/}
+      {/*      display: "flex",*/}
+      {/*      justifyContent: "center",*/}
 
-            alignItems: "center",
-            my: 5,
-          }}
-        >
-          <Map
-            defaultState={mapState}
-            width="500px"
-            height="400px"
-            onLoad={(ymaps) => console.log(ymaps)}
-            instanceRef={(ref) => {}}
-            onClick={(event) => {
-              try {
-                if (event?.get("coords")) {
-                  setPoint(event.get("coords"));
-                  console.log(event.get("coords"));
-                  setPoint(
-                    <Placemark
-                      key={Date.now()}
-                      geometry={[event.get("coords")[0], event.get("coords")[1]]}
-                    />
-                  );
-                  // pointerHandler()
-                }
-              } catch (error) {
-                console.log("ERRORRRRR", error);
-              }
-            }}
-<<<<<<< HEAD
-          />
+      {/*      alignItems: "center",*/}
+      {/*      my: 5,*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <Map*/}
+      {/*      defaultState={mapState}*/}
+      {/*      width="500px"*/}
+      {/*      height="400px"*/}
+      {/*      onLoad={(ymaps) => console.log(ymaps)}*/}
+      {/*      instanceRef={(ref) => {}}*/}
+      {/*      onClick={(event) => {*/}
+      {/*        try {*/}
+      {/*          if (event?.get("coords")) {*/}
+      {/*            setPoint(event.get("coords"));*/}
+      {/*            console.log(event.get("coords"));*/}
+      {/*            setPoint(*/}
+      {/*              <Placemark*/}
+      {/*                key={Date.now()}*/}
+      {/*                geometry={[event.get("coords")[0], event.get("coords")[1]]}*/}
+      {/*              />*/}
+      {/*            );*/}
+      {/*            // pointerHandler()*/}
+      {/*          }*/}
+      {/*        } catch (error) {*/}
+      {/*          console.log("ERRORRRRR", error);*/}
+      {/*        }*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      /!* Creating a geo object with the "Point" geometry type. *!/*/}
+      {/*      <GeoObject*/}
+      {/*        // The geometry description.*/}
+      {/*        geometry={{*/}
+      {/*          type: "Point",*/}
+      {/*          coordinates: [55.8, 37.8],*/}
+      {/*        }}*/}
+      {/*        // Properties.*/}
+      {/*        properties={{*/}
+      {/*          // The placemark content.*/}
+      {/*          iconContent: "Я тащусь",*/}
+      {/*          hintContent: "Ну давай уже тащи",*/}
+      {/*        }}*/}
+      {/*        // Options.*/}
+      {/*        options={{*/}
+      {/*          // The placemark's icon will stretch to fit its contents.*/}
+      {/*          preset: "islands#blackStretchyIcon",*/}
+      {/*          // The placemark can be moved.*/}
+      {/*          draggable: true,*/}
+      {/*        }}*/}
+      {/*      />*/}
+      {/*      {point}*/}
+      {/*      <Placemark*/}
+      {/*        key={1}*/}
+      {/*        modules={["geoObject.addon.balloon"]}*/}
+      {/*        defaultGeometry={[55.75, 37.57]}*/}
+      {/*        properties={{*/}
+      {/*          balloonContentBody: "This is balloon loaded by the Yandex.Maps API module system",*/}
+      {/*        }}*/}
+      {/*      />*/}
 
-          {db.map((placemarkParams, i) => (
-            <Placemark key={i} {...placemarkParams} />
-          ))}
-        </Map>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          my: 5,
-        }}
-      >
-        <Typography>Чатик</Typography>
-          <Chatik />
-      </Box>
-    </YMaps>
-  )
-}
+      {/*      {db.map((placemarkParams, i) => (*/}
+      {/*        <Placemark key={i} {...placemarkParams} />*/}
+      {/*      ))}*/}
+      {/*    </Map>*/}
+      {/*  </Box>*/}
+      {/*  <Box*/}
+      {/*    sx={{*/}
+      {/*      display: "flex",*/}
+      {/*      flexDirection: "column",*/}
+      {/*      justifyContent: "center",*/}
+      {/*      alignItems: "center",*/}
+      {/*      my: 0,*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <Typography>Чатик</Typography>*/}
+      {/*  </Box>*/}
+      {/*</YMaps>*/}
 
-export default PlacemarkDemo
-=======
-          >
-            {/* Creating a geo object with the "Point" geometry type. */}
-            <GeoObject
-              // The geometry description.
-              geometry={{
-                type: "Point",
-                coordinates: [55.8, 37.8],
-              }}
-              // Properties.
-              properties={{
-                // The placemark content.
-                iconContent: "Я тащусь",
-                hintContent: "Ну давай уже тащи",
-              }}
-              // Options.
-              options={{
-                // The placemark's icon will stretch to fit its contents.
-                preset: "islands#blackStretchyIcon",
-                // The placemark can be moved.
-                draggable: true,
-              }}
-            />
-            {point}
-            <Placemark
-              key={1}
-              modules={["geoObject.addon.balloon"]}
-              defaultGeometry={[55.75, 37.57]}
-              properties={{
-                balloonContentBody: "This is balloon loaded by the Yandex.Maps API module system",
-              }}
-            />
-
-            {db.map((placemarkParams, i) => (
-              <Placemark key={i} {...placemarkParams} />
-            ))}
-          </Map>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            my: 0,
-          }}
-        >
-          <Typography>Чатик</Typography>
-          <Chatik />
-        </Box>
-      </YMaps>
+        <Chat />
     </>
   );
 };
 
 export default PlacemarkDemo;
->>>>>>> ee8404deedc4517101968c8df39e5913518c0933
