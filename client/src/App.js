@@ -1,30 +1,22 @@
 import "./App.css";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import { MyPlacemark } from "./components/MapTest2/MapTest2";
+// import { MyPlacemark } from "./components/MapTest2/MapTest2";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/Signup";
 import Logout from "./components/auth/Logout";
 
 // import MapBasics from './components/MapTest2/MapTest2';
-import PlacemarkDemo from "./components/MapTest2/MapTest2";
+import PlacemarkDemo from "./components/MapComponents/MapTest2/MapTest2";
 import axios from "axios";
 import HomePage from "./components/HomePage/HomePage";
-import Prodavito from "./components/Prodavito/Prodavito";
-import Meeting from "./components/Meeting/Meeting";
-import Apishka from "./components/Apishka/Apishka";
-import ProdavitoCategories from "./components/ProdavitoCategories/ProdavitoCategories";
+import Prodavito from "./components/ProdavitoComponents/Prodavito/Prodavito";
+import Meeting from "./components/TinderComponents/Meeting/Meeting";
+import Apishka from "./components/MapComponents/Apishka/Apishka";
+import ProdavitoCategories from "./components/ProdavitoComponents/ProdavitoCategories/ProdavitoCategories";
 import Profile from "./components/Profile/Profile";
 
 function App() {
-
-
-  axios.defaults.baseURL = 'http://localhost:3001';
-
-
-
-
-
-
+  axios.defaults.baseURL = "http://localhost:3001";
 
   return (
     <div>

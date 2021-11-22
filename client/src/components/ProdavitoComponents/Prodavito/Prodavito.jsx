@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import NavBar from "../Navbar/Navbar";
+import NavBar from "../../Navbar/Navbar";
 import { Button, Input, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGoods, setAllGoods } from "../redux/ac/itemsProdavitoAc";
-import CategoriesList from "../CategoriesList/CategoriesList";
+import { getAllGoods, setAllGoods } from "../../redux/ac/itemsProdavitoAc";
+import CategoriesList from "../../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
 import ProdavitoForm from "../ProdavitoForm/ProdavitoForm";
 
