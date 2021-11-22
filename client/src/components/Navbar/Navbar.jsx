@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 
@@ -51,6 +51,7 @@ export default function NavBar() {
       setOpen(false);
     }
   }
+  const history = useHistory();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -157,6 +158,15 @@ export default function NavBar() {
               </Button>
             </>
           )}
+          <Button
+            sx={{ mr: "1em" }}
+            className={classes.butto}
+            variant="outlined"
+            color="inherit"
+            onClick={() => history.push("/")}
+          >
+            main
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
