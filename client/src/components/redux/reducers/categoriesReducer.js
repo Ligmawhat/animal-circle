@@ -1,4 +1,4 @@
-import { SET_ALL_CATEGORIES } from "../types/itemType";
+import { SET_ALL_CATEGORIES } from "../types/goodType";
 
 const categoriesReducer = (state = [], action) => {
   const { type, payload } = action;
