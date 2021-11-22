@@ -26,3 +26,16 @@ export const getAllSex = () => async (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const setOneDog = (value) => ({
+  type: SET_ONE_DOG,
+  payload: value,
+});
+
+export const getOneDog = () => async (dispatch) => {
+  axios("/tinder")
+    .then((res) => {
+      return dispatch(setOneDog(res.data.oneDogFromBack));
+    })
+    .catch((err) => console.log(err));
+};

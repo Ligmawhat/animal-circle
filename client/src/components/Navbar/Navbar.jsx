@@ -116,16 +116,21 @@ export default function NavBar() {
           </Typography>
 
           {currUser.id ? (
-            <Button
-              sx={{ mr: "1em" }}
-              className={classes.butto}
-              component={Link}
-              to="/user/logout"
-              variant="outlined"
-              color="inherit"
-            >
-              Logout
-            </Button>
+            <>
+              <Button
+                sx={{ mr: "1em" }}
+                className={classes.butto}
+                component={Link}
+                to="/user/logout"
+                variant="outlined"
+                color="inherit"
+              >
+                Logout
+              </Button>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Привет, {currUser.login}!
+              </Typography>
+            </>
           ) : (
             <>
               <Button

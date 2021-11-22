@@ -1,42 +1,31 @@
-import React, { useEffect } from 'react'
-import Box from '@mui/material/Box'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
-import {
-  getAllBreed,
-  setAllBreed,
-  getAllSex,
-  setAllSex,
-} from '../redux/ac/tinderAc'
-import { useDispatch, useSelector } from 'react-redux'
 
-export default function TinderSelect({ data }) {
-  const { breed, sex } = useSelector((state) => state)
-  const dispatch = useDispatch()
+import React, { useEffect } from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { getAllBreed, getAllSex } from "../redux/ac/tinderAc";
+import { useDispatch, useSelector } from "react-redux";
+
+export default function TinderSelect() {
+  const { breed, sex } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllSex())
-    return () => {
-      dispatch(setAllSex(null))
-    }
-  }, [])
+    dispatch(getAllSex());
+    // return () => {
+    //   dispatch(setAllSex(null));
+    // };
+  }, []);
+
   useEffect(() => {
-    dispatch(getAllBreed())
-    return () => {
-      dispatch(setAllBreed(null))
-    }
-  }, [])
-  // const [Breed, setAge] = React.useState("");
+    dispatch(getAllBreed());
+    // return () => {
+    //   dispatch(setAllBreed(null));
+    // };
+  }, []);
 
-  // const data = [1, 2, 3];
-  // const data2 = [1, 2, 3, 4];
-
-  // const handleChange = (event) => {
-  //   setAge(event.target.value);
-  // };
-  console.log(data)
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
@@ -44,12 +33,15 @@ export default function TinderSelect({ data }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value="Пол"
+          value="breed"
           label="Пол"
           // onChange={handleChange}
         >
-          {breed?.map((el) => (
-            <MenuItem value={el.breed_title}> {el.breed_title} </MenuItem>
+          {breed?.map((el, index) => (
+            <MenuItem key={index} value={el.breed_title}>
+              {" "}
+              {el.breed_title}{" "}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
@@ -58,12 +50,14 @@ export default function TinderSelect({ data }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value="Пол"
+          value="sex"
           label="Пол"
           // onChange={handleChange}
         >
-          {sex?.map((el) => (
-            <MenuItem value={el.sex}> {el.sex} </MenuItem>
+          {sex?.map((el, index) => (
+            <MenuItem key={index} value={el.sex}>
+              {el.sex}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

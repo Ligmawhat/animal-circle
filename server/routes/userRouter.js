@@ -103,5 +103,13 @@ function authenticationMiddleware(req, res, next) {
 
 
 
+router.route("/profile/:id").get(async (req, res) => {
+  const userProfile = await User.findOne({
+    where: { id: req.params.id },
+    attributes: ["id", "login"],
+  });
+  console.log(userProfile);
+  res.json({ userProfile });
+});
 
 module.exports = router;

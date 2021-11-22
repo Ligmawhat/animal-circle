@@ -5,21 +5,20 @@ const Likes = require("../src/DTO/Likes");
 
 router.route("/").get(async (req, res) => {
   try {
-    const allBreedFromBack = await Breed.findAll();
-    const allSexFromBack = await Sex.findAll();
-
-    const allAnimals = await Animal.findAll({
+    const allBreedFromBack = await Breed.findAll({ attributes: ["id", "breed_title"] });
+    const allSexFromBack = await Sex.findAll({ attributes: ["id", "sex"] });
+    const oneDog = await Animal.findAll({
       include: [
         { model: User, attributes: ["login"] },
         { model: Breed, attributes: ["breed_title"] },
         { model: Type, attributes: ["type_title"] },
         { model: Sex, attributes: ["sex"] },
       ],
+      where: { id: 1 },
     });
 
-    const allAnimalsFromBack = allAnimals.map((el) => new Animals(el));
-    console.log(allAnimalsFromBack);
-    res.json({ allAnimalsFromBack, allBreedFromBack, allSexFromBack });
+    const oneDogFromBack = new Animals(oneDog[0]);
+    res.json({ oneDogFromBack, allBreedFromBack, allSexFromBack });
   } catch (err) {
     res.sendStatus(501);
   }

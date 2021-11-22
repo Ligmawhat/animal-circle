@@ -13,6 +13,7 @@ import Prodavito from "./components/Prodavito/Prodavito";
 import Meeting from "./components/Meeting/Meeting";
 import Apishka from "./components/Apishka/Apishka";
 import ProdavitoCategories from "./components/ProdavitoCategories/ProdavitoCategories";
+import Profile from "./components/Profile/Profile";
 
 function App() {
 
@@ -40,6 +41,8 @@ function App() {
 
         <Route exact path="/meeting" component={Meeting} />
         <Route exact path="/apishka" component={PlacemarkDemo} />
+
+        <Route exact path="/user/profile" component={Profile} />
       </Router>
     </div>
   );
