@@ -3,7 +3,9 @@ import {
   SET_ALL_GOODS,
   SET_ALL_CATEGORIES,
   SET_ALL_GOODS_FOR_ONE_CATEGORY,
-} from "../types/itemType";
+  DEL_ONE_GOOD,
+  ADD_ONE_GOOD,
+} from "../types/goodType";
 
 export const setAllGoods = (value) => ({
   type: SET_ALL_GOODS,
@@ -42,4 +44,10 @@ export const getAllGoodsForOneCategories = (id) => async (dispatch) => {
       return dispatch(setAllGoodsForOneCategories(res.data.allGoodsForOneCategoryFromBack));
     })
     .catch((err) => console.log(err));
+};
+
+export const addPost = (value, nav) => async (dispatch) => {
+  const newPost = await axios.post("/prodavito/goods", value);
+  dispatch({ type: ADD_ONE_GOOD, payload: newPost.data });
+  nav(`/post/${newPost.data.id}`);
 };

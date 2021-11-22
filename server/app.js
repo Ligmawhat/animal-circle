@@ -26,6 +26,7 @@ const indexRouter = require("./routes/indexRouter");
 const userRouter = require("./routes/userRouter");
 const tinderRouter = require("./routes/tinderRouter");
 const avitoRouter = require("./routes/avitoRouter");
+const mapRouter = require("./routes/mapRouter");
 // const googleUserRouter = require('./routes/googleUserRouter')
 
 // middleware
@@ -116,6 +117,8 @@ app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/tinder", tinderRouter);
 app.use("/prodavito", avitoRouter);
+app.use("/map", mapRouter);
+
 // app.use("/googleuser", googleUserRouter);
 
 app.listen(PORT, () => {

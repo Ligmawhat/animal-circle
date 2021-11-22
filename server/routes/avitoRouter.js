@@ -30,6 +30,16 @@ router.route("/:id").get(async (req, res) => {
   }
 });
 
+router.route("/goods").post(async (req, res) => {
+  try {
+    const newGood = await Good.create({ ...req.body.goodInput });
+    console.log(newGood);
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+});
+
 module.exports = router;
 
 const shuffle = (arr) => {
