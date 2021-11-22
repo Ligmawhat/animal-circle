@@ -23,7 +23,7 @@ export function Home() {
     linkRef.current.click()
   }
 
-  const trimmed = username.trim()
+  const trimmed = username?.trim()
 
   return (
     <Form
