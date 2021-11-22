@@ -1,6 +1,16 @@
-import React, { useState } from 'react'
+
 import { YMaps, Map, Placemark, GeoObject } from 'react-yandex-maps'
-import MapAddPoint from './MapAddPoint'
+
+
+import { Box, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+
+import Chatik from "../Chatik/Chatik";
+import MapAddPoint from "./MapAddPoint";
+import {ChatRoom} from "../../ChatRoom";
+import {Home} from "../../Home";
+import Chat from "../../Chat/Chat";
+
 
 // import myIcon from 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/1200px-How_to_use_icon.svg.png';
 
@@ -88,10 +98,16 @@ const PlacemarkDemo = () => {
             iconImageSize: [100, 36],
             iconImageOffset: [-50, -18],
           }}
-        />
-      </Map>
-    </YMaps>
-  )
-}
+
+        >
+          {/* <MapAddPoint key={1} point={point} /> */}
+          <Typography>Чатик</Typography>
+          <Chat/>
+        </Box>
+      </YMaps>
+    </>
+  );
+};
+
 
 export default PlacemarkDemo
