@@ -4,15 +4,16 @@ import axios from 'axios'
 
 export function addNewPoint (cords, title, desc, url) {
   return async (dispatch) => {
-    const response = await axios.post('/map/new')
-    
-    dispatch(addPoint(cords, title, desc, url))
+    const response = await axios.post('/map/new', {cords, title, desc, url})
+    const result = response.data
+    console.log(result)
+    dispatch(addPoint(result))
   }
 }
 
 
 
-export const addPoint = (cords, title, desc, url) => ({
+export const addPoint = (data) => ({
   type: ADD_NEW_POINT,
-  payload: {...cords, title, desc, url}
+  payload: data
 })
