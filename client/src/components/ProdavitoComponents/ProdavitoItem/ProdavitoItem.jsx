@@ -33,7 +33,7 @@ const ProdavitoItem = ({ el }) => {
           </Typography>
           <IconButton aria-label="add to favorites">
             {/* <FavoriteIcon /> */}
-            купить
+            связаться
           </IconButton>
         </CardActions>
       </Card>
