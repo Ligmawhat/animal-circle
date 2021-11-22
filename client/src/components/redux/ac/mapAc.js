@@ -1,16 +1,18 @@
 import { ADD_NEW_POINT } from "../types/mapType"
+import axios from 'axios'
 
 
-
-export function addNewPoint (point, title, desc, url) {
+export function addNewPoint (cords, title, desc, url) {
   return async (dispatch) => {
-    dispatch(addPoint(point[0], point[1], title, desc, url))
+    const response = await axios.post('/map/new')
+    
+    dispatch(addPoint(cords, title, desc, url))
   }
 }
 
 
 
-export const addPoint = (point1, point2, title, desc, url) => ({
+export const addPoint = (cords, title, desc, url) => ({
   type: ADD_NEW_POINT,
-  payload: {point1, point2, title, desc, url}
+  payload: {...cords, title, desc, url}
 })
