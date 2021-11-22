@@ -36,14 +36,12 @@ export default function TinderSelect() {
           label="Пол"
           // onChange={handleChange}
         >
-          {/* {breed
-            ? breed?.map((el) => (
-                <MenuItem key={el.id} value={el.breed_title}>
-                  {" "}
-                  {el.breed_title}{" "}
-                </MenuItem>
-              ))
-            : ""} */}
+          {breed?.length &&
+            breed?.map((el) => (
+              <MenuItem key={el.id} value={el.breed_title}>
+                {el.breed_title}
+              </MenuItem>
+            ))}
         </Select>
       </FormControl>
       <FormControl fullWidth>
@@ -55,13 +53,12 @@ export default function TinderSelect() {
           label="Пол"
           // onChange={handleChange}
         >
-          {/* {sex
-            ? sex?.map((el) => (
-                <MenuItem key={el.id} value={el.sex}>
-                  {el.sex}
-                </MenuItem>
-              ))
-            : ""} */}
+          {sex?.length &&
+            sex?.map((el) => (
+              <MenuItem key={el.id} value={el.sex}>
+                {el.sex}
+              </MenuItem>
+            ))}
         </Select>
       </FormControl>
     </Box>

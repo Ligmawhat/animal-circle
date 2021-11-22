@@ -12,7 +12,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const ViewGoods = ({ goods }) => {
   return (
     <Grid container spacing={2}>
-      {goods.length &&
+      {goods?.length &&
         goods?.map((el) => (
           <Grid key={el.id} item xs={6} md={4}>
             <Item>

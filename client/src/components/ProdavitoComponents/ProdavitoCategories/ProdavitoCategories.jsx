@@ -4,7 +4,7 @@ import NavBar from "../../Navbar/Navbar";
 import { Button, Input, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGoodsForOneCategories } from "../../redux/ac/itemsProdavitoAc";
-import CategoriesList from "../../CategoriesList/CategoriesList";
+import CategoriesList from "../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
 import { setAllGoodsForOneCategories } from "../../redux/ac/itemsProdavitoAc";
 
@@ -15,7 +15,7 @@ const ProdavitoCategories = () => {
   useEffect(() => {
     dispatch(getAllGoodsForOneCategories(+id));
     return () => {
-      dispatch(setAllGoodsForOneCategories(null));
+      dispatch(setAllGoodsForOneCategories([]));
     };
   }, [id]);
 
