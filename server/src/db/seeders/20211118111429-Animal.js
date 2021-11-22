@@ -17,7 +17,7 @@ module.exports = {
         {
           name: "Гарик",
           desc: "кобель гарик овчарка",
-          url: "https://lh3.googleusercontent.com/proxy/Uja9Mdns0xw1fuGS9qi1XDnXnehjWkFdr9QTEJVZh4v8SkplI_J0IdZEdUCIyEnIY4eKImX3HXFf5y2UCdT958RyAYMpgcRqKap8Q087l_foDOiSbA",
+          url: "https://i.pinimg.com/736x/e1/a6/96/e1a696d70a8263e73bfad59ce2dc6f8e.jpg",
           sex_id: 2,
           user_id: 1,
           breed_id: 1,
