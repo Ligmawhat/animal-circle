@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Button, Grid, Paper } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../redux/ac/itemsProdavitoAc";
+import { getAllCategories } from "../../redux/ac/itemsProdavitoAc";
 import ProdavitoCategory from "../ProdavitoCategory/ProdavitoCategory";
 import { useHistory } from "react-router";
 import { styled } from "@mui/material/styles";
@@ -27,13 +27,14 @@ const CategoriesList = () => {
           <Button onClick={() => history.push(`/prodavito`)}>Все категории</Button>
         </Item>
       </Grid>
-      {categories?.map((el) => (
-        <Grid item>
-          <Item>
-            <ProdavitoCategory el={el} />
-          </Item>
-        </Grid>
-      ))}
+      {categories.length > 0 &&
+        categories?.map((el) => (
+          <Grid key={el.id} item>
+            <Item>
+              <ProdavitoCategory el={el} />
+            </Item>
+          </Grid>
+        ))}
     </Grid>
   );
 };

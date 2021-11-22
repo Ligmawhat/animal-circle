@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const PORT = 3001;
 const cors = require("cors");
@@ -8,19 +9,27 @@ const session = require("express-session");
 const { User, Sequelize } = require("./src/db/models");
 const LocalStrategy = require("passport-local").Strategy;
 const Op = Sequelize.Op;
-const morgan = require('morgan')
+const morgan = require("morgan");
 
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const app = express();
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function (user, done) {
+  User.findByPk(user.id).then(() => done(null, user));
+});
 
 //require router
 const indexRouter = require("./routes/indexRouter");
 const userRouter = require("./routes/userRouter");
 const tinderRouter = require("./routes/tinderRouter");
 const avitoRouter = require("./routes/avitoRouter");
-
+// const googleUserRouter = require('./routes/googleUserRouter')
 
 // middleware
-app.use(morgan('dev'))
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -47,8 +56,8 @@ const sessionConfig = {
   cookie: { _expires: 10 * 60 * 1000 },
 }
 
-const sessionParse = session(sessionConfig)
-app.use(sessionParse)
+const sessionParse = session(sessionConfig);
+app.use(sessionParse);
 
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
@@ -74,23 +83,38 @@ passport.use(
   )
 );
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function (user, done) {
-  User.findByPk(user.id).then(() => done(null, user));
-});
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: '704780611601-5a6mqenppc1okpe285dl3s7kiod67mm5.apps.googleusercontent.com',
+//       clientSecret: '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',
+//       callbackURL:
+//         '/user/google/redirect',
+//     },() => {
+
+//     }
+//     // (accessToken, refreshToken, profile, done) => {
+//     //   return done(null, profile)
+//     // }
+//   )
+// )
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_REDIRECT_URL,
+    },
+    (accessToken, refreshToken, profile, done) => {
+      return done(null, profile);
+    }
+  )
+);
 
 app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/tinder", tinderRouter);
 app.use("/prodavito", avitoRouter);
 
-// app.listen(PORT, () => {
-//   console.log("Server has been started on PORT " + PORT);
-// });
-
 module.exports = {app}
-
-
-
