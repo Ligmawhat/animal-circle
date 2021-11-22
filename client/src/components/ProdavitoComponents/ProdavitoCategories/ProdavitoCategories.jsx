@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import NavBar from "../Navbar/Navbar";
+import NavBar from "../../Navbar/Navbar";
 import { Button, Input, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGoodsForOneCategories } from "../redux/ac/itemsProdavitoAc";
-import CategoriesList from "../CategoriesList/CategoriesList";
+import { getAllGoodsForOneCategories } from "../../redux/ac/itemsProdavitoAc";
+import CategoriesList from "../../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
-import { setAllGoodsForOneCategories } from "../redux/ac/itemsProdavitoAc";
+import { setAllGoodsForOneCategories } from "../../redux/ac/itemsProdavitoAc";
 
 const ProdavitoCategories = () => {
   const { id } = useParams();

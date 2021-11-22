@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import NavBar from "../Navbar/Navbar";
+import NavBar from "../../Navbar/Navbar";
 import { Grid } from "@mui/material";
 
-import TinderSelect from "../TinderSelect/TinderSelect";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneDog, setOneDog } from "../redux/ac/tinderAc";
-import MeetingCard from "./MeetingCard/MeetingCard";
+import { getOneDog } from "../../redux/ac/tinderAc";
+import MeetingCard from "../MeetingCard/MeetingCard";
+import TinderSelect from "../TinderSelect/TinderSelect";
 
 const Meeting = () => {
   const { oneDog } = useSelector((state) => state);

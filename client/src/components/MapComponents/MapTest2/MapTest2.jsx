@@ -1,28 +1,26 @@
-import { Box, Typography } from '@material-ui/core'
-import React, { useState } from 'react'
-import { YMaps, Map, GeoObject, Placemark, withYMaps } from 'react-yandex-maps'
-import Chatik from '../Chatik/Chatik'
-import MapAddPoint from './MapAddPoint'
+import { Box, Typography } from "@material-ui/core";
+import React, { useState } from "react";
+import { YMaps, Map, GeoObject, Placemark, withYMaps } from "react-yandex-maps";
+import Chatik from "../Chatik/Chatik";
+import MapAddPoint from "./MapAddPoint";
 
-const mapState = { center: [57.76, 37.64], zoom: 5 }
+const mapState = { center: [57.76, 37.64], zoom: 5 };
 
 const db = [
-  { geometry: { coordinates: [60.801773, 37.697725], type: 'Point' } },
+  { geometry: { coordinates: [60.801773, 37.697725], type: "Point" } },
   {
-    geometry: { coordinates: [50.801773, 35.697725], type: 'Point' },
+    geometry: { coordinates: [50.801773, 35.697725], type: "Point" },
     properties: {
-      iconContent: 'Я',
+      iconContent: "Я",
     },
-    options: { preset: 'islands#blackStretchyIcon', draggable: true },
+    options: { preset: "islands#blackStretchyIcon", draggable: true },
   },
-]
+];
 
 const PlacemarkDemo = () => {
-
-
   // ymaps.ready(init);
   // var myMap;
-  
+
   // function init () {
   //     myMap = new ymaps.Map("map", {
   //         center: [57.5262, 38.3061], // Uglich
@@ -31,7 +29,7 @@ const PlacemarkDemo = () => {
   //         balloonMaxWidth: 200,
   //         searchControlProvider: 'yandex#search'
   //     });
-  
+
   //     /**
   //      * Processing events that occur when the user
   //      * left-clicks anywhere on the map.
@@ -54,7 +52,7 @@ const PlacemarkDemo = () => {
   //             myMap.balloon.close();
   //         }
   //     });
-  
+
   //     /**
   //      * Processing events that occur when the user
   //      * right-clicks anywhere on the map.
@@ -64,14 +62,12 @@ const PlacemarkDemo = () => {
   //     myMap.events.add('contextmenu', function (e) {
   //         myMap.hint.open(e.get('coords'), 'Someone right-clicked');
   //     });
-      
+
   //     // Hiding the hint when opening the balloon.
   //     myMap.events.add('balloonopen', function (e) {
   //         myMap.hint.close();
   //     });
   // }
-
-
 
   // const PositionedMap = React.memo(({ ymaps }) => {
   //   const [loadedCoords, setLoading] = React.useState(false);
@@ -116,62 +112,54 @@ const PlacemarkDemo = () => {
   //     </YMaps>
   //   </div>
   // );
-// }
+  // }
 
+  //   // const classes = useStyles();
+  //   let myMap;
 
+  // function myGeoCode(ymaps, myMap, address) {
+  //     ymaps.geocode(address, {
+  //         results: 1
+  //     }).then(function (res) {
+  //         // Выбираем первый результат геокодирования.
+  //         let firstGeoObject = res.geoObjects.get(0)
+  //         // Координаты геообъекта.
+  //         let coords = firstGeoObject.geometry.getCoordinates()
+  //         // Область видимости геообъекта.
+  //         let bounds = firstGeoObject.properties.get('boundedBy');
 
+  //         firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
+  //         // Получаем строку с адресом и выводим в иконке геообъекта.
+  //         //firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
 
+  //         // Добавляем первый найденный геообъект на карту.
+  //         myMap.geoObjects.add(firstGeoObject);
+  //         // Масштабируем карту на область видимости геообъекта.
+  //         myMap.setBounds(bounds, {
+  //             // Проверяем наличие тайлов на данном масштабе.
+  //             checkZoomRange: true
+  //         });
 
+  //         let myPlacemark = new ymaps.Placemark(coords, {
+  //             iconContent: 'моя метка',
+  //         }, {
+  //             preset: 'islands#violetStretchyIcon'
+  //         });
 
+  //         myPlacemark.events.add('click', function() {
+  //             alert(address)
+  //         });
 
+  //         myMap.geoObjects.add(myPlacemark);
+  //     });
+  // }
 
+  //     function init(ymaps, myMap) {
+  //         checkedObjects.forEach(address => myGeoCode(ymaps, myMap, `${address.district.city.name}, ${address.address}`))
+  //     }
 
-//   // const classes = useStyles();
-//   let myMap;
+  //   return
 
-// function myGeoCode(ymaps, myMap, address) {
-//     ymaps.geocode(address, {
-//         results: 1
-//     }).then(function (res) {
-//         // Выбираем первый результат геокодирования.
-//         let firstGeoObject = res.geoObjects.get(0)
-//         // Координаты геообъекта.
-//         let coords = firstGeoObject.geometry.getCoordinates()
-//         // Область видимости геообъекта.
-//         let bounds = firstGeoObject.properties.get('boundedBy');
-
-//         firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
-//         // Получаем строку с адресом и выводим в иконке геообъекта.
-//         //firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
-
-//         // Добавляем первый найденный геообъект на карту.
-//         myMap.geoObjects.add(firstGeoObject);
-//         // Масштабируем карту на область видимости геообъекта.
-//         myMap.setBounds(bounds, {
-//             // Проверяем наличие тайлов на данном масштабе.
-//             checkZoomRange: true
-//         });
-
-//         let myPlacemark = new ymaps.Placemark(coords, {
-//             iconContent: 'моя метка',
-//         }, {
-//             preset: 'islands#violetStretchyIcon'
-//         });
-
-//         myPlacemark.events.add('click', function() {
-//             alert(address)
-//         });
-
-//         myMap.geoObjects.add(myPlacemark);
-//     });
-// }
-
-//     function init(ymaps, myMap) {
-//         checkedObjects.forEach(address => myGeoCode(ymaps, myMap, `${address.district.city.name}, ${address.address}`))
-//     }
-
-//   return 
-  
   // (
   //   <YMaps
   //     query={{
@@ -202,67 +190,66 @@ const PlacemarkDemo = () => {
   //     />
   //   </YMaps>
   // )
-// };
+  // };
 
+  const [point, setPoint] = useState(null);
 
-  const [point, setPoint] = useState(null)
+  //   // function createPlacemark(coords) {
+  //   //   return new window.ymaps.Placemark(
+  //   //     coords,
+  //   //     {
+  //   //       iconCaption: "поиск", // balloon
+  //   //     },
+  //   //     {
+  //   //       preset: "islands#blueAutoIcon", //preset
+  //   //       draggable: true,
+  //   //     }
+  //   //   );
+  //   // }
 
-//   // function createPlacemark(coords) {
-//   //   return new window.ymaps.Placemark(
-//   //     coords,
-//   //     {
-//   //       iconCaption: "поиск", // balloon
-//   //     },
-//   //     {
-//   //       preset: "islands#blueAutoIcon", //preset
-//   //       draggable: true,
-//   //     }
-//   //   );
-//   // }
+  //   //   myPlacemark = createPlacemark(newCoords);
+  //   //   myMap.geoObjects.add(myPlacemark);
+  //   //   // Слушаем событие окончания перетаскивания на метке.
+  //   //   myPlacemark.events.add("dragend", function () {
+  //   //     getAddress(myPlacemark.geometry.getCoordinates());
+  //   //   });
+  //   // }
+  //   // setPlacemarkCoords(myPlacemark.geometry._coordinates);
+  //   // getAddress(newCoords);
 
-//   //   myPlacemark = createPlacemark(newCoords);
-//   //   myMap.geoObjects.add(myPlacemark);
-//   //   // Слушаем событие окончания перетаскивания на метке.
-//   //   myPlacemark.events.add("dragend", function () {
-//   //     getAddress(myPlacemark.geometry.getCoordinates());
-//   //   });
-//   // }
-//   // setPlacemarkCoords(myPlacemark.geometry._coordinates);
-//   // getAddress(newCoords);
+  //   // console.log(point)
+  //   // const pointerHandler = () => {
 
-//   // console.log(point)
-//   // const pointerHandler = () => {
+  //   // }
 
-//   // }
+  //   console.log(point, 'BIG')
 
-//   console.log(point, 'BIG')
-
-//   console.log('MAP rendered')
+  //   console.log('MAP rendered')
 
   return (
     <>
       <YMaps
         query={{
-          apikey: 'a1d74d39-8cef-45bf-b08e-15d2c7d52345',
+          apikey: "a1d74d39-8cef-45bf-b08e-15d2c7d52345",
         }}
-        version={'2.1'}
+        version={"2.1"}
       >
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
+            display: "flex",
+            justifyContent: "center",
 
-            alignItems: 'center',
+            alignItems: "center",
             my: 5,
           }}
         >
-           <Typography>найди себе друга</Typography>
+          <Typography>найди себе друга</Typography>
         </Box>
-       <Box
+        <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             my: 5,
           }}
         >
@@ -274,13 +261,13 @@ const PlacemarkDemo = () => {
             instanceRef={(ref) => {}}
             onClick={(event) => {
               try {
-                if (event?.get('coords')) {
-                  event.preventDefault()
+                if (event?.get("coords")) {
+                  event.preventDefault();
                   // setPoint({
                   //   lat: event.get('coords')[0],
                   //   lon: event.get('coords')[1],
                   // })
-                  console.log(event.get('coords'))
+                  console.log(event.get("coords"));
                   // setPoint(
                   //   <Placemark
                   //     key={Date.now(12)}
@@ -290,7 +277,7 @@ const PlacemarkDemo = () => {
                   // pointerHandler()
                 }
               } catch (error) {
-                console.log('ERRORRRRR', error)
+                console.log("ERRORRRRR", error);
               }
             }}
           >
@@ -298,19 +285,19 @@ const PlacemarkDemo = () => {
             <GeoObject
               // The geometry description.
               geometry={{
-                type: 'Point',
+                type: "Point",
                 coordinates: [55.8, 37.8],
               }}
               // Properties.
               properties={{
                 // The placemark content.
-                iconContent: 'Я тащусь',
-                hintContent: 'Ну давай уже тащи',
+                iconContent: "Я тащусь",
+                hintContent: "Ну давай уже тащи",
               }}
               // Options.
               options={{
                 // The placemark's icon will stretch to fit its contents.
-                preset: 'islands#blackStretchyIcon',
+                preset: "islands#blackStretchyIcon",
                 // The placemark can be moved.
                 draggable: true,
               }}
@@ -331,10 +318,10 @@ const PlacemarkDemo = () => {
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
             my: 0,
           }}
         >
@@ -344,7 +331,7 @@ const PlacemarkDemo = () => {
         </Box>
       </YMaps>
     </>
-  )
-}
+  );
+};
 
-export default PlacemarkDemo
+export default PlacemarkDemo;

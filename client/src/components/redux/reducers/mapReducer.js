@@ -1,15 +1,15 @@
 import { ADD_NEW_POINT } from "../types/mapType";
 
-
-
 const mapReducer = (state = {}, action) => {
-  console.log(state, action.payload)
-switch (action.type) {
-  case ADD_NEW_POINT:
-    return action.payload
-  default:
-  return state
-}
-}
+  console.log(state);
+  console.log(action.payload);
 
-export default mapReducer
+  switch (action.type) {
+    case ADD_NEW_POINT:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+export default mapReducer;
