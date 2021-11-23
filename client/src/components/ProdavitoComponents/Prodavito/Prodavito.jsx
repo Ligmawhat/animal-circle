@@ -11,7 +11,6 @@ const Prodavito = () => {
   const dispatch = useDispatch();
 
   const { goods } = useSelector((state) => state);
-    console.log(goods)
   useEffect(() => {
     dispatch(getAllGoods());
     // console.log(goods, "goods");
@@ -34,7 +33,6 @@ const Prodavito = () => {
         </Grid>
         <Grid item xs={12} md={9}>
           <Grid container spacing={2}>
-            {/* <ProdavitoForm /> */}
             <ViewGoods goods={goods} />
           </Grid>
         </Grid>

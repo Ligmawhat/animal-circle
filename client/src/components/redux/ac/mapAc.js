@@ -1,3 +1,4 @@
+
 import { ADD_NEW_POINT } from '../types/mapType'
 
 
@@ -25,3 +26,4 @@ export const addPoint = (data) => ({
   type: ADD_NEW_POINT,
   payload: data,
 })
+
