@@ -81,7 +81,7 @@ const tags = useSelector(state => state.map)
               }}
             /> */}
         <MapAddPoint setPoint={setPoint} point={point} cords={cords} />
-        {tags?.length && tags?.map((el) =>  <Placemark
+        {tags?.length && tags?.map((el) =>  <Placemark key={el.id}
           geometry={{
             type: 'Point',
             coordinates: [el.latitude, el.longitude],
