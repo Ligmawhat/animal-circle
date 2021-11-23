@@ -9,7 +9,7 @@ import HomePage from "./components/HomePage/HomePage";
 import Prodavito from "./components/ProdavitoComponents/Prodavito/Prodavito";
 import Meeting from "./components/TinderComponents/Meeting/Meeting";
 import ProdavitoCategories from "./components/ProdavitoComponents/ProdavitoCategories/ProdavitoCategories";
-import Profile from "./components/Profile/Profile";
+import Profile from "./components/Profile/AdminProfile";
 import Chat from "./components/Chat/Chat";
 
 axios.defaults.baseURL = 'http://localhost:3001'

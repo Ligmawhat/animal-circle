@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addNewPoint } from '../../redux/ac/mapAc'
 
+
 const useStyles = makeStyles((theme) => ({
   '@global': {
     body: {
@@ -50,26 +51,31 @@ function MapAddPoint({ setPoint, point, cords }) {
   const [desc, setDesc] = useState('')
   const [url, setUrl] = useState('')
   const dispatch = useDispatch()
-
+const [file, setFile] = useState(null)
   const classes = useStyles()
 
   const pointHandler = (e) => {
     e.preventDefault()
   }
-
+  const onFileChange = (e) =>{
+ 
+  setFile( e.target.files[0] )
+}
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(addNewPoint(cords, title, desc, url))
-
+    const formData = new FormData();
+  formData.append('file', {file});
+    
+    dispatch(addNewPoint(cords, title, desc, url, file))
+     setFile('')
     setTitle('')
     setDesc('')
     setUrl('')
     setPoint('')
   }
+console.log(file, 'IMAGE')
 
-  console.log('ADDPOINT RENDERED')
 
-  console.log(cords, 'CORDS FORM')
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -78,7 +84,7 @@ function MapAddPoint({ setPoint, point, cords }) {
         <form
           onSubmit={(e) => submitHandler(e)}
           className={classes.form}
-          noValidate
+           method="post" enctype="multipart/form-data"
         >
    
           <Grid container spacing={2}>
@@ -123,6 +129,8 @@ function MapAddPoint({ setPoint, point, cords }) {
 
                 onChange={(e) => setUrl(e.target.value)}
               />
+              <input type="file" name="file"
+               onChange={(e)=>onFileChange(e)}     /> 
             </Grid>
           </Grid>
           <Button
