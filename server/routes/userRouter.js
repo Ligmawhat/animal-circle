@@ -1,7 +1,6 @@
 require('dotenv').config()
 const router = require('express').Router()
 const { User, Sequelize } = require('../src/db/models')
-const Op = Sequelize.Op
 const brcypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -42,12 +41,10 @@ router.get(
         const currentUser = await User.findOne({
           where: { login: req.user.emails[0].value },
         })
-        console.log(currentUser, 'CURRUSER 1')
 
         if (currentUser) {
           req.session.login = currentUser.login
           req.session.userId = currentUser.id
-          console.log('=====>>>>currentUser', req.session.user)
           return res.redirect('http://localhost:3000')
         } else {
           const newUser = await User.create({
@@ -57,8 +54,6 @@ router.get(
           })
           req.session.login = newUser.login
           req.session.userId = newUser.id
-
-          console.log('=====>>>>newUser', req.session)
           return res.redirect('http://localhost:3000')
         }
       } catch (error) {
@@ -72,7 +67,7 @@ router.get(
 
 
 router.route('/signup').post(async (req, res) => {
-  console.log(req.body, 'SIGNUP REQ BODY')
+
   const { login, password } = req.body
   const hashPass = await brcypt.hash(password, 10)
   const newUser = await User.create({
@@ -88,8 +83,9 @@ router.route('/signup').post(async (req, res) => {
 })
 
 router.route('/logout').get(function (req, res) {
-  req.logout()
+  req.session.destroy()
   res.clearCookie('sId')
+  req.logout()
   res.send('logout')
 })
 
@@ -132,7 +128,7 @@ router.route('/profile/:id').get(async (req, res) => {
     where: { id: req.params.id },
     attributes: ['id', 'login'],
   })
-  console.log(userProfile)
+  console.log(userProfile, 'USER ROUTER')
   res.json({ userProfile })
 })
 

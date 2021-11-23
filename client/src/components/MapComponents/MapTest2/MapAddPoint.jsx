@@ -46,33 +46,30 @@ const useStyles = makeStyles((theme) => ({
 function MapAddPoint({ setPoint, point, cords }) {
   const [title, setTitle] = useState("");
 
-  const [desc, setDesc] = useState("");
-  const [url, setUrl] = useState("");
-  const dispatch = useDispatch();
-  const [file, setFile] = useState(null);
-  const classes = useStyles();
 
-  const { currUser } = useSelector((state) => state);
-  console.log(currUser);
-  const pointHandler = (e) => {
-    e.preventDefault();
-  };
-  const onFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
+  const [desc, setDesc] = useState('')
+  const dispatch = useDispatch()
+  const [file, setFile] = useState(null)
+  const classes = useStyles()
+
+  // const pointHandler = (e) => {
+  //   e.preventDefault()
+  // }
+
+  const onFileChange = (e) =>{
+  setFile(e.target.files[0])
+}
+
+
   const submitHandler = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", { file });
-
-    dispatch(addNewPoint(cords, title, desc, url, file));
-    setFile("");
-    setTitle("");
-    setDesc("");
-    setUrl("");
-    setPoint("");
-  };
-  console.log(file, "IMAGE");
+    e.preventDefault()
+    dispatch(addNewPoint(cords, title, desc, file))
+    setFile('')
+    setTitle('')
+    setDesc('')
+    setPoint('')
+  }
+console.log(file, 'IMAGE')
 
   return (
     <Container component="main" maxWidth="xs">
@@ -114,17 +111,16 @@ function MapAddPoint({ setPoint, point, cords }) {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                value={url}
                 variant="outlined"
                 required
                 fullWidth
-                name="url"
-                label="Фото площадки"
-                type="text"
+                // label="Фото площадки"
                 id="url"
-                onChange={(e) => setUrl(e.target.value)}
+
+                type="file" 
+                name="file"
+               onChange={(e)=>onFileChange(e)}
               />
-              <input type="file" name="file" onChange={(e) => onFileChange(e)} />
             </Grid>
           </Grid>
           <Button

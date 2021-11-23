@@ -16,8 +16,14 @@ const PlacemarkDemo = () => {
 
   const tags = useSelector((state) => state.map);
 
-  // console.log('MAPTEST RENDERED')
-  // console.log(cords, 'COORDS')
+
+const tags = useSelector(state => state.map)
+
+
+
+  console.log('MAPTEST RENDERED')
+  console.log(tags, 'COORDS')
+
   return (
     <>
       <NavBar />
@@ -92,7 +98,7 @@ const PlacemarkDemo = () => {
           }}
           options={{
             iconLayout: 'default#image',
-            iconImageHref: './device2.jpg',
+            iconImageHref: `http://localhost:3001/uploads/${el.url}`,
             iconImageSize: [100, 36],
             iconImageOffset: [-50, -18],
           }}
