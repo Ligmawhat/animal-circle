@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPoint } from "../../redux/ac/mapAc";
 
+
 const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
@@ -44,7 +45,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MapAddPoint({ setPoint, point, cords }) {
-  const [title, setTitle] = useState("");
+
+  const [title, setTitle] = useState('')
+
+  const [desc, setDesc] = useState('')
+  const [url, setUrl] = useState('')
+  const dispatch = useDispatch()
+const [file, setFile] = useState(null)
+  const classes = useStyles()
+
 
   const [desc, setDesc] = useState("");
   const [url, setUrl] = useState("");
@@ -53,26 +62,42 @@ function MapAddPoint({ setPoint, point, cords }) {
   const classes = useStyles();
   console.log(currUser);
   const pointHandler = (e) => {
-    e.preventDefault();
-  };
+
+    e.preventDefault()
+  }
+  const onFileChange = (e) =>{
+ 
+  setFile( e.target.files[0] )
+}
   const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(addNewPoint(cords, title, desc, url, currUser.id));
+    e.preventDefault()
+    const formData = new FormData();
+  formData.append('file', {file});
+    
+    dispatch(addNewPoint(cords, title, desc, url, file))
+     setFile('')
+    setTitle('')
+    setDesc('')
+    setUrl('')
+    setPoint('')
+  }
+console.log(file, 'IMAGE')
 
-    setTitle("");
-    setDesc("");
-    setUrl("");
-    setPoint("");
-  };
 
-  console.log("ADDPOINT RENDERED");
 
-  console.log(cords, "CORDS FORM");
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate>
+
+  
+        <form
+          onSubmit={(e) => submitHandler(e)}
+          className={classes.form}
+           method="post" enctype="multipart/form-data"
+        >
+   
+
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -113,6 +138,8 @@ function MapAddPoint({ setPoint, point, cords }) {
                 id="url"
                 onChange={(e) => setUrl(e.target.value)}
               />
+              <input type="file" name="file"
+               onChange={(e)=>onFileChange(e)}     /> 
             </Grid>
           </Grid>
           <Button
