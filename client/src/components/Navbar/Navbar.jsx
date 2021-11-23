@@ -131,6 +131,17 @@ export default function NavBar() {
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 Привет, {currUser.login}!
               </Typography>
+
+              <Button
+                sx={{ mr: "1em" }}
+                className={classes.butto}
+                component={Link}
+                to="/user/profile"
+                variant="outlined"
+                color="inherit"
+              >
+                Личный кабинет
+              </Button>
             </>
           ) : (
             <>

@@ -1,11 +1,11 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Grid, Input, Button, Paper } from "@mui/material";
-import React from "react";
-import { useSelector } from "react-redux";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
 import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
-// import MyDog from "../MyDogs/MyDogs";
+import UserInfoForm from "./UserInfoForm";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -13,11 +13,8 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const Profile = () => {
-  const history = useHistory;
-  const { currUser } = useSelector((state) => state);
-  console.log(currUser);
 
+const UserInfo = () => {
   return (
     <>
       <NavBar />
@@ -26,11 +23,22 @@ const Profile = () => {
         <Button>Search</Button>
       </div>
       <hr />
-      <Grid item xs={12} md={9}>
-        <ProfileNav />
+
+      <Grid container spacing={2} sx={{ mt: 5 }}>
+        <Grid item xs={4} md={3}>
+          <ProfileNav />
+        </Grid>
+        <Grid item xs={12} md={9} sx={{ ml: 40 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={9}>
+              <UserInfoForm />
+            </Grid>
+            <Grid item xs={12} md={9}></Grid>
+          </Grid>
+        </Grid>
       </Grid>
     </>
   );
 };
 
-export default Profile;
+export default UserInfo;

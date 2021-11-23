@@ -15,27 +15,77 @@ module.exports = {
       "Breeds",
       [
         {
-          breed_title: "Овчарка",
+          breed_title: "Немецкая овчарка",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          breed_title: "Боксер",
+          breed_title: "Лабрадор-ретривер",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          breed_title: "Лобрадор",
+          breed_title: "Шарпей",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          breed_title: "Пикинез",
+          breed_title: "Сибирский хаски",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Чау-чау",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Йоркширский терьер",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Коккер-спаниель",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Бигль",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Английский бульдог",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Джек-рассел-терьер",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           breed_title: "Корги",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Пекинес",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Померанский шпиц",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Такса",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          breed_title: "Чихуахуа",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
