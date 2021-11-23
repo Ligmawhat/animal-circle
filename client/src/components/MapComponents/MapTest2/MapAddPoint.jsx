@@ -15,7 +15,6 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPoint } from "../../redux/ac/mapAc";
 
-
 const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
@@ -45,59 +44,46 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MapAddPoint({ setPoint, point, cords }) {
-
-  const [title, setTitle] = useState('')
-
-  const [desc, setDesc] = useState('')
-  const [url, setUrl] = useState('')
-  const dispatch = useDispatch()
-const [file, setFile] = useState(null)
-  const classes = useStyles()
-
+  const [title, setTitle] = useState("");
 
   const [desc, setDesc] = useState("");
   const [url, setUrl] = useState("");
   const dispatch = useDispatch();
-  const { currUser } = useSelector((state) => state);
+  const [file, setFile] = useState(null);
   const classes = useStyles();
+
+  const { currUser } = useSelector((state) => state);
   console.log(currUser);
   const pointHandler = (e) => {
-
-    e.preventDefault()
-  }
-  const onFileChange = (e) =>{
- 
-  setFile( e.target.files[0] )
-}
+    e.preventDefault();
+  };
+  const onFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData();
-  formData.append('file', {file});
-    
-    dispatch(addNewPoint(cords, title, desc, url, file))
-     setFile('')
-    setTitle('')
-    setDesc('')
-    setUrl('')
-    setPoint('')
-  }
-console.log(file, 'IMAGE')
+    formData.append("file", { file });
 
-
+    dispatch(addNewPoint(cords, title, desc, url, file));
+    setFile("");
+    setTitle("");
+    setDesc("");
+    setUrl("");
+    setPoint("");
+  };
+  console.log(file, "IMAGE");
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-
-  
         <form
           onSubmit={(e) => submitHandler(e)}
           className={classes.form}
-           method="post" enctype="multipart/form-data"
+          method="post"
+          enctype="multipart/form-data"
         >
-   
-
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -138,8 +124,7 @@ console.log(file, 'IMAGE')
                 id="url"
                 onChange={(e) => setUrl(e.target.value)}
               />
-              <input type="file" name="file"
-               onChange={(e)=>onFileChange(e)}     /> 
+              <input type="file" name="file" onChange={(e) => onFileChange(e)} />
             </Grid>
           </Grid>
           <Button

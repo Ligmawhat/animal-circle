@@ -7,9 +7,8 @@ const myDogsReducer = (state = [], action) => {
       return payload;
     case ADD_NEW_DOG:
       return payload;
-    default: {
+    default:
       return state;
-    }
   }
 };
 

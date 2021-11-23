@@ -9,6 +9,7 @@ const initState = {
   oneDog: null,
   map: [],
   myDogs: [],
+  myGoods: [],
 };
 
 export default initState;

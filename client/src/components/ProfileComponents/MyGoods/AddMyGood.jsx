@@ -4,22 +4,16 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { getCurrUser } from "../../redux/ac/currUserAc";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewPoint } from "../../redux/ac/mapAc";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { getAllBreed, getAllSex } from "../../redux/ac/tinderAc";
+import { addNewGood, getAllCategories } from "../../redux/ac/itemsProdavitoAc";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -54,18 +48,21 @@ function AddMyGood() {
 
   const { categories, currUser } = useSelector((state) => state);
 
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
+
+  const [good_title, setTitle] = useState("");
+  const [description, setDesc] = useState("");
   const [url, setUrl] = useState("");
   const [price, setPrice] = useState(0);
-  const [cat, setCat] = useState("");
+  const [category, setCat] = useState("");
 
   const classes = useStyles();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch(addNewGood(title, desc, url, price, cat, currUser.id));
-    console.log(title, desc, url, price, cat, "ADD GOOD");
+    dispatch(addNewGood(good_title, description, url, price, category, currUser.id));
   };
 
   return (
@@ -77,7 +74,6 @@ function AddMyGood() {
             <Grid item xs={12}>
               <TextField
                 autoComplete="name"
-                // name="name"
                 variant="outlined"
                 required
                 fullWidth
@@ -93,7 +89,6 @@ function AddMyGood() {
                 variant="outlined"
                 required
                 fullWidth
-                // name="desc"
                 label="Описание товара"
                 type="text"
                 id="desc"
@@ -105,7 +100,6 @@ function AddMyGood() {
                 variant="outlined"
                 required
                 fullWidth
-                // name="url"
                 label="Фото товара"
                 type="text"
                 id="url"
@@ -117,7 +111,6 @@ function AddMyGood() {
                 variant="outlined"
                 required
                 fullWidth
-                // name="price"
                 label="Цена товара"
                 type="text"
                 id="price"
@@ -127,9 +120,11 @@ function AddMyGood() {
           </Grid>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Категория товара</InputLabel>
+              <InputLabel sx={{ my: 2 }} id="demo-simple-select-label">
+                Категория товара
+              </InputLabel>
               <Select
-                sx={{ my: 4 }}
+                sx={{ my: 2 }}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 label="Категория товара"
@@ -137,28 +132,12 @@ function AddMyGood() {
               >
                 {categories?.length &&
                   categories?.map((el) => (
-                    <MenuItem key={el.id} value={el.category_title}>
+                    <MenuItem key={el.id} value={el.id}>
                       {el.category_title}
                     </MenuItem>
                   ))}
               </Select>
             </FormControl>
-            {/* <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Пол</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Пол"
-                onChange={(e) => setOnesex(e.target.value)}
-              >
-                {sex?.length &&
-                  sex?.map((el) => (
-                    <MenuItem key={el.id} value={el.sex}>
-                      {el.sex}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl> */}
           </Box>
           <Button
             type="submit"
