@@ -10,6 +10,7 @@ const initState = {
   map: [],
   myDogs: [],
   myGoods: [],
+  userInfo: {},
 };
 
 export default initState;

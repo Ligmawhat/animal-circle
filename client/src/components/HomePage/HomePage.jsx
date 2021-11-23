@@ -23,8 +23,6 @@ const HomePage = () => {
           <Walk />
         </Link>
       </div>
-      <Button onClick={() => history.push(`/user/profile/myGoods`)}>Список моих товаров</Button>
-      <Button onClick={() => history.push(`/user/profile/myDogs`)}>Список моих собак </Button>
     </div>
   );
 };

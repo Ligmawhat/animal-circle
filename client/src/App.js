@@ -13,6 +13,8 @@ import ProdavitoCategories from "./components/ProdavitoComponents/ProdavitoCateg
 import Chat from "./components/Chat/Chat";
 import MyDogs from "./components/ProfileComponents/MyDogs/MyDogs";
 import MyGoods from "./components/ProfileComponents/MyGoods/MyGoods";
+import Profile from "./components/ProfileComponents/Profile/Profile";
+import UserInfo from "./components/ProfileComponents/UserInfo/UserInfo";
 
 axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.withCredentials = true;
@@ -30,7 +32,10 @@ function App() {
         <Route exact path="/meeting" component={Meeting} />
         <Route exact path="/apishka" component={PlacemarkDemo} />
         <Route exact path="/apishka/:roomId" component={Chat} />
-        {/* <Route exact path="/user/profile" component={Profile} /> */}
+
+        <Route exact path="/user/profile" component={Profile} />
+
+        <Route exact path="/user/profile/info" component={UserInfo} />
         <Route exact path="/user/profile/myDogs" component={MyDogs} />
         <Route exact path="/user/profile/myGoods" component={MyGoods} />
       </Router>
