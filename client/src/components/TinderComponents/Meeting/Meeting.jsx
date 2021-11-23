@@ -18,9 +18,9 @@ const Meeting = () => {
     <>
       <NavBar />
       <Grid container spacing={2} sx={{ mt: 5 }}>
-        <Grid item xs={12} md={3}>
-          <TinderSelect />
-        </Grid>
+        {/*<Grid item xs={12} md={3}>*/}
+        {/*  <TinderSelect />*/}
+        {/*</Grid>*/}
         <Grid item xs={12} md={9}>
           <MeetingCard dog={oneDog} />
         </Grid>

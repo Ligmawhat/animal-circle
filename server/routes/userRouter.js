@@ -1,9 +1,11 @@
+
 require("dotenv").config();
 const router = require("express").Router();
 const { User, Sequelize, UserInfo } = require("../src/db/models");
 const Op = Sequelize.Op;
 const brcypt = require("bcryptjs");
 const passport = require("passport");
+
 
 router.route("/login").post((req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -41,25 +43,25 @@ router.get(
       try {
         const currentUser = await User.findOne({
           where: { login: req.user.emails[0].value },
-        });
-        console.log(currentUser, "CURRUSER 1");
+
+        })
 
         if (currentUser) {
-          req.session.login = currentUser.login;
-          req.session.userId = currentUser.id;
-          console.log("=====>>>>currentUser", req.session.user);
-          return res.redirect("http://localhost:3000");
+          req.session.login = currentUser.login
+          req.session.userId = currentUser.id
+          return res.redirect('http://localhost:3000')
+
         } else {
           const newUser = await User.create({
             login: req.user.emails[0].value,
             password: 123,
-            userType: "user",
-          });
-          req.session.login = newUser.login;
-          req.session.userId = newUser.id;
 
-          console.log("=====>>>>newUser", req.session);
-          return res.redirect("http://localhost:3000");
+            userType: 'user',
+          })
+          req.session.login = newUser.login
+          req.session.userId = newUser.id
+          return res.redirect('http://localhost:3000')
+
         }
       } catch (error) {
         return res.sendStatus(405);
@@ -70,10 +72,12 @@ router.get(
   }
 );
 
-router.route("/signup").post(async (req, res) => {
-  console.log(req.body, "SIGNUP REQ BODY");
-  const { login, password } = req.body;
-  const hashPass = await brcypt.hash(password, 10);
+
+router.route('/signup').post(async (req, res) => {
+
+  const { login, password } = req.body
+  const hashPass = await brcypt.hash(password, 10)
+
   const newUser = await User.create({
     login,
     password: hashPass,
@@ -86,11 +90,14 @@ router.route("/signup").post(async (req, res) => {
   res.json({ id, log, userType });
 });
 
-router.route("/logout").get(function (req, res) {
-  req.logout();
-  res.clearCookie("sId");
-  res.send("logout");
-});
+
+router.route('/logout').get(function (req, res) {
+  req.session.destroy()
+  res.clearCookie('sId')
+  req.logout()
+  res.send('logout')
+})
+
 
 // router.get('/check', async (req, res) => {
 //   if (req?.user) {
@@ -128,6 +135,7 @@ function authenticationMiddleware(req, res, next) {
 router.route("/profile/:id").get(async (req, res) => {
   const userProfile = await User.findOne({
     where: { id: req.params.id },
+
     attributes: ["id", "login"],
   });
   console.log(userProfile);
@@ -157,5 +165,6 @@ router.route("/new").post(async (req, res) => {
     res.sendStatus(500);
   }
 });
+
 
 module.exports = router;

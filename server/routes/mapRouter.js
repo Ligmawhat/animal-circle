@@ -1,38 +1,39 @@
 
 const router = require('express').Router()
-const multer = require('multer')
-// const upload = multer({ dest: 'uploads/' })
+
+
 const { Good, Category, User, Geotags } = require('../src/db/models')
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/uploads')
-  },
-  filename: function (req, file, cb) {
-    console.log('gkgkg', file)
-    cb(null, file.fieldname + '-' + Date.now())
-  },
-})
+router.post('/new', async (req, res) => {
+  
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.')
+  }
+  let sampleFile = req.files.file
+  sampleFile.name = Date.now()+'.jpg'
+  let uploadPath = `${process.env.PWD}/public/uploads/${sampleFile.name}`
+  sampleFile.mv(uploadPath, function (err) {
+    if (err) return res.status(500).send(err)
+  })
+  console.log(req.session.userId, 'USERID MAP ROUTER')
+  console.log(req.session, 'REQ SESSION MAP ROUTER')
 
-const upload = multer({ storage: storage })
+  
+  const { cordsZero, cordsOne, title, desc} = req.body
+  console.log(cordsZero, cordsOne, title, desc, 'REQ BODY')
+  const newTags = await Geotags.create({
+    geotags_title: title,
+    latitude: cordsZero,
+    longitude: cordsOne,
+    description: desc,
+    url : sampleFile.name,
+    approved: false,
+    user_id : req.session.userId
 
-router.post('/new', upload.single('file'), async (req, res) => {
-  console.log(req.body, 'REQ BODY'),
-    console.log(req.file, req.files, 'REQ FILE'),
-    console.log(req.session.userId, 'USERID')
-  // const { cords, title, desc, url} = req.body
-  // const newTags = await Geotags.create({
-  //   geotags_title: title,
-  //   latitude: cords.lat,
-  //   longitude: cords.lon,
-  //   description: desc,
-  //   url : url,
-  //   approved: false,
-  //   user_id : 1
-
-  //   });
-  // console.log(newTags);
-  // res.json(newTags);
+    });
+  console.log(newTags);
+  //res.sendStatus(200)
+  res.json(newTags);
 })
 
 

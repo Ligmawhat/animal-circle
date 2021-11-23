@@ -4,6 +4,7 @@ import {
   SET_ALL_BREED,
   SET_ONE_DOG,
   SET_ALL_MY_DOGS,
+  CHANGE_DOG,
   ADD_NEW_DOG,
 } from "../types/tinderType";
 
@@ -38,13 +39,28 @@ export const setOneDog = (value) => ({
   payload: value,
 });
 
+export const changeOneDog = (id) => ({
+    type: CHANGE_DOG,
+    payload: id,
+});
+
 export const getOneDog = () => async (dispatch) => {
   axios("/tinder")
     .then((res) => {
-      return dispatch(setOneDog(res.data.oneDogFromBack));
+      return dispatch(setOneDog(res.data.allDogFromBack));
     })
     .catch((err) => console.log(err));
 };
+
+export const changeDog = (id) => async (dispatch) => {
+    dispatch(changeOneDog(id))
+}
+
+export const changeDogAndGetId = (id) => async (dispatch) => {
+    axios.post('/tinder/likedog', {id} )
+    dispatch(changeOneDog(id))
+}
+
 export const setMyDogs = (value) => ({
   type: SET_ALL_MY_DOGS,
   payload: value,
