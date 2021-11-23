@@ -1,27 +1,36 @@
 require('dotenv').config()
+
+
+
+
 const express = require('express')
-const PORT = 3001
-const cors = require('cors')
-const passport = require('passport')
-const cookieParser = require('cookie-parser')
-const brcypt = require('bcryptjs')
 const session = require('express-session')
-const { User, Sequelize } = require('./src/db/models')
+const path = require('path');
+
+const cors = require('cors')
+
+const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+
+const cookieParser = require('cookie-parser')
+
+const brcypt = require('bcryptjs')
+
+
+const { User, Sequelize } = require('./src/db/models')
+
+
 const Op = Sequelize.Op
 const morgan = require('morgan')
-const multer = require('multer')
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
+const fileUpload = require('express-fileupload');
 const app = express()
-
-const flash = require('connect-flash')
 const redis = require('redis')
-
 const RedisStore = require('connect-redis')(session)
-
 const redisClient = redis.createClient()
+app.use(fileUpload())
 
-const moment = require('moment')
+
 passport.serializeUser(function (user, done) {
   done(null, user.id)
 })
@@ -35,7 +44,6 @@ const userRouter = require('./routes/userRouter')
 const tinderRouter = require('./routes/tinderRouter')
 const avitoRouter = require('./routes/avitoRouter')
 const mapRouter = require('./routes/mapRouter')
-// const googleUserRouter = require('./routes/googleUserRouter')
 
 // middleware
 app.use(morgan('dev'))
@@ -47,29 +55,7 @@ app.use(
     credentials: true,
   }),
 )
-app.use(express.static('uploads'))
-// const storageConfig = multer.diskStorage(
-//   {
-//   destination: (req, file, cb) => {
-//     cb(null, "./public/img");
-//   },
-//   filename: (req, file, cb) => {
-//     const date = moment().format("DDMMYYY-HHmmss_SSS");
-//     cb(null, `${date}-${file.originalname}`);
-//   },
-// });
-
-// const storage = multer.memoryStorage();
-// app.use(multer({ storage : storageConfig }).single("image"));
-
-// app.use(
-//   session({
-//     secret: "secretcode",
-//     resave: true,
-//     saveUninitialized: false,
-//     cookie: { _expires: 10 * 60 * 1000 },
-//   })
-// );
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(
   session({

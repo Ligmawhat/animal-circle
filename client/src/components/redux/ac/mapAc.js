@@ -1,21 +1,27 @@
-import { ADD_NEW_POINT } from "../types/mapType"
-import axios from 'axios'
+import { ADD_NEW_POINT } from '../types/mapType'
 
 
-export function addNewPoint (cords, title, desc, url, file) {
+export function addNewPoint(cords, title, desc, file) {
   return async (dispatch) => {
-    
-    console.log(cords, title, desc, url, file, 'IMAGE AC MAP')
-    const response = await axios.post('/map/new', {cords, title, desc, url, file})
-    const result = response.data
-    console.log(result)
+    console.log(cords, title, desc, file, 'IMAGE AC MAP')
+    const data = new FormData()
+    data.append('file', file)
+    data.append('cordsZero', cords.lat)
+    data.append('cordsOne', cords.lon)
+    data.append('title', title)
+    data.append('desc', desc)
+    const response = await fetch('http://localhost:3001/map/new', {
+      method: 'POST',
+      body: data,
+      files: file,
+      credentials: 'include'
+    })
+    const result = await response.json()
     dispatch(addPoint(result))
   }
 }
 
-
-
 export const addPoint = (data) => ({
   type: ADD_NEW_POINT,
-  payload: data
+  payload: data,
 })
