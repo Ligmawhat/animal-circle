@@ -9,11 +9,13 @@ import HomePage from "./components/HomePage/HomePage";
 import Prodavito from "./components/ProdavitoComponents/Prodavito/Prodavito";
 import Meeting from "./components/TinderComponents/Meeting/Meeting";
 import ProdavitoCategories from "./components/ProdavitoComponents/ProdavitoCategories/ProdavitoCategories";
-import Profile from "./components/Profile/Profile";
-import Chat from "./components/Chat/Chat";
 
-axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.withCredentials = true
+import Chat from "./components/Chat/Chat";
+import MyDogs from "./components/ProfileComponents/MyDogs/MyDogs";
+import MyGoods from "./components/ProfileComponents/MyGoods/MyGoods";
+
+axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
@@ -27,8 +29,10 @@ function App() {
         <Route exact path="/prodavito/category/:id" component={ProdavitoCategories} />
         <Route exact path="/meeting" component={Meeting} />
         <Route exact path="/apishka" component={PlacemarkDemo} />
-        <Route exact path="/user/profile" component={Profile} />
-        <Route exact path="/apishka/:roomId" component={Chat}/>
+        <Route exact path="/apishka/:roomId" component={Chat} />
+        {/* <Route exact path="/user/profile" component={Profile} /> */}
+        <Route exact path="/user/profile/myDogs" component={MyDogs} />
+        <Route exact path="/user/profile/myGoods" component={MyGoods} />
       </Router>
     </div>
   );

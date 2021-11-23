@@ -1,86 +1,86 @@
-import React, { useState } from 'react'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { getCurrUser } from '../../redux/ac/currUserAc'
-import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { addNewPoint } from '../../redux/ac/mapAc'
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { getCurrUser } from "../../redux/ac/currUserAc";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewPoint } from "../../redux/ac/mapAc";
 
 const useStyles = makeStyles((theme) => ({
-  '@global': {
+  "@global": {
     body: {
       backgroundColor: theme.palette.common.white,
     },
   },
   paper: {
     marginTop: theme.spacing(5),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(2),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
   underline: {
-    textDecoration: 'none',
+    textDecoration: "none",
   },
-}))
-
+}));
 
 function MapAddPoint({ setPoint, point, cords }) {
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState("");
+
 
   const [desc, setDesc] = useState('')
-  const [url, setUrl] = useState('')
   const dispatch = useDispatch()
-
+  const [file, setFile] = useState(null)
   const classes = useStyles()
 
-  const pointHandler = (e) => {
-    e.preventDefault()
-  }
+  // const pointHandler = (e) => {
+  //   e.preventDefault()
+  // }
+
+  const onFileChange = (e) =>{
+  setFile(e.target.files[0])
+}
+
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(addNewPoint(cords, title, desc, url))
-
+    dispatch(addNewPoint(cords, title, desc, file))
+    setFile('')
     setTitle('')
     setDesc('')
-    setUrl('')
     setPoint('')
   }
+console.log(file, 'IMAGE')
 
-  console.log('ADDPOINT RENDERED')
-
-  console.log(cords, 'CORDS FORM')
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-  
         <form
           onSubmit={(e) => submitHandler(e)}
           className={classes.form}
-          noValidate
+          method="post"
+          enctype="multipart/form-data"
         >
-   
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -106,22 +106,20 @@ function MapAddPoint({ setPoint, point, cords }) {
                 label="Описание площадки"
                 type="text"
                 id="desc"
-
                 onChange={(e) => setDesc(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                value={url}
                 variant="outlined"
                 required
                 fullWidth
-                name="url"
-                label="Фото площадки"
-                type="text"
+                // label="Фото площадки"
                 id="url"
 
-                onChange={(e) => setUrl(e.target.value)}
+                type="file" 
+                name="file"
+               onChange={(e)=>onFileChange(e)}
               />
             </Grid>
           </Grid>
@@ -131,14 +129,13 @@ function MapAddPoint({ setPoint, point, cords }) {
             variant="contained"
             color="primary"
             className={classes.submit}
-
           >
             Отправить метку
           </Button>
         </form>
       </div>
     </Container>
-  )
+  );
 }
 
-export default MapAddPoint
+export default MapAddPoint;

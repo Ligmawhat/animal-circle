@@ -1,5 +1,5 @@
 export const SET_ALL_GOODS = "SET_ALL_GOODS";
 export const SET_ALL_CATEGORIES = "SET_ALL_CATEGORIES";
 export const SET_ALL_GOODS_FOR_ONE_CATEGORY = "SET_ALL_GOODS_FOR_ONE_CATEGORY";
-export const DEL_ONE_GOOD = "DEL_ONE_GOOD";
-export const ADD_ONE_GOOD = "ADD_ONE_GOOD";
+export const SET_ALL_MY_GOODS = "SET_ALL_MY_GOODS";
+export const ADD_NEW_GOOD = "ADD_NEW_GOOD";

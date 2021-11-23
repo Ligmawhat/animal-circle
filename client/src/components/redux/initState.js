@@ -8,6 +8,8 @@ const initState = {
   sex: [],
   oneDog: [],
   map: {},
+  myDogs: [],
+  myGoods: [],
 };
 
 export default initState;
