@@ -83,7 +83,6 @@ function AddMyDog() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                // value={title}
                 autoComplete="name"
                 name="name"
                 variant="outlined"
@@ -98,7 +97,6 @@ function AddMyDog() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                // value={desc}
                 variant="outlined"
                 required
                 fullWidth
@@ -111,7 +109,6 @@ function AddMyDog() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                // value={url}
                 variant="outlined"
                 required
                 fullWidth
@@ -125,13 +122,13 @@ function AddMyDog() {
           </Grid>
           <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Порода</InputLabel>
+              <InputLabel sx={{ my: 2 }} id="demo-simple-select-label">
+                Порода
+              </InputLabel>
               <Select
-                sx={{ my: 4 }}
+                sx={{ my: 2 }}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                name="breed"
-                // value="breed"
                 label="Порода"
                 onChange={(e) => setOnebreed(e.target.value)}
               >

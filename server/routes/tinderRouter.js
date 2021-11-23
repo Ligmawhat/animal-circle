@@ -26,21 +26,40 @@ router.route("/").get(async (req, res) => {
 
 router
   .route("/new")
-  .get(async (req, res) => {
-    try {
-      const allBreedFromBack = await Breed.findAll();
-      const allTypeFromBack = await Type.findAll();
-      res.json({ allBreedFromBack, allTypeFromBack });
-    } catch (err) {
-      res.sendStatus(501);
-    }
-  })
+  // .get(async (req, res) => {
+  //   try {
+  //     const allBreedFromBack = await Breed.findAll();
+  //     const allTypeFromBack = await Type.findAll();
+  //     res.json({ allBreedFromBack, allTypeFromBack });
+  //   } catch (err) {
+  //     res.sendStatus(501);
+  //   }
+  // })
   .post(async (req, res) => {
     try {
       const { name, desc, url, onebreed, onesex, id } = req.body;
-      console.log(req.body);
-      // await Animal.create(newAnimalFromFront);
-      res.sendStatus(200);
+      console.log(name, desc, url, onebreed, onesex, id);
+      await Animal.create({
+        name: name,
+        sex_id: onesex,
+        desc: desc,
+        url: url,
+        user_id: +id,
+        type_id: 1,
+        breed_id: onebreed,
+      });
+      const allMyDogs = await Animal.findAll({
+        include: [
+          { model: User, attributes: ["login"] },
+          { model: Breed, attributes: ["breed_title"] },
+          { model: Type, attributes: ["type_title"] },
+          { model: Sex, attributes: ["sex"] },
+        ],
+        where: { user_id: id },
+        order: [["updatedAt", "DESC"]],
+      });
+      const allMyDogsFromBack = allMyDogs.map((el) => new Animals(el));
+      res.json(allMyDogsFromBack);
     } catch (err) {
       res.sendStatus(501);
     }
@@ -71,6 +90,7 @@ router.route("/myDogs/:id").get(async (req, res) => {
       { model: Sex, attributes: ["sex"] },
     ],
     where: { user_id: req.params.id },
+    order: [["updatedAt", "DESC"]],
   });
   const allMyDogsFromBack = allMyDogs.map((el) => new Animals(el));
   res.json(allMyDogsFromBack);

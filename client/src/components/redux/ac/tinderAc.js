@@ -61,5 +61,4 @@ export const getMyDogs = (id) => async (dispatch) => {
 export const addNewDog = (name, desc, url, onebreed, onesex, id) => async (dispatch) => {
   const newDog = await axios.post("/tinder/new", { name, desc, url, onebreed, onesex, id });
   dispatch({ type: ADD_NEW_DOG, payload: newDog.data });
-  // nav(`/prodavito`);
 };

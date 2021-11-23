@@ -1,8 +1,5 @@
-import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMyDogs } from "../../redux/ac/tinderAc";
-import MeetingCard from "../../TinderComponents/MeetingCard/MeetingCard";
 import { Grid, Input, Button, Paper } from "@mui/material";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
@@ -10,6 +7,8 @@ import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
 import ViewGoods from "../../ProdavitoComponents/ViewGoods/ViewGoods";
 import AddMyGood from "./AddMyGood";
+import { getMyGoods, setMyGoods } from "../../redux/ac/itemsProdavitoAc";
+import ProdavitoItem from "../../ProdavitoComponents/ProdavitoItem/ProdavitoItem";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -18,6 +17,17 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const MyGoods = () => {
+  const { id } = useSelector((state) => state.currUser);
+  const { myGoods } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
+  console.log(myGoods);
+  useEffect(() => {
+    dispatch(getMyGoods(id));
+    return () => {
+      dispatch(setMyGoods([]));
+    };
+  }, []);
   return (
     <>
       <NavBar />
@@ -31,13 +41,14 @@ const MyGoods = () => {
         <Grid item xs={12} md={9}>
           <ProfileNav />
         </Grid>
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={9} sx={{ ml: 40 }}>
           <Grid container spacing={2}>
-            <Box sx={{ ml: 40 }}>{/* <AddMyDog /> */}</Box>
-            <Box sx={{ ml: 40 }}>
-              {/* {myDogs.length > 0 && myDogs.map((el) => <MeetingCard dog={el} />)} */}
+            <Grid item xs={12} md={9}>
               <AddMyGood />
-            </Box>
+            </Grid>
+            <Grid item xs={12} md={9}>
+              {myGoods?.length > 0 && myGoods?.map((el) => <ProdavitoItem key={el.id} el={el} />)}
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

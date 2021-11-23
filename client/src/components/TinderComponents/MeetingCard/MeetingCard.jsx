@@ -38,6 +38,7 @@ const MeetingCard = ({ dog }) => {
           <Typography color="text.secondary">имя: {dog.name}</Typography>
           <Typography color="text.secondary">описание: {dog.desc}</Typography>
           <Typography color="text.secondary">пол: {dog.sex}</Typography>
+          <Typography color="text.secondary">порода: {dog.breed}</Typography>
         </CardContent>
         <CardActions style={{ display: "grid" }} disableSpacing>
           <IconButton aria-label="add to favorites">

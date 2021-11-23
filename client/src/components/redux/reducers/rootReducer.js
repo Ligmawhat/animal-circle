@@ -8,6 +8,7 @@ import breedReducer from "./tinderReducer/breedReducer";
 import oneDogReducer from "./tinderReducer/oneDogReducer";
 import mapReducer from "./mapReducer";
 import myDogsReducer from "./tinderReducer/myDogsReducer";
+import myGoodsReducer from "./myGoodsReducer";
 
 const rootReducer = combineReducers({
   currUser: currUserReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   oneDog: oneDogReducer,
   map: mapReducer,
   myDogs: myDogsReducer,
+  myGoods: myGoodsReducer,
 });
 
 export default rootReducer;

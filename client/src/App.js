@@ -10,8 +10,6 @@ import Prodavito from "./components/ProdavitoComponents/Prodavito/Prodavito";
 import Meeting from "./components/TinderComponents/Meeting/Meeting";
 import ProdavitoCategories from "./components/ProdavitoComponents/ProdavitoCategories/ProdavitoCategories";
 
-import Profile from "./components/ProfileComponents/Profile/Profile";
-
 import Chat from "./components/Chat/Chat";
 import MyDogs from "./components/ProfileComponents/MyDogs/MyDogs";
 import MyGoods from "./components/ProfileComponents/MyGoods/MyGoods";
