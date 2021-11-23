@@ -75,6 +75,7 @@ router.route("/signup").post(async (req, res) => {
 });
 
 router.route("/logout").get(function (req, res) {
+  req.session.destroy()
   req.logout();
   res.clearCookie("connect.sid");
   res.send("logout");

@@ -18,6 +18,7 @@ const ProdavitoForm = () => {
           <Input />
         </Grid>
         <Button>Search</Button>
+        ало ёбана
       </Grid>
     </>
   );

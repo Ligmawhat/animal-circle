@@ -1,5 +1,4 @@
 "use strict";
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
@@ -17,9 +16,9 @@ module.exports = {
         {
           name: "Гарик",
           desc: "кобель гарик овчарка",
-          url: "https://i.pinimg.com/736x/e1/a6/96/e1a696d70a8263e73bfad59ce2dc6f8e.jpg",
+          url: "https://pix-feed.com/wp-content/uploads/2018/04/2-14.jpg",
           sex_id: 2,
-          user_id: 1,
+          user_id: 3,
           breed_id: 1,
           type_id: 1,
           createdAt: new Date(),
@@ -28,9 +27,9 @@ module.exports = {
         {
           name: "Ларго",
           desc: "кобель ларго боксер",
-          url: "https://lh3.googleusercontent.com/proxy/Uja9Mdns0xw1fuGS9qi1XDnXnehjWkFdr9QTEJVZh4v8SkplI_J0IdZEdUCIyEnIY4eKImX3HXFf5y2UCdT958RyAYMpgcRqKap8Q087l_foDOiSbA",
+          url: "https://top-reyting.ru/images/stories/sibirskaya-haska.jpg",
           sex_id: 2,
-          user_id: 1,
+          user_id: 3,
           breed_id: 2,
           type_id: 1,
           createdAt: new Date(),
@@ -39,9 +38,9 @@ module.exports = {
         {
           name: "Олег",
           desc: "кобель олег лабрадор",
-          url: "https://lh3.googleusercontent.com/proxy/Uja9Mdns0xw1fuGS9qi1XDnXnehjWkFdr9QTEJVZh4v8SkplI_J0IdZEdUCIyEnIY4eKImX3HXFf5y2UCdT958RyAYMpgcRqKap8Q087l_foDOiSbA",
+          url: "https://klike.net/uploads/posts/2019-06/medium/1559799916_2.jpg",
           sex_id: 2,
-          user_id: 1,
+          user_id: 2,
           breed_id: 3,
           type_id: 1,
           createdAt: new Date(),
@@ -50,7 +49,7 @@ module.exports = {
         {
           name: "Мурка",
           desc: "сука мурка пикинез",
-          url: "https://lh3.googleusercontent.com/proxy/Uja9Mdns0xw1fuGS9qi1XDnXnehjWkFdr9QTEJVZh4v8SkplI_J0IdZEdUCIyEnIY4eKImX3HXFf5y2UCdT958RyAYMpgcRqKap8Q087l_foDOiSbA",
+          url: "https://lh3.googleusercontent.com/proxy/TS0rLDUhz4bW1Yp6R_buHh01IJtnia2BocLY0PT2gzE_Hc_r1P5wYfPcnBFY7tvZq7574efjgj__ID0gJPsU-K1MVOqs0QKNqgM7yd4mcM91iqyyaDwOLFBif5IMxy-qPiJuRLVAVtgrx3EFIx_87tN-epRFZOgyFrZV7c_Gayp75YZOTHCWWlsDRmwYFWVzcKUQMw7KSlUM5qxJtP7s8g",
           sex_id: 1,
           user_id: 1,
           breed_id: 4,
@@ -61,9 +60,9 @@ module.exports = {
         {
           name: "Дурка",
           desc: "сука дурка пикинез",
-          url: "https://lh3.googleusercontent.com/proxy/Uja9Mdns0xw1fuGS9qi1XDnXnehjWkFdr9QTEJVZh4v8SkplI_J0IdZEdUCIyEnIY4eKImX3HXFf5y2UCdT958RyAYMpgcRqKap8Q087l_foDOiSbA",
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXi5ruBpGNZgDPuw6W-b-S37BaSOr00D_pQ&usqp=CAU",
           sex_id: 1,
-          user_id: 1,
+          user_id: 2,
           breed_id: 4,
           type_id: 1,
           createdAt: new Date(),
