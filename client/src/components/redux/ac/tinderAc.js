@@ -78,4 +78,3 @@ export const addNewDog = (name, desc, url, onebreed, onesex, id) => async (dispa
   const newDog = await axios.post("/tinder/new", { name, desc, url, onebreed, onesex, id });
   dispatch({ type: ADD_NEW_DOG, payload: newDog.data });
 };
-

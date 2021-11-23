@@ -112,10 +112,10 @@ passport.use(
   )
 );
 
-app.use("/", indexRouter);
-app.use("/user", userRouter);
-app.use("/tinder", tinderRouter);
-app.use("/prodavito", avitoRouter);
+app.use('/', indexRouter)
+app.use('/user', userRouter)
+app.use('/tinder', tinderRouter)
+app.use('/prodavito', avitoRouter)
 app.use('/map', mapRouter)
 
 module.exports = { app }
