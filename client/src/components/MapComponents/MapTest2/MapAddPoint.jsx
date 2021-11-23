@@ -1,51 +1,51 @@
-import React, { useState } from 'react'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { getCurrUser } from '../../redux/ac/currUserAc'
-import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { addNewPoint } from '../../redux/ac/mapAc'
+import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { getCurrUser } from "../../redux/ac/currUserAc";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewPoint } from "../../redux/ac/mapAc";
 
 
 const useStyles = makeStyles((theme) => ({
-  '@global': {
+  "@global": {
     body: {
       backgroundColor: theme.palette.common.white,
     },
   },
   paper: {
     marginTop: theme.spacing(5),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(2),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
   underline: {
-    textDecoration: 'none',
+    textDecoration: "none",
   },
-}))
-
+}));
 
 function MapAddPoint({ setPoint, point, cords }) {
+
   const [title, setTitle] = useState('')
 
   const [desc, setDesc] = useState('')
@@ -54,7 +54,15 @@ function MapAddPoint({ setPoint, point, cords }) {
 const [file, setFile] = useState(null)
   const classes = useStyles()
 
+
+  const [desc, setDesc] = useState("");
+  const [url, setUrl] = useState("");
+  const dispatch = useDispatch();
+  const { currUser } = useSelector((state) => state);
+  const classes = useStyles();
+  console.log(currUser);
   const pointHandler = (e) => {
+
     e.preventDefault()
   }
   const onFileChange = (e) =>{
@@ -76,10 +84,12 @@ const [file, setFile] = useState(null)
 console.log(file, 'IMAGE')
 
 
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
+
   
         <form
           onSubmit={(e) => submitHandler(e)}
@@ -87,6 +97,7 @@ console.log(file, 'IMAGE')
            method="post" enctype="multipart/form-data"
         >
    
+
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -112,7 +123,6 @@ console.log(file, 'IMAGE')
                 label="Описание площадки"
                 type="text"
                 id="desc"
-
                 onChange={(e) => setDesc(e.target.value)}
               />
             </Grid>
@@ -126,7 +136,6 @@ console.log(file, 'IMAGE')
                 label="Фото площадки"
                 type="text"
                 id="url"
-
                 onChange={(e) => setUrl(e.target.value)}
               />
               <input type="file" name="file"
@@ -139,14 +148,13 @@ console.log(file, 'IMAGE')
             variant="contained"
             color="primary"
             className={classes.submit}
-
           >
             Отправить метку
           </Button>
         </form>
       </div>
     </Container>
-  )
+  );
 }
 
-export default MapAddPoint
+export default MapAddPoint;

@@ -49,5 +49,5 @@ export const getAllGoodsForOneCategories = (id) => async (dispatch) => {
 export const addPost = (value, nav) => async (dispatch) => {
   const newPost = await axios.post("/prodavito/goods", value);
   dispatch({ type: ADD_ONE_GOOD, payload: newPost.data });
-  nav(`/post/${newPost.data.id}`);
+  nav(`/prodavito`);
 };

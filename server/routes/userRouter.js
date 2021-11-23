@@ -70,6 +70,7 @@ router.get(
   },
 )
 
+
 router.route('/signup').post(async (req, res) => {
   console.log(req.body, 'SIGNUP REQ BODY')
   const { login, password } = req.body
@@ -114,6 +115,7 @@ router.route('/logout').get(function (req, res) {
 //   }
 //   return res.sendStatus(400)
 // })
+
 
 // этот мидлвер пропускает только залогиненных юзеров (в те ручки в которых он вызывается) и за одно добавляет в username в объект res.locals
 function authenticationMiddleware(req, res, next) {

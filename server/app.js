@@ -64,6 +64,23 @@ app.use(express.static('uploads'))
 
 // app.use(
 //   session({
+//     name: "sId",
+//     store: new RedisStore({ client: redisClient }),
+//     saveUninitialized: false,
+//     secret: process.env.SESSIONSECRET,
+//     resave: false,
+//     cookie: {
+//       secure: false,
+//       httpOnly: false,
+//       maxAge: 1e3 * 86400,
+//       sameSite: false,
+//     },
+//   })
+// );
+
+
+// app.use(
+//   session({
 //     secret: "secretcode",
 //     resave: true,
 //     saveUninitialized: false,

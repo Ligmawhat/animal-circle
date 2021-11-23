@@ -1,5 +1,6 @@
-import { ADD_NEW_POINT } from "../types/mapType"
-import axios from 'axios'
+import { ADD_NEW_POINT } from "../types/mapType";
+import axios from "axios";
+
 
 
 export function addNewPoint (cords, title, desc, url, file) {
@@ -11,11 +12,10 @@ export function addNewPoint (cords, title, desc, url, file) {
     console.log(result)
     dispatch(addPoint(result))
   }
+
 }
-
-
 
 export const addPoint = (data) => ({
   type: ADD_NEW_POINT,
-  payload: data
-})
+  payload: data,
+});
