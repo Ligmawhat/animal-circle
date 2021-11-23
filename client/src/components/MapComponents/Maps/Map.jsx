@@ -10,7 +10,7 @@ const db = [
     properties: {
       iconContent: 'Я тащусь',
     },
-    options:{ preset: 'islands#blackStretchyIcon' draggable: true,}
+    options:{ preset: 'islands#blackStretchyIcon', draggable: true,}
   },
   { geometry: { coordinates: [50.801773, 35.697725], type: 'Point' } },
 ]
