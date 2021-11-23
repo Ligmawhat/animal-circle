@@ -107,30 +107,15 @@ passport.use(
       callbackURL: process.env.GOOGLE_REDIRECT_URL,
     },
     (accessToken, refreshToken, profile, done) => {
-<<<<<<< HEAD
       return done(null, profile);
     }
   )
 );
 
-app.use("/", indexRouter);
-app.use("/user", userRouter);
-app.use("/tinder", tinderRouter);
-app.use("/prodavito", avitoRouter);
-app.use("/map", mapRouter);
-=======
-      console.log(profile, 'PROFILE')
-      return done(null, profile)
-    },
-  ),
-)
-
 app.use('/', indexRouter)
 app.use('/user', userRouter)
 app.use('/tinder', tinderRouter)
 app.use('/prodavito', avitoRouter)
->>>>>>> 9885882d8da4ea8682233f0f9313e298e661ff5e
-
 app.use('/map', mapRouter)
 
 module.exports = { app }

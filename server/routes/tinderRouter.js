@@ -103,7 +103,7 @@ router.route("/myDogs/:id").get(async (req, res) => {
   const allMyDogsFromBack = allMyDogs.map((el) => new Animals(el));
   res.json(allMyDogsFromBack);
 });
-module.exports = router;
+
 
 const requestForLikes = {
   include: [
@@ -119,3 +119,5 @@ const requestForLikes = {
   ],
   attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt"],
 };
+
+module.exports = router;

@@ -20,21 +20,6 @@
       "userId": "ABxx3VwY",
       "messageText": "123",
       "senderName": "John"
-    },
-    {
-<<<<<<< HEAD
-      "messageId": "FxAipLvT",
-      "createdAt": "2021-11-22T13:26:49.252Z",
-      "userId": "9gxRf3z4",
-      "messageText": "sxzxzzx",
-      "senderName": "Loshariikdfvdfvdfv"
-=======
-      "messageId": "vVUZZKH5",
-      "createdAt": "2021-11-23T07:39:51.289Z",
-      "userId": "vEhCEvdS",
-      "messageText": "3333333",
-      "senderName": "333"
->>>>>>> 9885882d8da4ea8682233f0f9313e298e661ff5e
     }
   ]
 }

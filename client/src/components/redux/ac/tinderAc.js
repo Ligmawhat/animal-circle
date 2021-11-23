@@ -4,8 +4,8 @@ import {
   SET_ALL_BREED,
   SET_ONE_DOG,
   SET_ALL_MY_DOGS,
+  CHANGE_DOG,
   ADD_NEW_DOG,
-    CHANGE_DOG
 } from "../types/tinderType";
 
 export const setAllBreed = (value) => ({
@@ -60,6 +60,7 @@ export const changeDogAndGetId = (id) => async (dispatch) => {
     axios.post('/tinder/likedog', {id} )
     dispatch(changeOneDog(id))
 }
+
 export const setMyDogs = (value) => ({
   type: SET_ALL_MY_DOGS,
   payload: value,
