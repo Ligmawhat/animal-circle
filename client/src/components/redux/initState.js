@@ -6,7 +6,7 @@ const initState = {
   goodsForOneCategories: [],
   breed: [],
   sex: [],
-  oneDog: null,
+  oneDog: [],
   map: {},
 };
 

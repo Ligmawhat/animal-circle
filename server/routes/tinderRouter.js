@@ -1,24 +1,25 @@
 const router = require("express").Router();
 const { Animal, Breed, Type, User, Like, Sex } = require("../src/db/models");
-const Animals = require("../src/DTO/AnimalsClass");
+const AnimalsClass = require("../src/DTO/AnimalsClass");
 const Likes = require("../src/DTO/Likes");
 
 router.route("/").get(async (req, res) => {
   try {
     const allBreedFromBack = await Breed.findAll({ attributes: ["id", "breed_title"] });
     const allSexFromBack = await Sex.findAll({ attributes: ["id", "sex"] });
-    const oneDog = await Animal.findAll({
+    const allDog = await Animal.findAll({
       include: [
         { model: User, attributes: ["login"] },
         { model: Breed, attributes: ["breed_title"] },
         { model: Type, attributes: ["type_title"] },
         { model: Sex, attributes: ["sex"] },
       ],
-      where: { id: 1 },
     });
+    // console.log(allDog[0], '<=-------ALLDOG')
+    let allDogFromBack = allDog.map(dog => new AnimalsClass(dog));
+    console.log(allDogFromBack[0],'<--------FROMBACK')
+    res.json({ allDogFromBack, allBreedFromBack, allSexFromBack });
 
-    const oneDogFromBack = new Animals(oneDog[0]);
-    res.json({ oneDogFromBack, allBreedFromBack, allSexFromBack });
   } catch (err) {
     res.sendStatus(501);
   }
@@ -60,6 +61,13 @@ router.route("/sexBreed").post(async (req, res) => {
   const allDogsForSexBreed = allDogsForSexBreedNonSort.map((el) => new Animals(el));
   res.json(allDogsForSexBreed);
 });
+
+router.route('/likedog').post(async (req, res) => {
+  const newLike = await Like.create({
+    user_id: req.session.userId,
+    animal_id: req.body.id
+  })
+})
 
 module.exports = router;
 
