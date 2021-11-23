@@ -1,25 +1,3 @@
 {
-  "messages": [
-    {
-      "messageId": "4uphycWd",
-      "createdAt": "2021-11-22T13:26:37.646Z",
-      "userId": "tOiLU76m",
-      "messageText": "123",
-      "senderName": "123"
-    },
-    {
-      "messageId": "TEcatTrh",
-      "createdAt": "2021-11-22T13:40:31.124Z",
-      "userId": "o4sRxa3f",
-      "messageText": "123",
-      "senderName": "John"
-    },
-    {
-      "messageId": "cdyhCAeh",
-      "createdAt": "2021-11-23T07:38:58.014Z",
-      "userId": "ABxx3VwY",
-      "messageText": "123",
-      "senderName": "John"
-    },
-  ]
+  "messages": []
 }

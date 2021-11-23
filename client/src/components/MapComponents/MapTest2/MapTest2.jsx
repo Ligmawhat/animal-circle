@@ -17,8 +17,6 @@ const PlacemarkDemo = () => {
   const tags = useSelector((state) => state.map);
 
 
-const tags = useSelector(state => state.map)
-
 
 
   console.log('MAPTEST RENDERED')

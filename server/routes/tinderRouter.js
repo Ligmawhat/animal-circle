@@ -87,6 +87,7 @@ router.route('/likedog').post(async (req, res) => {
     user_id: req.session.userId,
     animal_id: req.body.id
   })
+    res.sendStatus(200);
 })
 
 router.route("/myDogs/:id").get(async (req, res) => {
