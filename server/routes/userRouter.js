@@ -23,6 +23,9 @@ router.route("/login").post((req, res, next) => {
   })(req, res, next);
 });
 
+
+
+
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -34,7 +37,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/user/google/failed",
-    // successRedirect: `${process.env.REACT_URL}`,
+    successRedirect: `${process.env.REACT_URL}`,
   }),
   async function (req, res) {
     if (req.user.displayName && req.user.emails[0].value) {
@@ -83,12 +86,28 @@ router.route("/signup").post(async (req, res) => {
   res.json({ id, log, userType });
 });
 
-router.route("/logout").get(function (req, res) {
-  req.session.destroy();
-  res.clearCookie("sId");
-  req.logout();
-  res.send("logout");
-});
+
+router.post("/getgoogleuser", async (req, res) => {
+  const googleUser = {
+    id : req.session.userId,
+    login : req.session.login,
+    userType: req.session.userType
+  }
+  console.log(googleUser, 'GOOGLE USER')
+  console.log(req.session, 'REQ SESSION USERID')
+  res.json({googleUser})
+})
+
+
+
+router.route('/logout').get(function (req, res) {
+  req.session.destroy()
+  res.clearCookie('sId')
+  req.logout()
+  res.send('logout')
+})
+
+
 
 // router.get('/check', async (req, res) => {
 //   if (req?.user) {

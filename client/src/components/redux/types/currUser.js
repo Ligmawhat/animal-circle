@@ -1,2 +1,3 @@
 export const GET_CURR_USER = 'GET_CURR_USER'
 export const LOGOUT_USER = 'LOGOUT_USER'
+export const GET_GOOGLE_CURRUSER = 'GET_GOOGLE_CURRUSER'
