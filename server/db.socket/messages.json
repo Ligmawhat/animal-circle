@@ -20,6 +20,41 @@
       "userId": "Vqsv3AT_",
       "messageText": "qwe",
       "senderName": "John"
+    },
+    {
+      "messageId": "3NAZHkVX",
+      "createdAt": "2021-11-24T08:49:13.849Z",
+      "userId": "rsyloID8",
+      "messageText": "123",
+      "senderName": "John"
+    },
+    {
+      "messageId": "tHtwUJ8t",
+      "createdAt": "2021-11-24T09:02:31.989Z",
+      "userId": "CSxMQbRo",
+      "messageText": "😁",
+      "senderName": "qwe"
+    },
+    {
+      "messageId": "Mgl11HSF",
+      "createdAt": "2021-11-24T09:02:44.678Z",
+      "userId": "CSxMQbRo",
+      "messageText": ":dog:",
+      "senderName": "qwe"
+    },
+    {
+      "messageId": "FdQRs9kh",
+      "createdAt": "2021-11-24T09:22:40.695Z",
+      "userId": "CSxMQbRo",
+      "messageText": "🐏",
+      "senderName": "qwe"
+    },
+    {
+      "messageId": "4xaiL0SF",
+      "createdAt": "2021-11-24T09:22:59.659Z",
+      "userId": "CSxMQbRo",
+      "messageText": "🐶",
+      "senderName": "qwe"
     }
   ]
 }

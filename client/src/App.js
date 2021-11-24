@@ -15,6 +15,7 @@ import MyDogs from "./components/ProfileComponents/MyDogs/MyDogs";
 import MyGoods from "./components/ProfileComponents/MyGoods/MyGoods";
 import Profile from "./components/ProfileComponents/Profile/Profile";
 import UserInfo from "./components/ProfileComponents/UserInfo/UserInfo";
+import Likes from "./components/ProfileComponents/Likes/Likes";
 
 axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.withCredentials = true;
@@ -38,6 +39,7 @@ function App() {
         <Route exact path="/user/profile/info" component={UserInfo} />
         <Route exact path="/user/profile/myDogs" component={MyDogs} />
         <Route exact path="/user/profile/myGoods" component={MyGoods} />
+        <Route exact path="/user/profile/likes" component={Likes} />
       </Router>
     </div>
   );

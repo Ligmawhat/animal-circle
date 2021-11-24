@@ -26,7 +26,7 @@ const Profile = () => {
         <Button>Search</Button>
       </div>
       <hr />
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} md={3}>
         <ProfileNav />
       </Grid>
     </>
