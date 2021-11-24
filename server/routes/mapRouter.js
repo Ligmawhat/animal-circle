@@ -4,6 +4,16 @@ const router = require('express').Router()
 
 const { Good, Category, User, Geotags } = require('../src/db/models')
 
+
+router.get('/', async (req,res) => {
+  const allTags = await Geotags.findAll()
+  console.log(allTags, 'ALLTAGS')
+  res.json(allTags)
+})
+
+
+
+
 router.post('/new', async (req, res) => {
   
   if (!req.files || Object.keys(req.files).length === 0) {

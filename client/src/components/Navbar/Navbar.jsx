@@ -8,14 +8,18 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
-
+import { useSelector,  useDispatch } from "react-redux";
+import { logoutUser } from "../redux/ac/currUserAc";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
 import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
+import axios from "axios";
+
+
+
 
 const useStyles = makeStyles({
   button: {
@@ -30,6 +34,29 @@ export default function NavBar() {
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+
+
+  const dispatch = useDispatch();
+
+  let history = useHistory();
+
+  const logHandler = (e) => {
+    e.preventDefault();
+    axios("/user/logout").then((res) => {
+      if (res.data === "logout") {
+        return (
+          dispatch(logoutUser()),
+          localStorage.clear(),
+          sessionStorage.clear(),
+          history.push("/user/login")
+        );
+      } else {
+        console.log("ne vishel");
+      }
+    });
+  };
+
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -51,7 +78,7 @@ export default function NavBar() {
       setOpen(false);
     }
   }
-  const history = useHistory();
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -121,10 +148,11 @@ export default function NavBar() {
               <Button
                 sx={{ mr: "1em" }}
                 className={classes.butto}
-                component={Link}
-                to="/user/logout"
+                // component={Link}
+                // to="/user/logout"
                 variant="outlined"
                 color="inherit"
+                onClick={(e) =>  logHandler(e) }
               >
                 Logout
               </Button>

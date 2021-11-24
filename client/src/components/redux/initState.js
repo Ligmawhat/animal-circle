@@ -7,7 +7,7 @@ const initState = {
   breed: [],
   sex: [],
   oneDog: [],
-  map: {},
+  map: [],
   myDogs: [],
   myGoods: [],
   userInfo: {},
