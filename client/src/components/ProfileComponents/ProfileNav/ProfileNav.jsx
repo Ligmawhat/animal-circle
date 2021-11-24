@@ -32,6 +32,11 @@ const ProfileNav = () => {
             </Button>
           </Item>
         </Grid>
+        <Grid item xs={12} md={3}>
+          <Item>
+            <Button onClick={() => history.push(`/user/profile/likes`)}>кто меня лайкнул</Button>
+          </Item>
+        </Grid>
       </Grid>
     </>
   );
