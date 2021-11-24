@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { YMaps, Map, Placemark, GeoObject } from "react-yandex-maps";
-import Chat from "../../Chat/Chat";
+import Chat from "../../ChatComponents/Chat/Chat";
 import NavBar from "../../Navbar/Navbar";
 import MapAddPoint from "./MapAddPoint";
 
@@ -16,11 +16,8 @@ const PlacemarkDemo = () => {
 
   const tags = useSelector((state) => state.map);
 
-
-
-
-  console.log('MAPTEST RENDERED')
-  console.log(tags, 'COORDS')
+  console.log("MAPTEST RENDERED");
+  console.log(tags, "COORDS");
 
   return (
     <>
@@ -84,45 +81,47 @@ const PlacemarkDemo = () => {
               }}
             /> */}
 
-        <MapAddPoint setPoint={setPoint} point={point} cords={cords} />
-        {tags?.length && tags?.map((el) =>  <Placemark key={el.id}
-          geometry={{
-            type: 'Point',
-            coordinates: [el.latitude, el.longitude],
-          }}
-          properties={{
-            hintContent: 'Stack Overflow',
-            balloonContent: 'Stack Overflow на русском',
-          }}
-          options={{
-            iconLayout: 'default#image',
-            iconImageHref: `http://localhost:3001/uploads/${el.url}`,
-            iconImageSize: [100, 36],
-            iconImageOffset: [-50, -18],
-          }}
-        />      )}
-        <Placemark
-          geometry={{
-            type: 'Point',
-            coordinates: mapState.center,
-          }}
-          properties={{
-            hintContent: 'Stack Overflow',
-            balloonContent: 'Stack Overflow на русском',
-          }}
-          options={{
-            iconLayout: 'default#image',
-            iconImageHref: './device2.jpg',
-            iconImageSize: [100, 36],
-            iconImageOffset: [-50, -18],
-          }}
-        />
-      </Map>
-    </YMaps>
-      
-      </>
-  )
-}
-
+          <MapAddPoint setPoint={setPoint} point={point} cords={cords} />
+          {tags?.length &&
+            tags?.map((el) => (
+              <Placemark
+                key={el.id}
+                geometry={{
+                  type: "Point",
+                  coordinates: [el.latitude, el.longitude],
+                }}
+                properties={{
+                  hintContent: "Stack Overflow",
+                  balloonContent: "Stack Overflow на русском",
+                }}
+                options={{
+                  iconLayout: "default#image",
+                  iconImageHref: `http://localhost:3001/uploads/${el.url}`,
+                  iconImageSize: [100, 36],
+                  iconImageOffset: [-50, -18],
+                }}
+              />
+            ))}
+          <Placemark
+            geometry={{
+              type: "Point",
+              coordinates: mapState.center,
+            }}
+            properties={{
+              hintContent: "Stack Overflow",
+              balloonContent: "Stack Overflow на русском",
+            }}
+            options={{
+              iconLayout: "default#image",
+              iconImageHref: "./device2.jpg",
+              iconImageSize: [100, 36],
+              iconImageOffset: [-50, -18],
+            }}
+          />
+        </Map>
+      </YMaps>
+    </>
+  );
+};
 
 export default PlacemarkDemo;

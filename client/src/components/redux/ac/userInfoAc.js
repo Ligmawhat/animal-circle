@@ -1,4 +1,4 @@
-import { ADD_USER_INFO, SET_USER_INFO } from "../types/userInfoTypes";
+import { ADD_USER_INFO } from "../types/userInfoTypes";
 import axios from "axios";
 
 export const addUserInfo =

@@ -1,16 +1,16 @@
 import "./App.css";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
-import Login from "./components/auth/Login";
-import SignUp from "./components/auth/Signup";
-import Logout from "./components/auth/Logout";
+import Login from "./components/AuthComponents/Login";
+import SignUp from "./components/AuthComponents/Signup";
+import Logout from "./components/AuthComponents/Logout";
 import PlacemarkDemo from "./components/MapComponents/MapTest2/MapTest2";
 import axios from "axios";
-import HomePage from "./components/HomePage/HomePage";
+import HomePage from "./components/HomePageComponents/HomePage/HomePage";
 import Prodavito from "./components/ProdavitoComponents/Prodavito/Prodavito";
 import Meeting from "./components/TinderComponents/Meeting/Meeting";
 import ProdavitoCategories from "./components/ProdavitoComponents/ProdavitoCategories/ProdavitoCategories";
 
-import Chat from "./components/Chat/Chat";
+import Chat from "./components/ChatComponents/Chat/Chat";
 import MyDogs from "./components/ProfileComponents/MyDogs/MyDogs";
 import MyGoods from "./components/ProfileComponents/MyGoods/MyGoods";
 import Profile from "./components/ProfileComponents/Profile/Profile";
