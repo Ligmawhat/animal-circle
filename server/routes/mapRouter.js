@@ -15,7 +15,8 @@ router.post("/new", async (req, res) => {
     }
     let sampleFile = req.files.file;
     sampleFile.name = Date.now() + ".jpg";
-    let uploadPath = `${process.env.PWD}/public/uploads/${sampleFile.name}`;
+    let uploadPath = `${process.env.PWD}/public/places/${sampleFile.name}`;
+    console.log(uploadPath, "qqqqqqffdvjhdfvghdchhbjdhbjhcjbfdhbjdfc");
     sampleFile.mv(uploadPath, function (err) {
       if (err) return res.status(500).send(err);
     });
@@ -30,6 +31,7 @@ router.post("/new", async (req, res) => {
       approved: false,
       user_id: req.session.userId,
     });
+    console.log(newTags, "qqweqvsvdfnjvbhjerbevkdfvjkjkdfjkdvjkdjfkndjvknjnkdvjnkjndk");
     res.json(newTags);
   } catch (err) {
     res.sendStatus(501);
