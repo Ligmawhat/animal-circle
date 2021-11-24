@@ -49,10 +49,6 @@ function UserInfoForm() {
 
   const { currUser } = useSelector((state) => state);
   const { userInfo } = useSelector((state) => state);
-  console.log(userInfo);
-  // useEffect(() => {
-  //   dispatch(addUserInfo());
-  // }, []);
 
   const [email, setEmail] = useState("");
   const [mobile_phone, setMobilePhone] = useState("");
@@ -66,7 +62,6 @@ function UserInfoForm() {
   };
 
   return (
-    //   {userInfo ? (<>fe</>) :
     <>
       {userInfo ? (
         <>вы уже заполняли профиль</>

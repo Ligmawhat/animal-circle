@@ -138,7 +138,7 @@ router.route("/profile/:id").get(async (req, res) => {
 router.route("/new").post(async (req, res) => {
   try {
     const { email, mobile_phone, avatar, first_name, last_name, id } = req.body;
-    regular = /(\+7|8)([\s(]*\d{3})([)\s]*\d{3})([\s-]?\d{2})([\s-]?\d{2})/gm;
+    regular = /(\+7|8)[\s]*(\d{3})[\s]*(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/gm;
     const mobile_phone_reg = mobile_phone.replace(regular, "$1 ($2) $3-$4-$5");
     const newUserInfo = await UserInfo.create({
       email: email,
