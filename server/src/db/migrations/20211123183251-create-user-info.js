@@ -30,6 +30,7 @@ module.exports = {
           model: "Users",
           key: "id",
         },
+        unique: true,
       },
       createdAt: {
         allowNull: false,

@@ -127,7 +127,6 @@ router.route("/profile/:id").get(async (req, res) => {
   try {
     const userProfile = await User.findOne({
       where: { id: req.params.id },
-
       attributes: ["id", "login"],
     });
     res.json({ userProfile });
@@ -139,10 +138,11 @@ router.route("/profile/:id").get(async (req, res) => {
 router.route("/new").post(async (req, res) => {
   try {
     const { email, mobile_phone, avatar, first_name, last_name, id } = req.body;
-    console.log(req.body);
+    regular = /(\+7|8)([\s(]*\d{3})([)\s]*\d{3})([\s-]?\d{2})([\s-]?\d{2})/gm;
+    const mobile_phone_reg = mobile_phone.replace(regular, "$1 ($2) $3-$4-$5");
     const newUserInfo = await UserInfo.create({
       email: email,
-      mobile_phone: mobile_phone,
+      mobile_phone: mobile_phone_reg,
       avatar: avatar,
       first_name: first_name,
       last_name: last_name,
@@ -151,12 +151,20 @@ router.route("/new").post(async (req, res) => {
     const userInfo = await UserInfo.findOne({
       where: { user_id: id },
     });
-    console.log(userInfo, "qweqweqweqweqweqeqweq");
-    console.log(email, mobile_phone, avatar, first_name, last_name, id);
     res.json(userInfo);
-    res.sendStatus(200);
   } catch (err) {
     res.sendStatus(500);
+  }
+});
+
+router.route("/profile/info/:id").get(async (req, res) => {
+  try {
+    const userInfoFromBack = await UserInfo.findOne({
+      where: { user_id: req.params.id },
+    });
+    res.json({ userInfoFromBack });
+  } catch (err) {
+    res.sendStatus(501);
   }
 });
 
