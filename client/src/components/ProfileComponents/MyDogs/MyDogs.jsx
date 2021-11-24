@@ -47,7 +47,7 @@ function MyDogs() {
               <AddMyDog />
             </Grid>
             <Grid item xs={12} md={9}>
-              {myDogs?.length > 0 && myDogs?.map((el) => <MeetingCard key={el.id} dog={el} />)}
+              <ul>{myDogs?.length > 0 && myDogs?.map((el) => <li>{el.name}</li>)}</ul>
             </Grid>
           </Grid>
         </Grid>
