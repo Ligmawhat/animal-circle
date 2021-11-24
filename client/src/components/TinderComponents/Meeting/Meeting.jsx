@@ -14,18 +14,19 @@ const Meeting = () => {
   useEffect(() => {
     dispatch(getOneDog());
   }, []);
-  return (
-    <>
-      <NavBar />
-      <Grid container spacing={2} sx={{ mt: 5 }}>
+      {/*<NavBar />*/}
+      {/*<Grid container spacing={2} sx={{ mt: 5 }}>*/}
         {/*<Grid item xs={12} md={3}>*/}
         {/*  <TinderSelect />*/}
         {/*</Grid>*/}
-        <Grid item xs={12} md={9}>
+        {/*<Grid item xs={12} md={9}>*/}
+        {/*</Grid>*/}
+      {/*</Grid>*/}
+  return (
+      <>
+          <NavBar />
           <MeetingCard dog={oneDog} />
-        </Grid>
-      </Grid>
-    </>
+      </>
   );
 };
 
