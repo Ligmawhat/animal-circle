@@ -14,10 +14,6 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 const Profile = () => {
-  const history = useHistory;
-  const { currUser } = useSelector((state) => state);
-  console.log(currUser);
-
   return (
     <>
       <NavBar />
