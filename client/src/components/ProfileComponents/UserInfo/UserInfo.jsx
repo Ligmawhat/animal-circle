@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
 import UserInfoForm from "./UserInfoForm";
+import UserInfoText from "./UserInfoText";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -32,6 +33,9 @@ const UserInfo = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} md={9}>
               <UserInfoForm />
+            </Grid>
+            <Grid item xs={12} md={9}>
+              <UserInfoText />
             </Grid>
             <Grid item xs={12} md={9}></Grid>
           </Grid>

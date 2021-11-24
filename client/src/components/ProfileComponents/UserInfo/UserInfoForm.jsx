@@ -48,7 +48,8 @@ function UserInfoForm() {
   const dispatch = useDispatch();
 
   const { currUser } = useSelector((state) => state);
-
+  const { userInfo } = useSelector((state) => state);
+  console.log(userInfo);
   // useEffect(() => {
   //   dispatch(addUserInfo());
   // }, []);
@@ -58,92 +59,98 @@ function UserInfoForm() {
   const [avatar, setAvatar] = useState("");
   const [first_name, setFirstName] = useState(0);
   const [last_name, setLastName] = useState("");
-  console.log(email, mobile_phone, avatar, first_name, last_name);
   const classes = useStyles();
-  console.log(currUser.id);
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addUserInfo(email, mobile_phone, avatar, first_name, last_name, currUser.id));
   };
-  console.log((email, mobile_phone, avatar, first_name, last_name, currUser.id));
 
   return (
-    <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                autoComplete="name"
-                variant="outlined"
-                required
-                fullWidth
-                id="first_name"
-                label="Имя"
-                autoFocus
-                type="text"
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="Фамилия"
-                type="text"
-                id="last_name"
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="email"
-                type="text"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="Мобильный телефон"
-                type="text"
-                id="mobile_phone"
-                onChange={(e) => setMobilePhone(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="Ваш аватар"
-                type="text"
-                id="avatar"
-                onChange={(e) => setAvatar(e.target.value)}
-              />
-            </Grid>
-          </Grid>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Добавить товар
-          </Button>
-        </form>
-      </div>
-    </Container>
+    //   {userInfo ? (<>fe</>) :
+    <>
+      {userInfo ? (
+        <>вы уже заполняли профиль</>
+      ) : (
+        <>
+          <>вы не заполняли профиль</>
+          <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
+              <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate>
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField
+                      autoComplete="name"
+                      variant="outlined"
+                      required
+                      fullWidth
+                      id="first_name"
+                      label="Имя"
+                      autoFocus
+                      type="text"
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      label="Фамилия"
+                      type="text"
+                      id="last_name"
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      label="email"
+                      type="text"
+                      id="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      label="Мобильный телефон"
+                      type="text"
+                      id="mobile_phone"
+                      onChange={(e) => setMobilePhone(e.target.value)}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      required
+                      fullWidth
+                      label="Ваш аватар"
+                      type="text"
+                      id="avatar"
+                      onChange={(e) => setAvatar(e.target.value)}
+                    />
+                  </Grid>
+                </Grid>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Добавить описание
+                </Button>
+              </form>
+            </div>
+          </Container>
+        </>
+      )}
+    </>
   );
 }
 

@@ -34,7 +34,7 @@ const Likes = () => {
           {whoLikedMyDog.length > 0 &&
             whoLikedMyDog.map((el) => (
               <p>
-                Вас лайкнул:{el.whoLiked}, его id {el.whoLiked_id}
+                Ваш собаку по имени {el.name} лайкнул:{el.whoLiked}, его id {el.whoLiked_id}
               </p>
             ))}
         </Grid>

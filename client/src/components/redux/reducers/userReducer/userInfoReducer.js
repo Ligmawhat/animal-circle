@@ -6,7 +6,7 @@ const userInfoReducer = (state = {}, action) => {
     case ADD_USER_INFO:
       return payload;
     case SET_USER_INFO:
-      return {};
+      return payload;
     default:
       return state;
   }

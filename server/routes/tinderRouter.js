@@ -63,6 +63,25 @@ router
     }
   });
 
+router.route("/myDogs/:id").get(async (req, res) => {
+  try {
+    const allMyDogs = await Animal.findAll({
+      include: [
+        { model: User, attributes: ["login"] },
+        { model: Breed, attributes: ["breed_title"] },
+        { model: Type, attributes: ["type_title"] },
+        { model: Sex, attributes: ["sex"] },
+      ],
+      where: { user_id: req.params.id },
+      order: [["updatedAt", "DESC"]],
+    });
+    const allMyDogsFromBack = allMyDogs.map((el) => new Animals(el));
+    res.json(allMyDogsFromBack);
+  } catch (err) {
+    res.sendStatus(501);
+  }
+});
+
 router.route("/like/:id").get(async (req, res) => {
   const allLike = await Like.findAll(requestForLikes);
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
@@ -93,25 +112,6 @@ router.route("/likedog").post(async (req, res) => {
       animal_id: req.body.id,
     });
     res.sendStatus(200);
-  } catch (err) {
-    res.sendStatus(5011);
-  }
-});
-
-router.route("/myDogs/:id").get(async (req, res) => {
-  try {
-    const allMyDogs = await Animal.findAll({
-      include: [
-        { model: User, attributes: ["login"] },
-        { model: Breed, attributes: ["breed_title"] },
-        { model: Type, attributes: ["type_title"] },
-        { model: Sex, attributes: ["sex"] },
-      ],
-      where: { user_id: req.params.id },
-      order: [["updatedAt", "DESC"]],
-    });
-    const allMyDogsFromBack = allMyDogs.map((el) => new Animals(el));
-    res.json(allMyDogsFromBack);
   } catch (err) {
     res.sendStatus(501);
   }
