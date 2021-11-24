@@ -14,10 +14,6 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 const Profile = () => {
-  const history = useHistory;
-  const { currUser } = useSelector((state) => state);
-  console.log(currUser);
-
   return (
     <>
       <NavBar />
@@ -26,7 +22,7 @@ const Profile = () => {
         <Button>Search</Button>
       </div>
       <hr />
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} md={3}>
         <ProfileNav />
       </Grid>
     </>

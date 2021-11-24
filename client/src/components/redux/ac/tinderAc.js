@@ -6,6 +6,7 @@ import {
   SET_ALL_MY_DOGS,
   CHANGE_DOG,
   ADD_NEW_DOG,
+  WHO_LIKED_MY_DOG,
 } from "../types/tinderType";
 
 export const setAllBreed = (value) => ({
@@ -40,8 +41,8 @@ export const setOneDog = (value) => ({
 });
 
 export const changeOneDog = (id) => ({
-    type: CHANGE_DOG,
-    payload: id,
+  type: CHANGE_DOG,
+  payload: id,
 });
 
 export const getOneDog = () => async (dispatch) => {
@@ -53,13 +54,13 @@ export const getOneDog = () => async (dispatch) => {
 };
 
 export const changeDog = (id) => async (dispatch) => {
-    dispatch(changeOneDog(id))
-}
+  dispatch(changeOneDog(id));
+};
 
 export const changeDogAndGetId = (id) => async (dispatch) => {
-    axios.post('/tinder/likedog', {id} )
-    dispatch(changeOneDog(id))
-}
+  axios.post("/tinder/likedog", { id });
+  dispatch(changeOneDog(id));
+};
 
 export const setMyDogs = (value) => ({
   type: SET_ALL_MY_DOGS,
@@ -77,4 +78,18 @@ export const getMyDogs = (id) => async (dispatch) => {
 export const addNewDog = (name, desc, url, onebreed, onesex, id) => async (dispatch) => {
   const newDog = await axios.post("/tinder/new", { name, desc, url, onebreed, onesex, id });
   dispatch({ type: ADD_NEW_DOG, payload: newDog.data });
+};
+
+export const setWhoLikedMyDog = (value) => ({
+  type: WHO_LIKED_MY_DOG,
+  payload: value,
+});
+
+export const getWhoLikedMyDog = (id) => async (dispatch) => {
+  axios(`/tinder/like/${id}`)
+    .then((res) => {
+      console.log(res.data);
+      return dispatch(setWhoLikedMyDog(res.data.allLikeFromBack));
+    })
+    .catch((err) => console.log(err));
 };

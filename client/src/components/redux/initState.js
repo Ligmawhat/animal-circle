@@ -11,6 +11,7 @@ const initState = {
   myDogs: [],
   myGoods: [],
   userInfo: {},
+  whoLikedMyDog: [],
 };
 
 export default initState;
