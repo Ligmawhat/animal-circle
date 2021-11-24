@@ -20,9 +20,6 @@ router.post("/new", async (req, res) => {
       if (err) return res.status(500).send(err);
     });
 
-    // console.log(req.session.userId, 'USERID MAP ROUTER')
-    // console.log(req.session, 'REQ SESSION MAP ROUTER')
-
     const { cordsZero, cordsOne, title, desc } = req.body;
     const newTags = await Geotags.create({
       geotags_title: title,

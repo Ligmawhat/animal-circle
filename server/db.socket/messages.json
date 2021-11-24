@@ -1,25 +1,4 @@
 {
   "messages": [
-    {
-      "messageId": "hJc1eCK8",
-      "createdAt": "2021-11-24T07:41:39.509Z",
-      "userId": "CSxMQbRo",
-      "messageText": "qwe",
-      "senderName": "qwe"
-    },
-    {
-      "messageId": "Ri5iCuO0",
-      "createdAt": "2021-11-24T07:41:42.677Z",
-      "userId": "Vqsv3AT_",
-      "messageText": "qwe",
-      "senderName": "John"
-    },
-    {
-      "messageId": "OlezCkG6",
-      "createdAt": "2021-11-24T08:20:54.347Z",
-      "userId": "Vqsv3AT_",
-      "messageText": "qwe",
-      "senderName": "John"
-    },
   ]
 }

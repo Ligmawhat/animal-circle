@@ -7,7 +7,6 @@ import AddMyDog from "./AddMyDog";
 import { Grid, Input, Button, Paper } from "@mui/material";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
-import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -47,7 +46,9 @@ function MyDogs() {
               <AddMyDog />
             </Grid>
             <Grid item xs={12} md={9}>
-              {myDogs?.length > 0 && myDogs?.map((el) => <MeetingCard key={el.id} dog={el} />)}
+              <ul>
+              {myDogs?.length > 0 && myDogs?.map((el) => <li key={el.id}> {el.name}</li> )}
+              </ul>
             </Grid>
           </Grid>
         </Grid>
