@@ -1,11 +1,9 @@
-
 require("dotenv").config();
 const router = require("express").Router();
 const { User, Sequelize, UserInfo } = require("../src/db/models");
 const Op = Sequelize.Op;
 const brcypt = require("bcryptjs");
 const passport = require("passport");
-
 
 router.route("/login").post((req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
@@ -25,6 +23,9 @@ router.route("/login").post((req, res, next) => {
   })(req, res, next);
 });
 
+
+
+
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -36,32 +37,29 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/user/google/failed",
-    // successRedirect: `${process.env.REACT_URL}`,
+    successRedirect: `${process.env.REACT_URL}`,
   }),
   async function (req, res) {
     if (req.user.displayName && req.user.emails[0].value) {
       try {
         const currentUser = await User.findOne({
           where: { login: req.user.emails[0].value },
-
-        })
+        });
 
         if (currentUser) {
-          req.session.login = currentUser.login
-          req.session.userId = currentUser.id
-          return res.redirect('http://localhost:3000')
-
+          req.session.login = currentUser.login;
+          req.session.userId = currentUser.id;
+          return res.redirect("http://localhost:3000");
         } else {
           const newUser = await User.create({
             login: req.user.emails[0].value,
             password: 123,
 
-            userType: 'user',
-          })
-          req.session.login = newUser.login
-          req.session.userId = newUser.id
-          return res.redirect('http://localhost:3000')
-
+            userType: "user",
+          });
+          req.session.login = newUser.login;
+          req.session.userId = newUser.id;
+          return res.redirect("http://localhost:3000");
         }
       } catch (error) {
         return res.sendStatus(405);
@@ -72,11 +70,9 @@ router.get(
   }
 );
 
-
-router.route('/signup').post(async (req, res) => {
-
-  const { login, password } = req.body
-  const hashPass = await brcypt.hash(password, 10)
+router.route("/signup").post(async (req, res) => {
+  const { login, password } = req.body;
+  const hashPass = await brcypt.hash(password, 10);
 
   const newUser = await User.create({
     login,
@@ -91,12 +87,26 @@ router.route('/signup').post(async (req, res) => {
 });
 
 
+router.post("/getgoogleuser", async (req, res) => {
+  const googleUser = {
+    id : req.session.userId,
+    login : req.session.login,
+    userType: req.session.userType
+  }
+  console.log(googleUser, 'GOOGLE USER')
+  console.log(req.session, 'REQ SESSION USERID')
+  res.json({googleUser})
+})
+
+
+
 router.route('/logout').get(function (req, res) {
   req.session.destroy()
   res.clearCookie('sId')
   req.logout()
   res.send('logout')
 })
+
 
 
 // router.get('/check', async (req, res) => {
@@ -133,22 +143,25 @@ function authenticationMiddleware(req, res, next) {
 }
 
 router.route("/profile/:id").get(async (req, res) => {
-  const userProfile = await User.findOne({
-    where: { id: req.params.id },
-
-    attributes: ["id", "login"],
-  });
-  console.log(userProfile);
-  res.json({ userProfile });
+  try {
+    const userProfile = await User.findOne({
+      where: { id: req.params.id },
+      attributes: ["id", "login"],
+    });
+    res.json({ userProfile });
+  } catch (err) {
+    res.sendStatus(501);
+  }
 });
 
 router.route("/new").post(async (req, res) => {
   try {
     const { email, mobile_phone, avatar, first_name, last_name, id } = req.body;
-    console.log(req.body);
+    regular = /(\+7|8)[\s]*(\d{3})[\s]*(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/gm;
+    const mobile_phone_reg = mobile_phone.replace(regular, "$1 ($2) $3-$4-$5");
     const newUserInfo = await UserInfo.create({
       email: email,
-      mobile_phone: mobile_phone,
+      mobile_phone: mobile_phone_reg,
       avatar: avatar,
       first_name: first_name,
       last_name: last_name,
@@ -157,14 +170,21 @@ router.route("/new").post(async (req, res) => {
     const userInfo = await UserInfo.findOne({
       where: { user_id: id },
     });
-    console.log(userInfo, "qweqweqweqweqweqeqweq");
-    console.log(email, mobile_phone, avatar, first_name, last_name, id);
     res.json(userInfo);
-    res.sendStatus(200);
   } catch (err) {
     res.sendStatus(500);
   }
 });
 
+router.route("/profile/info/:id").get(async (req, res) => {
+  try {
+    const userInfoFromBack = await UserInfo.findOne({
+      where: { user_id: req.params.id },
+    });
+    res.json({ userInfoFromBack });
+  } catch (err) {
+    res.sendStatus(501);
+  }
+});
 
 module.exports = router;

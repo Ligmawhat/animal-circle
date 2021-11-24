@@ -7,10 +7,11 @@ const initState = {
   breed: [],
   sex: [],
   oneDog: [],
-  map: {},
+  map: [],
   myDogs: [],
   myGoods: [],
   userInfo: {},
+  whoLikedMyDog: [],
 };
 
 export default initState;

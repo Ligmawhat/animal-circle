@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { getCurrUser } from "../redux/ac/currUserAc";
+import { currGoogleUser, getCurrUser } from "../redux/ac/currUserAc";
 import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
@@ -64,6 +64,10 @@ const Login = () => {
     // window.open(`${process.env.REACT_APP_API_URL}/user/signIn`, "_self")
     window.open(`${process.env.REACT_APP_API_URL}/user/google`, "_self")
     // window.open('http://localhost:3001/user/google')
+dispatch(currGoogleUser())
+
+
+
       }
 
 

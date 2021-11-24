@@ -1,8 +1,19 @@
 
+
 const router = require('express').Router()
 
 
 const { Good, Category, User, Geotags } = require('../src/db/models')
+
+
+router.get('/', async (req,res) => {
+  const allTags = await Geotags.findAll()
+  console.log(allTags, 'ALLTAGS')
+  res.json(allTags)
+})
+
+
+
 
 router.post('/new', async (req, res) => {
   
@@ -15,6 +26,7 @@ router.post('/new', async (req, res) => {
   sampleFile.mv(uploadPath, function (err) {
     if (err) return res.status(500).send(err)
   })
+  
   console.log(req.session.userId, 'USERID MAP ROUTER')
   console.log(req.session, 'REQ SESSION MAP ROUTER')
 
@@ -29,12 +41,22 @@ router.post('/new', async (req, res) => {
     url : sampleFile.name,
     approved: false,
     user_id : req.session.userId
-
     });
-  console.log(newTags);
-  //res.sendStatus(200)
-  res.json(newTags);
-})
 
+    const { cordsZero, cordsOne, title, desc } = req.body;
+    const newTags = await Geotags.create({
+      geotags_title: title,
+      latitude: cordsZero,
+      longitude: cordsOne,
+      description: desc,
+      url: sampleFile.name,
+      approved: false,
+      user_id: req.session.userId,
+    });
+    res.json(newTags);
+  } catch (err) {
+    res.sendStatus(501);
+  }
+});
 
-module.exports = router
+module.exports = router;

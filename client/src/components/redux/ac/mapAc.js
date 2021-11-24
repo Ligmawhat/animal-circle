@@ -1,6 +1,6 @@
 
-import { ADD_NEW_POINT } from '../types/mapType'
-
+import { ADD_NEW_POINT, GET_ALL_POINTS } from '../types/mapType'
+import axios from 'axios'
 
 export function addNewPoint(cords, title, desc, file) {
   return async (dispatch) => {
@@ -27,3 +27,14 @@ export const addPoint = (data) => ({
   payload: data,
 })
 
+export function getAllPoints() {
+  return async (dispatch) => {
+    const response = await axios('/map')
+dispatch(allPoints(response.data))
+  }
+}
+
+export const allPoints = (data) => ({
+type: GET_ALL_POINTS,
+payload: data
+})
