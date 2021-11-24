@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Animal, Breed, Type, User, Like, Sex } = require("../src/db/models");
-const AnimalsClass = require("../src/DTO/AnimalsClass");
+const Animals = require("../src/DTO/AnimalsClass");
 const Likes = require("../src/DTO/Likes");
 
 router.route("/").get(async (req, res) => {
@@ -16,10 +16,9 @@ router.route("/").get(async (req, res) => {
       ],
     });
     // console.log(allDog[0], '<=-------ALLDOG')
-    let allDogFromBack = allDog.map(dog => new AnimalsClass(dog));
-    console.log(allDogFromBack[0],'<--------FROMBACK')
+    let allDogFromBack = allDog.map((dog) => new Animals(dog));
+    console.log(allDogFromBack[0], "<--------FROMBACK");
     res.json({ allDogFromBack, allBreedFromBack, allSexFromBack });
-
   } catch (err) {
     res.sendStatus(501);
   }
@@ -82,13 +81,13 @@ router.route("/sexBreed").post(async (req, res) => {
   res.json(allDogsForSexBreed);
 });
 
-router.route('/likedog').post(async (req, res) => {
+router.route("/likedog").post(async (req, res) => {
   const newLike = await Like.create({
     user_id: req.session.userId,
-    animal_id: req.body.id
-  })
-    res.sendStatus(200);
-})
+    animal_id: req.body.id,
+  });
+  res.sendStatus(200);
+});
 
 router.route("/myDogs/:id").get(async (req, res) => {
   const allMyDogs = await Animal.findAll({
@@ -104,7 +103,6 @@ router.route("/myDogs/:id").get(async (req, res) => {
   const allMyDogsFromBack = allMyDogs.map((el) => new Animals(el));
   res.json(allMyDogsFromBack);
 });
-
 
 const requestForLikes = {
   include: [

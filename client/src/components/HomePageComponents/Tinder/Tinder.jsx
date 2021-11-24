@@ -1,7 +1,4 @@
 import React from "react";
-import TinderSearch from "../TinderSearch/TinderSearch";
-import TinderBox from "../TinderBox/TinderBox";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";

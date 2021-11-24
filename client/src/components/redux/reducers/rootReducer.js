@@ -1,15 +1,15 @@
 import { combineReducers } from "redux";
-import currUserReducer from "./currUserReducer";
-import goodsReducer from "./goodsReducer";
-import categoriesReducer from "./categoriesReducer";
-import goodsForOneCategoriesReducer from "./goodsForOneCategories";
+import categoriesReducer from "./prodavitoReducer/categoriesReducer";
+import goodsForOneCategoriesReducer from "./prodavitoReducer/goodsForOneCategories";
+import goodsReducer from "./prodavitoReducer/goodsReducer";
 import sexReducer from "./tinderReducer/sexReducer";
 import breedReducer from "./tinderReducer/breedReducer";
 import oneDogReducer from "./tinderReducer/oneDogReducer";
-import mapReducer from "./mapReducer";
+import currUserReducer from "./userReducer/currUserReducer";
+import mapReducer from "./mapReducer/mapReducer";
+import myGoodsReducer from "./prodavitoReducer/myGoodsReducer";
 import myDogsReducer from "./tinderReducer/myDogsReducer";
-import myGoodsReducer from "./myGoodsReducer";
-import userInfoReducer from "./userInfoReducer";
+import userInfoReducer from "./userReducer/userInfoReducer";
 
 const rootReducer = combineReducers({
   currUser: currUserReducer,

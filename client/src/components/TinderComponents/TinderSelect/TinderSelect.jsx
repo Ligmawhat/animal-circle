@@ -13,16 +13,10 @@ export default function TinderSelect() {
 
   useEffect(() => {
     dispatch(getAllSex());
-    // return () => {
-    //   dispatch(setAllSex(null));
-    // };
   }, []);
 
   useEffect(() => {
     dispatch(getAllBreed());
-    // return () => {
-    //   dispatch(setAllBreed(null));
-    // };
   }, []);
 
   return (

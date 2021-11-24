@@ -1,11 +1,11 @@
 import React from "react";
 import Sale from "../Sale/Sale";
-import Tinder from "../Tinder/Tinder";
 import Walk from "../Walk/Walk";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router";
+import Tinder from "../Tinder/Tinder";
 
 const HomePage = () => {
   const history = useHistory();

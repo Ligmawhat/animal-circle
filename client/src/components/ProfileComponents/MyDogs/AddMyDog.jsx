@@ -92,6 +92,7 @@ function AddMyDog() {
                 label="Кличка животного"
                 autoFocus
                 type="text"
+                // value=""
                 onChange={(e) => setName(e.target.value)}
               />
             </Grid>
