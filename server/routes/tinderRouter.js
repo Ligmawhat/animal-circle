@@ -15,9 +15,7 @@ router.route("/").get(async (req, res) => {
         { model: Sex, attributes: ["sex"] },
       ],
     });
-    // console.log(allDog[0], '<=-------ALLDOG')
     let allDogFromBack = allDog.map((dog) => new Animals(dog));
-    console.log(allDogFromBack[0], "<--------FROMBACK");
     res.json({ allDogFromBack, allBreedFromBack, allSexFromBack });
   } catch (err) {
     res.sendStatus(501);
