@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import { CardHeader, IconButton, Avatar, CardActions } from "@mui/material";
 
 const ProdavitoItem = ({ el }) => {
+  console.log(el, "EL ITEM")
   return (
     <div>
       <Card
@@ -22,7 +23,7 @@ const ProdavitoItem = ({ el }) => {
           // title={el.title}
           subheader={el.createdAt}
         />
-        <CardMedia component="img" height="194" image={el.url} alt="Paella dish" />
+        <CardMedia component="img" height="194" image={`http://localhost:3001/items/${el.url}`} alt="Paella dish" />
         <CardContent>
           <Typography color="text.secondary">{el.title}</Typography>
           <Typography color="text.secondary">{el.description}</Typography>

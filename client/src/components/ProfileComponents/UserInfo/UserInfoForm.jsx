@@ -52,14 +52,29 @@ function UserInfoForm() {
 
   const [email, setEmail] = useState("");
   const [mobile_phone, setMobilePhone] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [first_name, setFirstName] = useState(0);
+
+  const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState("");
   const classes = useStyles();
+
+  const [file, setFile] = useState(null)
+
+
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addUserInfo(email, mobile_phone, avatar, first_name, last_name, currUser.id));
+    dispatch(addUserInfo(email, mobile_phone, file, first_name, last_name, currUser.id));
+    setEmail('')
+    setMobilePhone('')
+    setFirstName('')
+    setLastName('')
+    setFile('')
   };
+
+
+  const onFileChange = (e) => {
+    setFile(e.target.files[0])
+  }
+
 
   return (
     <>
@@ -122,12 +137,12 @@ function UserInfoForm() {
                   <Grid item xs={12}>
                     <TextField
                       variant="outlined"
-                      required
-                      fullWidth
-                      label="Ваш аватар"
-                      type="text"
-                      id="avatar"
-                      onChange={(e) => setAvatar(e.target.value)}
+                required
+                fullWidth
+                id="url"
+                type="file"
+                name="file"
+                onChange={(e) => onFileChange(e)}
                     />
                   </Grid>
                 </Grid>

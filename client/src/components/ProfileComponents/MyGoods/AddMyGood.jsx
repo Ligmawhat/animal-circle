@@ -54,22 +54,38 @@ function AddMyGood() {
 
   const [good_title, setTitle] = useState("");
   const [description, setDesc] = useState("");
-  const [url, setUrl] = useState("");
+  // const [url, setUrl] = useState("");
   const [price, setPrice] = useState(0);
   const [category, setCat] = useState("");
 
   const classes = useStyles();
 
+  const [file, setFile] = useState(null)
+
+  
+    const onFileChange = (e) =>{
+      setFile(e.target.files[0])
+    }
+
   const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(addNewGood(good_title, description, url, price, category, currUser.id));
+    e.preventDefault()
+    dispatch(addNewGood(good_title, description, file, price, category, currUser.id))
+    setTitle('')
+    setDesc('')
+    setPrice(null)
+    setCat('')
+    setFile(null)
   };
 
-  return (
+return (
     <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate>
+        {/* <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate> */}
+        <form onSubmit={(e) => submitHandler(e)}
+          className={classes.form}
+          method="post"
+          enctype="multipart/form-data" noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -100,10 +116,10 @@ function AddMyGood() {
                 variant="outlined"
                 required
                 fullWidth
-                label="Фото товара"
-                type="text"
                 id="url"
-                onChange={(e) => setUrl(e.target.value)}
+                type="file" 
+                name="file"
+               onChange={(e)=>onFileChange(e)}
               />
             </Grid>
             <Grid item xs={12}>

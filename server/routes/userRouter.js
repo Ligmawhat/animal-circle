@@ -154,27 +154,66 @@ router.route("/profile/:id").get(async (req, res) => {
   }
 });
 
-router.route("/new").post(async (req, res) => {
+// router.route("/new").post(async (req, res) => {
+//   try {
+//     const { email, mobile_phone, avatar, first_name, last_name, id } = req.body;
+//     regular = /(\+7|8)[\s]*(\d{3})[\s]*(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/gm;
+//     const mobile_phone_reg = mobile_phone.replace(regular, "$1 ($2) $3-$4-$5");
+//     const newUserInfo = await UserInfo.create({
+//       email: email,
+//       mobile_phone: mobile_phone_reg,
+//       avatar: avatar,
+//       first_name: first_name,
+//       last_name: last_name,
+//       user_id: +id,
+//     });
+//     const userInfo = await UserInfo.findOne({
+//       where: { user_id: id },
+//     });
+//     res.json(userInfo);
+//   } catch (err) {
+//     res.sendStatus(500);
+//   }
+// });
+
+
+router.post("/new", async (req, res) => {
   try {
-    const { email, mobile_phone, avatar, first_name, last_name, id } = req.body;
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send("No files were uploaded.");
+    }
+    let sampleFile = req.files.file;
+    sampleFile.name = Date.now() + ".jpg";
+    let uploadPath = `${process.env.PWD}/public/useravatars/${sampleFile.name}`;
+    console.log(uploadPath, "UPLOAD AVITO");
+    sampleFile.mv(uploadPath, function (err) {
+      if (err) return res.status(500).send(err);
+    });
+console.log(req.body, 'REQ BODY AVITO')
+    const { email, mobile_phone, first_name, last_name, id } = req.body
     regular = /(\+7|8)[\s]*(\d{3})[\s]*(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/gm;
     const mobile_phone_reg = mobile_phone.replace(regular, "$1 ($2) $3-$4-$5");
-    const newUserInfo = await UserInfo.create({
+    const newUser = await UserInfo.create({
       email: email,
       mobile_phone: mobile_phone_reg,
-      avatar: avatar,
+      avatar: sampleFile.name,
       first_name: first_name,
       last_name: last_name,
       user_id: +id,
     });
-    const userInfo = await UserInfo.findOne({
-      where: { user_id: id },
-    });
-    res.json(userInfo);
+    console.log(newUser, ' NEW ITEM ADD')
+    res.json(newUser);
   } catch (err) {
-    res.sendStatus(500);
+    res.sendStatus(501);
   }
 });
+
+
+
+
+
+
+
 
 router.route("/profile/info/:id").get(async (req, res) => {
   try {
