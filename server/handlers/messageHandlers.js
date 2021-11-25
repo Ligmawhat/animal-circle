@@ -5,34 +5,28 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('db.socket/messages.json')
 const db = low(adapter)
 
-db.defaults({
-  messages: [
-    {
-      messageId: '1',
-      userId: '1',
-      senderName: 'Bob',
-      messageText: 'What are you doing here?',
-      createdAt: '2021-01-14'
-    },
-    {
-      messageId: '2',
-      userId: '2',
-      senderName: 'Alice',
-      messageText: 'Go back to work!',
-      createdAt: '2021-02-15'
-    }
-  ]
-}).write()
+// db.defaults({
+//   roomId: [
+//
+//   ]
+// }).write()
 
-module.exports = (io, socket) => {
+module.exports = (io, socket, nameRoom) => {
+
+  db.defaults({
+    [nameRoom]: [
+    ]
+  }).write()
+
+
+
   const getMessages = () => {
-    const messages = db.get('messages').value()
-
+    const messages = db.get(nameRoom).value()
     io.in(socket.roomId).emit('messages', messages)
   }
 
   const addMessage = (message) => {
-    db.get('messages')
+    db.get(nameRoom)
       .push({
         messageId: nanoid(8),
         createdAt: new Date(),
@@ -43,13 +37,13 @@ module.exports = (io, socket) => {
     getMessages()
   }
 
-  const removeMessage = (messageId) => {
-    db.get('messages').remove({ messageId }).write()
+  const removeMessage = ( messageId) => {
+    db.get(nameRoom).remove({ messageId }).write()
 
     getMessages()
   }
 
-  socket.on('message:get', getMessages)
-  socket.on('message:add', addMessage)
-  socket.on('message:remove', removeMessage)
+  socket.on(`message:get`, getMessages)
+  socket.on(`message:add`, addMessage)
+  socket.on(`message:remove`, removeMessage)
 }
