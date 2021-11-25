@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       animal_id: { type: DataTypes.INTEGER, allowNull: false },
       user_id: { type: DataTypes.INTEGER, allowNull: false },
+      status: { type: DataTypes.BOOLEAN, allowNull: false },
     },
     {
       sequelize,

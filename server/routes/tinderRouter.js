@@ -114,9 +114,10 @@ router.route('/myDogs/:id').get(async (req, res) => {
   }
 })
 
-router.route('/like/:id').get(async (req, res) => {
-  const allLike = await Like.findAll(requestForLikes)
-  const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el))
+
+router.route("/like/:id").get(async (req, res) => {
+  const allLike = await Like.findAll(requestForLikes);
+  const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
   const allLikeFromBack = allLikeFromBackNonFiltered.filter(
     (el) => el.whoLiked_id === +req.params.id,
   )
@@ -144,8 +145,10 @@ router.route('/likedog').post(async (req, res) => {
     const newLike = await Like.create({
       user_id: req.session.userId,
       animal_id: req.body.id,
-    })
-    res.sendStatus(200)
+      status: false,
+    });
+    res.sendStatus(200);
+
   } catch (err) {
     res.sendStatus(501)
   }
@@ -156,14 +159,18 @@ const requestForLikes = {
     {
       model: Animal,
       include: [
-        { model: User, attributes: ['login', 'id'] },
-        { model: Breed, attributes: ['breed_title'] },
-        { model: Type, attributes: ['type_title'] },
+
+        { model: User, attributes: ["login", "id"] },
+        { model: Breed, attributes: ["breed_title"] },
+        { model: Type, attributes: ["type_title"] },
+        { model: Sex, attributes: ["sex"] },
+
       ],
     },
     User,
   ],
-  attributes: ['id', 'animal_id', 'user_id', 'createdAt', 'updatedAt'],
-}
+  attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt", "status"],
+};
+
 
 module.exports = router
