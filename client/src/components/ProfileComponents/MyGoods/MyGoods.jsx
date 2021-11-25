@@ -28,6 +28,10 @@ const MyGoods = () => {
       dispatch(setMyGoods([]));
     };
   }, []);
+
+console.log(myGoods, 'MY GOOdS')
+
+
   return (
     <>
       <NavBar />

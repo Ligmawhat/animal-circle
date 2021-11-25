@@ -27,6 +27,11 @@ function MyDogs() {
       dispatch(setMyDogs([]));
     };
   }, []);
+
+
+console.log(myDogs , 'MYDOGS ')
+
+
   return (
     <>
       <NavBar />
@@ -47,7 +52,7 @@ function MyDogs() {
             </Grid>
             <Grid item xs={12} md={9}>
               <ul>
-              {myDogs?.length > 0 && myDogs?.map((el) => <li key={el.id}> {el.name}</li> )}
+              {myDogs?.length > 0 && myDogs?.map((el) => <li key={el.id}> {el.name} </li> )}
               </ul>
             </Grid>
           </Grid>
