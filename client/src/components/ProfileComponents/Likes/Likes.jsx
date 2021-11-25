@@ -1,5 +1,6 @@
-import { Input, Button, Grid } from "@mui/material";
+import { Input, Button, Grid, CardMedia } from "@mui/material";
 import React, { useEffect } from "react";
+import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../Navbar/Navbar";
 import { getWhoLikedMyDog, setWhoLikedMyDog } from "../../redux/ac/tinderAc";
@@ -9,7 +10,7 @@ const Likes = () => {
   const { whoLikedMyDog, currUser } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-
+  console.log(whoLikedMyDog);
   useEffect(() => {
     dispatch(getWhoLikedMyDog(currUser.id));
     return () => {
@@ -33,9 +34,16 @@ const Likes = () => {
         <Grid item xs={12} md={9} sx={{ ml: 40 }}>
           {whoLikedMyDog.length > 0 &&
             whoLikedMyDog.map((el) => (
-              <p>
-                Ваш собаку по имени {el.name} лайкнул:{el.whoLiked}, его id {el.whoLiked_id}
-              </p>
+              <Card
+                sx={{ maxWidth: 300, height: 500 }}
+                style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}
+              >
+                <p>
+                  Вы({el.whoLiked}) лайкнули собаку по имени {el.name}, её порода: {el.breed}, её id{" "}
+                  {el.id}. Она содержится в приюте: {el.authorAnimal}, их id: {el.authorAnimal_id}
+                </p>
+                <CardMedia component="img" height="194" image={el.url} alt="Paella dish" />
+              </Card>
             ))}
         </Grid>
       </Grid>
