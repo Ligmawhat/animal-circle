@@ -116,11 +116,14 @@ router.route("/myDogs/:id").get(async (req, res) => {
 
 router.route("/like/:id").get(async (req, res) => {
   const allLike = await Like.findAll(requestForLikes);
+
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
-  console.log(allLike);
+  // console.log(allLikeFromBackNonFiltered[0])
+  // console.log(allLike[0].User.UserInfo.email, "123123123231323123123");
   const allLikeFromBack = allLikeFromBackNonFiltered.filter(
     (el) => el.whoLiked_id === +req.params.id
   );
+  console.log(allLikeFromBack)
   res.json({ allLikeFromBack });
 });
 
@@ -158,7 +161,6 @@ const requestForLikes = {
       include: [
         {
           model: User,
-          include: UserInfo,
           attributes: ["login", "id"],
         },
         { model: Breed, attributes: ["breed_title"] },
