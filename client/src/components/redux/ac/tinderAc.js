@@ -107,8 +107,10 @@ export const setWhoLikedMyDog = (value) => ({
 export const getWhoLikedMyDog = (id) => async (dispatch) => {
   axios(`/tinder/like/${id}`)
     .then((res) => {
-      console.log(res.data)
+
+
       return dispatch(setWhoLikedMyDog(res.data.allLikeFromBack))
+
     })
     .catch((err) => console.log(err))
 }

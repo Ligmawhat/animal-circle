@@ -5,7 +5,10 @@ import {
   SET_ALL_GOODS_FOR_ONE_CATEGORY,
   SET_ALL_MY_GOODS,
   ADD_NEW_GOOD,
-} from '../types/goodType'
+  DELETE_GOOD,
+} from "../types/goodType";
+
+
 
 export const setAllGoods = (value) => ({
   type: SET_ALL_GOODS,
@@ -57,6 +60,17 @@ export const getMyGoods = (id) => async (dispatch) => {
     .then((res) => {
       return dispatch(setMyGoods(res.data))
     })
+
+    .catch((err) => console.log(err));
+};
+
+
+
+export const deleteGood = (id) => async (dispatch) => {
+  const delGood = await axios.delete(`/prodavito/goods/${id}`);
+  dispatch({ type: DELETE_GOOD, payload: id });
+};
+
     .catch((err) => console.log(err))
 }
 
@@ -78,3 +92,4 @@ export const addNewGood =
     const result = await response.json()
     dispatch({ type: ADD_NEW_GOOD, payload: result })
   }
+

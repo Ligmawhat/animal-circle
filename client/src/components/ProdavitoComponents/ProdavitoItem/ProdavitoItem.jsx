@@ -1,11 +1,21 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardHeader, IconButton, Avatar, CardActions } from "@mui/material";
+import { deleteGood, getMyGoods, setMyGoods } from "../../redux/ac/itemsProdavitoAc";
 
 const ProdavitoItem = ({ el }) => {
-  console.log(el, "EL ITEM")
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(deleteGood(el.id));
+  // }, []);
+  const deleteHandler = () => {
+    dispatch(deleteGood(el.id));
+  };
+
   return (
     <div>
       <Card
@@ -32,9 +42,8 @@ const ProdavitoItem = ({ el }) => {
           <Typography variant="body2" color="text.secondary">
             Цена: {el.price}₽
           </Typography>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="add to favorites" onClick={() => deleteHandler()}>
             {/* <FavoriteIcon /> */}
-            связаться
           </IconButton>
         </CardActions>
       </Card>

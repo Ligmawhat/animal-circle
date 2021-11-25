@@ -10,7 +10,6 @@ const Likes = () => {
   const { whoLikedMyDog, currUser } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  console.log(whoLikedMyDog);
   useEffect(() => {
     dispatch(getWhoLikedMyDog(currUser.id));
     return () => {

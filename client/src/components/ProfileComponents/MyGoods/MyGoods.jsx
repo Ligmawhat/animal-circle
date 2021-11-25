@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
 import ViewGoods from "../../ProdavitoComponents/ViewGoods/ViewGoods";
 import AddMyGood from "./AddMyGood";
-import { getMyGoods, setMyGoods } from "../../redux/ac/itemsProdavitoAc";
+import { deleteGood, getMyGoods, setMyGoods } from "../../redux/ac/itemsProdavitoAc";
 import ProdavitoItem from "../../ProdavitoComponents/ProdavitoItem/ProdavitoItem";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -27,9 +27,7 @@ const MyGoods = () => {
     return () => {
       dispatch(setMyGoods([]));
     };
-  }, []);
-
-console.log(myGoods, 'MY GOOdS')
+  }, [dispatch]);
 
 
   return (
