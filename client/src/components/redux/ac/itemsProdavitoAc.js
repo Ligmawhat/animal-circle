@@ -71,8 +71,6 @@ export const deleteGood = (id) => async (dispatch) => {
   dispatch({ type: DELETE_GOOD, payload: id });
 };
 
-    .catch((err) => console.log(err))
-}
 
 export const addNewGood =
   (good_title, description, file, price, category, id) => async (dispatch) => {
