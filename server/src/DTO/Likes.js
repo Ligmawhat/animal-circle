@@ -10,9 +10,10 @@ class Likes {
     this.type = Obj.Animal.Type.type_title;
     this.breed = Obj.Animal.Breed.breed_title;
     this.name = Obj.Animal.name;
-    this.sex = Obj.Animal.sex;
+    this.sex = Obj.Animal.Sex.sex;
     this.desc = Obj.Animal.desc;
     this.url = Obj.Animal.url;
+    this.status = Obj.status;
     this.createdAt = Obj.createdAt;
     this.updatedAt = Obj.updatedAt;
   }

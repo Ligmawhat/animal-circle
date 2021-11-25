@@ -85,6 +85,8 @@ router.route("/myDogs/:id").get(async (req, res) => {
 router.route("/like/:id").get(async (req, res) => {
   const allLike = await Like.findAll(requestForLikes);
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
+  console.log(allLikeFromBackNonFiltered[0]);
+
   const allLikeFromBack = allLikeFromBackNonFiltered.filter(
     (el) => el.whoLiked_id === +req.params.id
   );
@@ -110,6 +112,7 @@ router.route("/likedog").post(async (req, res) => {
     const newLike = await Like.create({
       user_id: req.session.userId,
       animal_id: req.body.id,
+      status: false,
     });
     res.sendStatus(200);
   } catch (err) {
@@ -125,11 +128,12 @@ const requestForLikes = {
         { model: User, attributes: ["login", "id"] },
         { model: Breed, attributes: ["breed_title"] },
         { model: Type, attributes: ["type_title"] },
+        { model: Sex, attributes: ["sex"] },
       ],
     },
     User,
   ],
-  attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt"],
+  attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt", "status"],
 };
 
 module.exports = router;
