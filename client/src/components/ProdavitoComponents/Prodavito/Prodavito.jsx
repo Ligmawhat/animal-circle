@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import NavBar from "../../Navbar/Navbar";
 import { Button, Input, Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +16,7 @@ const Prodavito = () => {
     return () => {
       dispatch(setAllGoods([]));
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

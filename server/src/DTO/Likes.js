@@ -8,11 +8,11 @@ class Likes {
     this.whoLiked_id = Obj.User.id;
 
     //инфа о  том кто лайкнул
-    this.first_name = Obj.User.UserInfo.first_name;
-    this.last_name = Obj.User.UserInfo.last_name;
-    this.email = Obj.User.UserInfo.email;
-    this.mobile_phone = Obj.User.UserInfo.mobile_phone;
-    this.avatar = Obj.User.UserInfo.avatar;
+    // this.first_name = Obj.User.UserInfo.first_name;
+    // this.last_name = Obj.User.UserInfo.last_name;
+    // this.email = Obj.User.UserInfo.email;
+    // this.mobile_phone = Obj.User.UserInfo.mobile_phone;
+    // this.avatar = Obj.User.UserInfo.avatar;
     //владелец животного которое лайкнули
     this.authorAnimal = Obj.Animal.User.login;
     this.authorAnimal_id = Obj.Animal.User.id;
