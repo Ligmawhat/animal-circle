@@ -37,7 +37,7 @@ module.exports = {
         },
         {
           user_id: 1,
-          animal_id: 4,
+          animal_id: 5,
           status: false,
           createdAt: new Date(),
           updatedAt: new Date(),
