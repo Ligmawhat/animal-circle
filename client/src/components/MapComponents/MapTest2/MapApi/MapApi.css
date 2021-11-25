@@ -1,0 +1,9 @@
+.ymaps-2-1-79-inner-panes{
+      border-radius: 50% 50% 50% 50%;
+    height: 500px;
+    border-style: inset;
+    width: 500px;
+}
+.ymaps-2-1-79-map{
+  border-radius: 50% 50% 50% 50%;
+}

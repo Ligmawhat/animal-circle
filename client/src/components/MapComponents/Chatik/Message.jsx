@@ -6,11 +6,11 @@ import { deepOrange } from "@material-ui/core/colors";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     messageRow: {
-      display: "flex"
+      display: "flex",
     },
     messageRowRight: {
       display: "flex",
-      justifyContent: "flex-end"
+      justifyContent: "flex-end",
     },
     messageBlue: {
       position: "relative",
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderLeft: "15px solid transparent",
         borderRight: "15px solid transparent",
         top: "0",
-        left: "-15px"
+        left: "-15px",
       },
       "&:before": {
         content: "''",
@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme: Theme) =>
         borderLeft: "16px solid transparent",
         borderRight: "16px solid transparent",
         top: "-1px",
-        left: "-17px"
-      }
+        left: "-17px",
+      },
     },
     messageOrange: {
       position: "relative",
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
         borderLeft: "15px solid transparent",
         borderRight: "15px solid transparent",
         top: "0",
-        right: "-15px"
+        right: "-15px",
       },
       "&:before": {
         content: "''",
@@ -79,13 +79,13 @@ const useStyles = makeStyles((theme: Theme) =>
         borderLeft: "16px solid transparent",
         borderRight: "16px solid transparent",
         top: "-1px",
-        right: "-17px"
-      }
+        right: "-17px",
+      },
     },
 
     messageContent: {
       padding: 0,
-      margin: 0
+      margin: 0,
     },
     messageTimeStampRight: {
       position: "absolute",
@@ -93,24 +93,24 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: "300",
       marginTop: "10px",
       bottom: "-3px",
-      right: "5px"
+      right: "5px",
     },
 
     orange: {
       color: theme.palette.getContrastText(deepOrange[500]),
       backgroundColor: deepOrange[500],
       width: theme.spacing(4),
-      height: theme.spacing(4)
+      height: theme.spacing(4),
     },
     avatarNothing: {
       color: "transparent",
       backgroundColor: "transparent",
       width: theme.spacing(4),
-      height: theme.spacing(4)
+      height: theme.spacing(4),
     },
     displayName: {
-      marginLeft: "20px"
-    }
+      marginLeft: "20px",
+    },
   })
 );
 
@@ -124,11 +124,7 @@ export const MessageLeft = (props) => {
   return (
     <>
       <div className={classes.messageRow}>
-        <Avatar
-          alt={displayName}
-          className={classes.orange}
-          src={photoURL}
-        ></Avatar>
+        <Avatar alt={displayName} className={classes.orange} src={photoURL}></Avatar>
         <div>
           <div className={classes.displayName}>{displayName}</div>
           <div className={classes.messageBlue}>

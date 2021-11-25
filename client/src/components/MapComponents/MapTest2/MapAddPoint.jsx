@@ -1,20 +1,13 @@
 import React, { useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { getCurrUser } from "../../redux/ac/currUserAc";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addNewPoint } from "../../redux/ac/mapAc";
-
+import "./style.css";
 const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
@@ -46,31 +39,24 @@ const useStyles = makeStyles((theme) => ({
 function MapAddPoint({ setPoint, point, cords, modal, setModal }) {
   const [title, setTitle] = useState("");
 
+  const [desc, setDesc] = useState("");
+  const dispatch = useDispatch();
+  const [file, setFile] = useState(null);
+  const classes = useStyles();
 
-  const [desc, setDesc] = useState('')
-  const dispatch = useDispatch()
-  const [file, setFile] = useState(null)
-  const classes = useStyles()
-
-  // const pointHandler = (e) => {
-  //   e.preventDefault()
-  // }
-
-  const onFileChange = (e) =>{
-  setFile(e.target.files[0])
-}
-
+  const onFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const submitHandler = (e) => {
-    e.preventDefault()
-    dispatch(addNewPoint(cords, title, desc, file))
-    setFile('')
-    setTitle('')
-    setDesc('')
-    setPoint('')
-    setModal(false)
-  }
-console.log(file, 'IMAGE')
+    e.preventDefault();
+    dispatch(addNewPoint(cords, title, desc, file));
+    setFile("");
+    setTitle("");
+    setDesc("");
+    setPoint("");
+    setModal(false);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -111,17 +97,29 @@ console.log(file, 'IMAGE')
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              {/* <TextField
                 variant="outlined"
                 required
                 fullWidth
-                // label="Фото площадки"
                 id="url"
-
-                type="file" 
+                type="file"
                 name="file"
-               onChange={(e)=>onFileChange(e)}
-              />
+                onChange={(e) => onFileChange(e)}
+              /> */}
+              <div class="file-input">
+                <input
+                  fullWidth
+                  required
+                  onChange={(e) => onFileChange(e)}
+                  type="file"
+                  id="file"
+                  class="file"
+                />
+                <label for="file">
+                  Select file
+                  <p class="file-name"></p>
+                </label>
+              </div>
             </Grid>
           </Grid>
           <Button

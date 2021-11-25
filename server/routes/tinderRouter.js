@@ -117,10 +117,10 @@ router.route("/myDogs/:id").get(async (req, res) => {
 router.route("/like/:id").get(async (req, res) => {
   const allLike = await Like.findAll(requestForLikes);
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
-  console.log(allLike);
   const allLikeFromBack = allLikeFromBackNonFiltered.filter(
     (el) => el.whoLiked_id === +req.params.id
   );
+  console.log(allLikeFromBackNonFiltered[0]);
   res.json({ allLikeFromBack });
 });
 
@@ -140,6 +140,7 @@ router.route("/sexBreed").post(async (req, res) => {
 
 router.route("/likedog").post(async (req, res) => {
   try {
+    console.log(req.body);
     const newLike = await Like.create({
       user_id: req.session.userId,
       animal_id: req.body.id,
@@ -158,7 +159,6 @@ const requestForLikes = {
       include: [
         {
           model: User,
-          include: UserInfo,
           attributes: ["login", "id"],
         },
         { model: Breed, attributes: ["breed_title"] },
@@ -166,7 +166,7 @@ const requestForLikes = {
         { model: Sex, attributes: ["sex"] },
       ],
     },
-    { model: User, include: { model: UserInfo } },
+    { model: User, attributes: ["login", "id"], include: { model: UserInfo } },
   ],
   attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt", "status"],
 };

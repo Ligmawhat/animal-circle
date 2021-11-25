@@ -1,0 +1,8 @@
+.MuiPaper-root {
+  background: url("http://localhost:3000/styleEmg/PngItem_1388753.png");
+  background-repeat: no-repeat;
+  background-size: 5%;
+}
+.navName {
+  margin-left: 2% !important;
+}
