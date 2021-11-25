@@ -5,6 +5,7 @@ import {
   SET_ALL_GOODS_FOR_ONE_CATEGORY,
   SET_ALL_MY_GOODS,
   ADD_NEW_GOOD,
+  DELETE_GOOD,
 } from "../types/goodType";
 
 export const setAllGoods = (value) => ({
@@ -57,6 +58,7 @@ export const getMyGoods = (id) => async (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
 export const addNewGood =
   (good_title, description, url, price, category, id) => async (dispatch) => {
     const newGood = await axios.post("/prodavito/new", {
@@ -69,3 +71,8 @@ export const addNewGood =
     });
     dispatch({ type: ADD_NEW_GOOD, payload: newGood.data });
   };
+
+export const deleteGood = (id) => async (dispatch) => {
+  const delGood = await axios.delete(`/prodavito/goods/${id}`);
+  dispatch({ type: DELETE_GOOD, payload: id });
+};

@@ -80,6 +80,14 @@ router.route("/myGoods/:id").get(async (req, res) => {
     res.sendStatus(500);
   }
 });
+router.delete("/goods/:id", async (req, res) => {
+  try {
+    Good.destroy({ where: { id: req.params.id } });
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(501);
+  }
+});
 module.exports = router;
 
 const shuffle = (arr) => {
