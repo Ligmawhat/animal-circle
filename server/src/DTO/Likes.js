@@ -2,8 +2,11 @@ class Likes {
   constructor(Obj) {
     this.id = Obj.id;
     //кто лайкнул
+    this.animal_id = Obj.animal_id;
+    this.user_id = Obj.user_id;
     this.whoLiked = Obj.User.login;
     this.whoLiked_id = Obj.User.id;
+
     //инфа о  том кто лайкнул
     // this.first_name = Obj.User.UserInfo.first_name;
     // this.last_name = Obj.User.UserInfo.last_name;

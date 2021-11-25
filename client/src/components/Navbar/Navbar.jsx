@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector,  useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../redux/ac/currUserAc";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Grow from "@mui/material/Grow";
@@ -17,9 +17,7 @@ import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import axios from "axios";
-
-
-
+import "./style.css";
 
 const useStyles = makeStyles({
   button: {
@@ -34,8 +32,6 @@ export default function NavBar() {
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-
-
 
   const dispatch = useDispatch();
 
@@ -56,7 +52,6 @@ export default function NavBar() {
       }
     });
   };
-
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -79,24 +74,12 @@ export default function NavBar() {
     }
   }
 
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 1 }}>
             <div>
-              <Button
-                ref={anchorRef}
-                id="composition-button"
-                aria-controls={open ? "composition-menu" : undefined}
-                aria-expanded={open ? "true" : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-                color="inherit"
-              >
-                <MenuIcon />
-              </Button>
               <Popper
                 open={open}
                 anchorEl={anchorRef.current}
@@ -139,12 +122,15 @@ export default function NavBar() {
             </div>
           </IconButton>
 
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Logo/PetProject
-          </Typography>
+          </Typography> */}
 
           {currUser.id ? (
             <>
+              <Typography className="navName" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Привет, {currUser.login}!
+              </Typography>
               <Button
                 sx={{ mr: "1em" }}
                 className={classes.butto}
@@ -152,13 +138,10 @@ export default function NavBar() {
                 // to="/user/logout"
                 variant="outlined"
                 color="inherit"
-                onClick={(e) =>  logHandler(e) }
+                onClick={(e) => logHandler(e)}
               >
                 Logout
               </Button>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Привет, {currUser.login}!
-              </Typography>
 
               <Button
                 sx={{ mr: "1em" }}
