@@ -85,7 +85,7 @@ return (
         <form onSubmit={(e) => submitHandler(e)}
           className={classes.form}
           method="post"
-          enctype="multipart/form-data" noValidate>
+          encType="multipart/form-data" noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

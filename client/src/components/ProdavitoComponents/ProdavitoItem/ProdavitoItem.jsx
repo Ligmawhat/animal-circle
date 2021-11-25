@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardHeader, IconButton, Avatar, CardActions } from "@mui/material";
-import { deleteGood, getMyGoods, setMyGoods } from "../../redux/ac/itemsProdavitoAc";
+import {CardHeader, IconButton, Avatar, CardActions} from "@mui/material";
+import { deleteGood } from "../../redux/ac/itemsProdavitoAc";
 
 const ProdavitoItem = ({ el }) => {
   const dispatch = useDispatch();
@@ -15,6 +15,8 @@ const ProdavitoItem = ({ el }) => {
   const deleteHandler = () => {
     dispatch(deleteGood(el.id));
   };
+
+
 
   return (
     <div>
@@ -31,20 +33,22 @@ const ProdavitoItem = ({ el }) => {
             </IconButton>
           }
           // title={el.title}
-          subheader={el.createdAt}
+          subheader={el?.createdAt}
         />
-        <CardMedia component="img" height="194" image={`http://localhost:3001/items/${el.url}`} alt="Paella dish" />
+        <CardMedia component="img" height="194" image={`http://localhost:3001/items/${el?.url}`} alt="Paella dish" />
         <CardContent>
-          <Typography color="text.secondary">{el.title}</Typography>
-          <Typography color="text.secondary">{el.description}</Typography>
+          <Typography color="text.secondary">{el?.title}</Typography>
+          <Typography color="text.secondary">{el?.description}</Typography>
         </CardContent>
         <CardActions style={{ display: "grid" }} disableSpacing>
           <Typography variant="body2" color="text.secondary">
-            Цена: {el.price}₽
+            Цена: {el?.price}₽
           </Typography>
-          <IconButton aria-label="add to favorites" onClick={() => deleteHandler()}>
-            {/* <FavoriteIcon /> */}
-          </IconButton>
+          {/*{currUser.login === el.login ?*/}
+          {/*<Button aria-label="add to favorites" onClick={() => deleteHandler()}>*/}
+          {/* udalit*/}
+          {/*</Button> : '' }*/}
+
         </CardActions>
       </Card>
     </div>

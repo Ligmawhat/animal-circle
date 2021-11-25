@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           login: "ganhor",
-          password: "123",
+          password: "$2a$10$DzantFYOBnSpPuC0bIYgteiIk4KzwX29SanpJRy7ZJRQyOktLiAzy",
           userType: "admin",
           createdAt: new Date(),
           updatedAt: new Date(),

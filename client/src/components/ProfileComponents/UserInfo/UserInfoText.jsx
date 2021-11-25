@@ -11,9 +11,9 @@ const UserInfoText = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserInfo(currUser.id));
-    return () => {
-      dispatch(setUserInfo([]));
-    };
+    // return () => {
+    //   dispatch(setUserInfo([]));
+    // };
   }, []);
   return (
     <>
