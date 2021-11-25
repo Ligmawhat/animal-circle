@@ -43,8 +43,8 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          user_id: 1,
-          animal_id: 5,
+          user_id: 2,
+          animal_id: 2,
           status: false,
           createdAt: new Date(),
           updatedAt: new Date(),
