@@ -23,9 +23,6 @@ router.route("/login").post((req, res, next) => {
   })(req, res, next);
 });
 
-
-
-
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -86,28 +83,23 @@ router.route("/signup").post(async (req, res) => {
   res.json({ id, log, userType });
 });
 
-
 router.post("/getgoogleuser", async (req, res) => {
   const googleUser = {
-    id : req.session.userId,
-    login : req.session.login,
-    userType: req.session.userType
-  }
-  console.log(googleUser, 'GOOGLE USER')
-  console.log(req.session, 'REQ SESSION USERID')
-  res.json({googleUser})
-})
+    id: req.session.userId,
+    login: req.session.login,
+    userType: req.session.userType,
+  };
+  console.log(googleUser, "GOOGLE USER");
+  console.log(req.session, "REQ SESSION USERID");
+  res.json({ googleUser });
+});
 
-
-
-router.route('/logout').get(function (req, res) {
-  req.session.destroy()
-  res.clearCookie('sId')
-  req.logout()
-  res.send('logout')
-})
-
-
+router.route("/logout").get(function (req, res) {
+  req.session.destroy();
+  res.clearCookie("sId");
+  req.logout();
+  res.send("logout");
+});
 
 // router.get('/check', async (req, res) => {
 //   if (req?.user) {
@@ -176,7 +168,6 @@ router.route("/profile/:id").get(async (req, res) => {
 //   }
 // });
 
-
 router.post("/new", async (req, res) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -189,8 +180,8 @@ router.post("/new", async (req, res) => {
     sampleFile.mv(uploadPath, function (err) {
       if (err) return res.status(500).send(err);
     });
-console.log(req.body, 'REQ BODY AVITO')
-    const { email, mobile_phone, first_name, last_name, id } = req.body
+    console.log(req.body, "REQ BODY AVITO");
+    const { email, mobile_phone, first_name, last_name, id } = req.body;
     regular = /(\+7|8)[\s]*(\d{3})[\s]*(\d{3})[\s-]?(\d{2})[\s-]?(\d{2})/gm;
     const mobile_phone_reg = mobile_phone.replace(regular, "$1 ($2) $3-$4-$5");
     const newUser = await UserInfo.create({
@@ -201,19 +192,12 @@ console.log(req.body, 'REQ BODY AVITO')
       last_name: last_name,
       user_id: +id,
     });
-    console.log(newUser, ' NEW ITEM ADD')
+    console.log(newUser, " NEW ITEM ADD");
     res.json(newUser);
   } catch (err) {
     res.sendStatus(501);
   }
 });
-
-
-
-
-
-
-
 
 router.route("/profile/info/:id").get(async (req, res) => {
   try {
