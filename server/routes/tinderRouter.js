@@ -119,12 +119,17 @@ router.route("/like/:id").get(async (req, res) => {
 
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
 
-  // console.log(allLikeFromBackNonFiltered[0])
-  // console.log(allLike[0].User.UserInfo.email, "123123123231323123123");
-  const allLikeFromBack = allLikeFromBackNonFiltered.filter(
-    (el) => el.whoLiked_id === +req.params.id
-  );
-  console.log(allLikeFromBack)
+  const oneUser = await User.findOne({ where: { id: +req.params.id } });
+  console.log(allLikeFromBackNonFiltered[0]);
+
+  const allLikeFromBack = allLikeFromBackNonFiltered.filter((el) => {
+    if (oneUser.userType === "user") {
+      return el.whoLiked_id === +req.params.id;
+    } else {
+      return el.authorAnimal_id === +req.params.id;
+    }
+  });
+  console.log(allLikeFromBack);
 
   res.json({ allLikeFromBack });
 });
@@ -164,14 +169,15 @@ const requestForLikes = {
       include: [
         {
           model: User,
-          attributes: ["login", "id"],
+          include: { model: UserInfo },
+          attributes: ["login", "id", "userType"],
         },
         { model: Breed, attributes: ["breed_title"] },
         { model: Type, attributes: ["type_title"] },
         { model: Sex, attributes: ["sex"] },
       ],
     },
-    { model: User, attributes: ["login", "id"], include: { model: UserInfo } },
+    { model: User, attributes: ["login", "id", "userType"], include: { model: UserInfo } },
   ],
   attributes: ["id", "animal_id", "user_id", "createdAt", "updatedAt", "status"],
 };
