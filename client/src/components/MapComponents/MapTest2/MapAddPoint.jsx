@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MapAddPoint({ setPoint, point, cords }) {
+function MapAddPoint({ setPoint, point, cords, modal, setModal }) {
   const [title, setTitle] = useState("");
 
 
@@ -68,6 +68,7 @@ function MapAddPoint({ setPoint, point, cords }) {
     setTitle('')
     setDesc('')
     setPoint('')
+    setModal(false)
   }
 console.log(file, 'IMAGE')
 

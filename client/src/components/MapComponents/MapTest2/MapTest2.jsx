@@ -5,12 +5,14 @@ import Chat from "../../ChatComponents/Chat/Chat";
 import NavBar from "../../Navbar/Navbar";
 import { getAllPoints } from "../../redux/ac/mapAc";
 import MapAddPoint from "./MapAddPoint";
+import MyModal from "../../MyModal/MyModal";
+import {Button} from "@mui/material";
 
 const mapState = { center: [55.831903, 37.411961], zoom: 10 };
 
 const PlacemarkDemo = () => {
   const [cords, setCords] = useState([]);
-
+  const [modal, setModal] = useState(false)
   const [point, setPoint] = useState([]);
 
   const tags = useSelector((state) => state.map);
@@ -37,6 +39,10 @@ const PlacemarkDemo = () => {
         <h1> О площадке {selected?.geotags_title}</h1>
         <p>{selected?.description}</p>
       </div>
+            <Button onClick={() => setModal(true)}>Создать метку</Button>
+            <MyModal visible={modal} setVisible={setModal}>
+             <MapAddPoint setPoint={setPoint} point={point} cords={cords} modal={modal} setModal={setModal}/>
+            </MyModal>
       {/* )} */}
       <YMaps
         query={{
@@ -45,6 +51,10 @@ const PlacemarkDemo = () => {
         version={"2.1"}
       >
         <Map
+            options={{
+
+            zIndex: 0
+            }}
           defaultState={mapState}
           width="500px"
           height="400px"
@@ -95,7 +105,6 @@ const PlacemarkDemo = () => {
               }}
             /> */}
 
-          <MapAddPoint setPoint={setPoint} point={point} cords={cords} />
           {tags?.length &&
             tags?.map((el, index) => (
               <Placemark

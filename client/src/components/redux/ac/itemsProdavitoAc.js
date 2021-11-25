@@ -60,7 +60,6 @@ export const getMyGoods = (id) => async (dispatch) => {
     .then((res) => {
       return dispatch(setMyGoods(res.data))
     })
-
     .catch((err) => console.log(err));
 };
 
@@ -70,7 +69,6 @@ export const deleteGood = (id) => async (dispatch) => {
   const delGood = await axios.delete(`/prodavito/goods/${id}`);
   dispatch({ type: DELETE_GOOD, payload: id });
 };
-
 
 export const addNewGood =
   (good_title, description, file, price, category, id) => async (dispatch) => {
