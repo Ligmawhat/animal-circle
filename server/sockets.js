@@ -14,11 +14,11 @@ const onConnection = (socket) => {
     log('User connected')
 
     const { roomId } = socket.handshake.query
+
     socket.roomId = roomId
 
     socket.join(roomId)
-
-    registerMessageHandlers(io, socket)
+    registerMessageHandlers(io, socket, roomId)
     registerUserHandlers(io, socket)
 
     socket.on('disconnect', () => {
