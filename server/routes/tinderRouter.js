@@ -86,7 +86,7 @@ router.route("/like/:id").get(async (req, res) => {
   const allLike = await Like.findAll(requestForLikes);
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
   const allLikeFromBack = allLikeFromBackNonFiltered.filter(
-    (el) => el.authorAnimal_id === +req.params.id
+    (el) => el.whoLiked_id === +req.params.id
   );
   res.json({ allLikeFromBack });
 });
