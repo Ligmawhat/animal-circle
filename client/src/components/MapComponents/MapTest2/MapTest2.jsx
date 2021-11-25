@@ -7,12 +7,14 @@ import { getAllPoints } from "../../redux/ac/mapAc";
 import MapAddPoint from "./MapAddPoint";
 import MyModal from "../../MyModal/MyModal";
 import {Button} from "@mui/material";
+import MyModalTwo from "../../MyModalTwo/MyModalTwo";
 
 const mapState = { center: [55.831903, 37.411961], zoom: 10 };
 
 const PlacemarkDemo = () => {
   const [cords, setCords] = useState([]);
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
+  const [modalTwo, setModalTwo] = useState(false)
   const [point, setPoint] = useState([]);
 
   const tags = useSelector((state) => state.map);
@@ -25,6 +27,7 @@ const PlacemarkDemo = () => {
   }, []);
 
   const onPlaceMarkClick = (e, el) => {
+    setModalTwo(true)
     e.preventDefault();
     setSelected(el);
   };
@@ -35,10 +38,12 @@ const PlacemarkDemo = () => {
       <Chat />
 
       {/* {selected && ( */}
+        <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
       <div>
         <h1> О площадке {selected?.geotags_title}</h1>
         <p>{selected?.description}</p>
       </div>
+        </MyModalTwo>
             <Button onClick={() => setModal(true)}>Создать метку</Button>
             <MyModal visible={modal} setVisible={setModal}>
              <MapAddPoint setPoint={setPoint} point={point} cords={cords} modal={modal} setModal={setModal}/>

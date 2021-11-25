@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllGoods, setAllGoods } from "../../redux/ac/itemsProdavitoAc";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import ViewGoods from "../ViewGoods/ViewGoods";
-import ProdavitoForm from "../ProdavitoForm/ProdavitoForm";
 
 const Prodavito = () => {
   const dispatch = useDispatch();

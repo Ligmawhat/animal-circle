@@ -6,7 +6,7 @@ const myDogsReducer = (state = [], action) => {
     case SET_ALL_MY_DOGS:
       return payload;
     case ADD_NEW_DOG:
-      return payload;
+      return [...state, payload]
     default:
       return state;
   }

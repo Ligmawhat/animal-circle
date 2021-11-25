@@ -17,6 +17,18 @@ const Likes = () => {
     };
   }, []);
 
+  console.log(whoLikedMyDog, 'WHO')
+const deleteHandler = () => {
+      //logika udaenia
+}
+
+const sendHandler = ( ) => {
+
+
+      // dispatch(approveSelectedDogs())
+
+}
+
   return (
     <>
       <NavBar />
@@ -25,27 +37,68 @@ const Likes = () => {
         <Button>Search</Button>
       </div>
       <hr />
+        {currUser.usertype === 'user' ? <Grid container spacing={2} sx={{ mt: 5 }}>
+            <Grid item xs={12} md={9}>
+                <ProfileNav />
+            </Grid>
+            <Grid item xs={12} md={9} sx={{ ml: 40 }}>
+                {whoLikedMyDog.length > 0 &&
+                whoLikedMyDog.map((el) => (
+                    <Card
+                        sx={{ maxWidth: 300, height: 500 }}
+                        style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}
+                    >
+                        <p>
+                            Вы {el.whoLiked} лайкнули собаку по имени {el.name}, её порода: {el.breed}, её id{" "}
+                            {el.id}. Она содержится в приюте: {el.authorAnimal}, их id: {el.authorAnimal_id}
+                        </p>
+                        <CardMedia component="img" height="194" image={`http://localhost:3001/dogs/${el.url}`} alt="Paella dish" />
+                        <Button
+                            onClick={() => deleteHandler() }>   Delete  </Button>
+                        {el?.status ?
+                            <Button
+                                disabled >   Send  </Button>
+                            :
+                            <Button onClick={() => sendHandler() } >   Send  </Button>
+                        }
 
-      <Grid container spacing={2} sx={{ mt: 5 }}>
-        <Grid item xs={12} md={9}>
-          <ProfileNav />
+                    </Card>
+                ))}
+            </Grid>
         </Grid>
-        <Grid item xs={12} md={9} sx={{ ml: 40 }}>
-          {whoLikedMyDog.length > 0 &&
-            whoLikedMyDog.map((el) => (
-              <Card
-                sx={{ maxWidth: 300, height: 500 }}
-                style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}
-              >
-                <p>
-                  Вы({el.whoLiked}) лайкнули собаку по имени {el.name}, её порода: {el.breed}, её id{" "}
-                  {el.id}. Она содержится в приюте: {el.authorAnimal}, их id: {el.authorAnimal_id}
-                </p>
-                <CardMedia component="img" height="194" image={el.url} alt="Paella dish" />
-              </Card>
-            ))}
-        </Grid>
-      </Grid>
+
+            :
+
+            <Grid container spacing={2} sx={{ mt: 5 }}>
+            <Grid item xs={12} md={9}>
+                <ProfileNav />
+            </Grid>
+            <Grid item xs={12} md={9} sx={{ ml: 40 }}>
+                {whoLikedMyDog.length > 0 &&
+                whoLikedMyDog.map((el) => (
+                    <Card
+                        sx={{ maxWidth: 300, height: 500 }}
+                        style={{ display: "flex", flexDirection: "column", justifyContent: "space-around" }}
+                    >
+                        <p>
+                            Вы {el.whoLiked} лайкнули собаку по имени {el.name}, её порода: {el.breed}, её id{" "}
+                            {el.id}. Она содержится в приюте: {el.authorAnimal}, их id: {el.authorAnimal_id}
+                        </p>
+                        <CardMedia component="img" height="194" image={`http://localhost:3001/dogs/${el.url}`} alt="Paella dish" />
+                        <Button
+                            onClick={() => deleteHandler() }>   Delete  </Button>
+                        {el?.status ?
+                            <Button
+                                disabled >   Send  </Button>
+                            :
+                            <Button onClick={() => sendHandler() } >   Send  </Button>
+                        }
+
+                    </Card>
+                ))}
+            </Grid>
+        </Grid>}
+
     </>
   );
 };
