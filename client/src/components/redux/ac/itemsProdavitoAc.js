@@ -58,6 +58,7 @@ export const setMyGoods = (value) => ({
 export const getMyGoods = (id) => async (dispatch) => {
   axios(`/prodavito/myGoods/${id}`)
     .then((res) => {
+
       return dispatch(setMyGoods(res.data))
     })
     .catch((err) => console.log(err));

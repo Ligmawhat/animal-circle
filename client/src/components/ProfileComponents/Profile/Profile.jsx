@@ -1,11 +1,8 @@
 import { Grid, Input, Button, Paper } from "@mui/material";
 import React from "react";
-import { useSelector } from "react-redux";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
-import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
-// import MyDog from "../MyDogs/MyDogs";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,

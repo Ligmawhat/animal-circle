@@ -21,7 +21,7 @@ const MyGoods = () => {
   const { myGoods } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  console.log(myGoods);
+  // console.log(myGoods);
   useEffect(() => {
     dispatch(getMyGoods(id));
     return () => {
