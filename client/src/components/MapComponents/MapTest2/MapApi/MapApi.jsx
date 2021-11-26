@@ -1,44 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { YMaps, Map, Placemark } from 'react-yandex-maps'
-import { getAllPoints } from '../../../redux/ac/mapAc'
-import MapAddPoint from '../MapAddPoint'
-import './MapApi.css'
-import MyModalTwo from '../../../MyModalTwo/MyModalTwo'
-import MyModal from '../../../MyModal/MyModal'
-import { Button } from '@mui/material'
-import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { YMaps, Map, Placemark } from "react-yandex-maps";
+import { getAllPoints } from "../../../redux/ac/mapAc";
+import MapAddPoint from "../MapAddPoint";
+import "./MapApi.css";
+import MyModalTwo from "../../../MyModalTwo/MyModalTwo";
+import MyModal from "../../../MyModal/MyModal";
+import { Button } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 
-import Typography from '@mui/material/Typography'
+import Typography from "@mui/material/Typography";
 
-const mapState = { center: [55.75878128393811, 37.6221334934233], zoom: 12 }
+const mapState = { center: [55.75878128393811, 37.6221334934233], zoom: 12 };
 
 export const MapApi = () => {
-  const [cords, setCords] = useState([])
-  const [modal, setModal] = useState(false)
-  const [modalTwo, setModalTwo] = useState(false)
-  const [point, setPoint] = useState([])
+  const [cords, setCords] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [modalTwo, setModalTwo] = useState(false);
+  const [point, setPoint] = useState([]);
 
-  const tags = useSelector((state) => state.map)
+  const tags = useSelector((state) => state.map);
 
-  const [selected, setSelected] = useState(null)
-  const dispatch = useDispatch()
+  const [selected, setSelected] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllPoints())
-  }, [])
+    dispatch(getAllPoints());
+  }, []);
 
   const onPlaceMarkClick = (e, el) => {
-    e.preventDefault()
-    setModalTwo(true)
-    setSelected(el)
-  }
+    e.preventDefault();
+    setModalTwo(true);
+    setSelected(el);
+  };
 
   return (
-    <div style={{ zIndex: '400' }} draggable={false}>
+    <div
+      style={{
+        justifyContent: "center",
+        flexDirection: "column",
+        display: "flex",
+        alignItems: "center",
+        zIndex: "400",
+      }}
+      draggable={false}
+    >
       {/* <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
         <div>
           <h1> О площадке {selected?.geotags_title}</h1>
@@ -65,7 +74,6 @@ export const MapApi = () => {
         </Card>
       </MyModalTwo>
 
-      <Button onClick={() => setModal(true)}>Создать метку</Button>
       <MyModal visible={modal} setVisible={setModal}>
         <MapAddPoint
           setPoint={setPoint}
@@ -81,9 +89,9 @@ export const MapApi = () => {
         width="600px"
         height="600px"
         query={{
-          apikey: 'a1d74d39-8cef-45bf-b08e-15d2c7d52345',
+          apikey: "a1d74d39-8cef-45bf-b08e-15d2c7d52345",
         }}
-        version={'2.1'}
+        version={"2.1"}
       >
         <Map
           options={{
@@ -96,24 +104,24 @@ export const MapApi = () => {
           instanceRef={(ref) => {}}
           onClick={(ev) => (
             ev.preventDefault(),
-            setCords({ lat: ev.get('coords')[0], lon: ev.get('coords')[1] }),
+            setCords({ lat: ev.get("coords")[0], lon: ev.get("coords")[1] }),
             setPoint(
               <Placemark
                 geometry={{
-                  type: 'Point',
-                  coordinates: [ev.get('coords')[0], ev.get('coords')[1]],
+                  type: "Point",
+                  coordinates: [ev.get("coords")[0], ev.get("coords")[1]],
                 }}
                 properties={{
-                  hintContent: 'Stack Overflow',
-                  balloonContent: 'Stack Overflow на русском',
+                  hintContent: "Stack Overflow",
+                  balloonContent: "Stack Overflow на русском",
                 }}
                 options={{
-                  iconLayout: 'default#image',
-                  iconImageHref: './paw6.png',
+                  iconLayout: "default#image",
+                  iconImageHref: "./paw6.png",
                   iconImageSize: [50, 35],
                   iconImageOffset: [-25, -18],
                 }}
-              />,
+              />
             )
           )}
         >
@@ -123,23 +131,28 @@ export const MapApi = () => {
               <Placemark
                 key={el.id}
                 geometry={{
-                  type: 'Point',
+                  type: "Point",
                   coordinates: [el.latitude, el.longitude],
                 }}
                 onClick={(e) => onPlaceMarkClick(e, el)}
-                properties={{
-                  // hintContent: 'Stack Overflow',
-                  // balloonContent: 'Stack Overflow на русском',
-                }}
+                properties={
+                  {
+                    // hintContent: 'Stack Overflow',
+                    // balloonContent: 'Stack Overflow на русском',
+                  }
+                }
                 options={{
-                  iconLayout: 'default#image',
-                  iconImageHref: './snoopy5.png',
+                  iconLayout: "default#image",
+                  iconImageHref: "./snoopy5.png",
                   iconImageSize: [50, 35],
                 }}
               />
             ))}
         </Map>
       </YMaps>
+      <div className="buton_add_met" onClick={() => setModal(true)}>
+        Создать метку
+      </div>
     </div>
-  )
-}
+  );
+};

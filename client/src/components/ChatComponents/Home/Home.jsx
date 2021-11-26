@@ -34,7 +34,7 @@ export function Home() {
   const trimmed = username?.trim();
 
   return (
-    <>
+    <div className='chat_form'>
       {openChat ? (
         <ChatRoom roomId={roomId} />
       ) : (
@@ -66,6 +66,6 @@ export function Home() {
           )}
         </Form>
       )}
-    </>
+    </div>
   );
 }
