@@ -1,0 +1,12 @@
+.sign_home_page {
+  align-content: center;
+  padding-top: 8%;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  background-size: 480px;
+  background-position: bottom left 10px;
+  background-repeat: no-repeat;
+  background-image: url("http://localhost:3000/styleEmg/snoopy-e-woodstook-1007x1024.png");
+}

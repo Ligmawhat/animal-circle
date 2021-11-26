@@ -26,20 +26,20 @@ const useStyles = makeStyles((theme: Theme) =>
 export const TextInput = () => {
     const classes = useStyles();
     return (
-        <>
-            <form className={classes.wrapForm}  noValidate autoComplete="off">
-            <TextField
-                id="standard-text"
-                label="メッセージを入力"
-                className={classes.wrapText}
-                //margin="normal"
-            />
-            <Button variant="contained" color="primary" className={classes.button}>
-                <SendIcon />
-            </Button>
-            </form>
-        </>
-    )
+     
+        <form className={classes.wrapForm} noValidate autoComplete="off">
+          <TextField
+            id="standard-text"
+            label="メッセージを入力"
+            className={classes.wrapText}
+            //margin="normal"
+          />
+          <Button variant="contained" color="primary" className={classes.button}>
+            <SendIcon />
+          </Button>
+        </form>
+
+    );
 }
 
 
