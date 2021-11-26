@@ -73,7 +73,6 @@ router.post("/new", async (req, res) => {
     let sampleFile = req.files.file;
     sampleFile.name = Date.now() + ".jpg";
     let uploadPath = `${process.env.PWD}/public/dogs/${sampleFile.name}`;
-    console.log(uploadPath, "UPLOAD DOGS");
     sampleFile.mv(uploadPath, function (err) {
       if (err) return res.status(500).send(err);
     });
@@ -88,7 +87,6 @@ router.post("/new", async (req, res) => {
       type_id: 1,
       breed_id: +onebreed,
     });
-    console.log(newDog, " NEW ITEM ADD");
     res.json(newDog);
   } catch (err) {
     res.sendStatus(501);
@@ -116,12 +114,8 @@ router.route("/myDogs/:id").get(async (req, res) => {
 
 router.route("/like/:id").get(async (req, res) => {
   const allLike = await Like.findAll(requestForLikes);
-
   const allLikeFromBackNonFiltered = allLike.map((el) => new Likes(el));
-
   const oneUser = await User.findOne({ where: { id: +req.params.id } });
-  console.log(allLikeFromBackNonFiltered[0]);
-
   const allLikeFromBack = allLikeFromBackNonFiltered.filter((el) => {
     if (oneUser.userType === "user") {
       return el.whoLiked_id === +req.params.id;
@@ -129,8 +123,6 @@ router.route("/like/:id").get(async (req, res) => {
       return el.authorAnimal_id === +req.params.id;
     }
   });
-  console.log(allLikeFromBack);
-
   res.json({ allLikeFromBack });
 });
 
@@ -150,7 +142,6 @@ router.route("/sexBreed").post(async (req, res) => {
 
 router.route("/likedog").post(async (req, res) => {
   try {
-    console.log(req.body);
     const newLike = await Like.create({
       user_id: req.session.userId,
       animal_id: req.body.id,

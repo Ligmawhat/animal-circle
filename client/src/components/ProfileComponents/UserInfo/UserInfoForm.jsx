@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Avatar from "@material-ui/core/Avatar";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { addNewGood, getAllCategories } from "../../redux/ac/itemsProdavitoAc";
 import { addUserInfo } from "../../redux/ac/userInfoAc";
 
 const useStyles = makeStyles((theme) => ({
@@ -53,28 +45,25 @@ function UserInfoForm() {
   const [email, setEmail] = useState("");
   const [mobile_phone, setMobilePhone] = useState("");
 
-  const [first_name, setFirstName] = useState('');
+  const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const classes = useStyles();
 
-  const [file, setFile] = useState(null)
-
+  const [file, setFile] = useState(null);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addUserInfo(email, mobile_phone, file, first_name, last_name, currUser.id));
-    setEmail('')
-    setMobilePhone('')
-    setFirstName('')
-    setLastName('')
-    setFile('')
+    setEmail("");
+    setMobilePhone("");
+    setFirstName("");
+    setLastName("");
+    setFile("");
   };
 
-
   const onFileChange = (e) => {
-    setFile(e.target.files[0])
-  }
-
+    setFile(e.target.files[0]);
+  };
 
   return (
     <>
@@ -137,12 +126,12 @@ function UserInfoForm() {
                   <Grid item xs={12}>
                     <TextField
                       variant="outlined"
-                required
-                fullWidth
-                id="url"
-                type="file"
-                name="file"
-                onChange={(e) => onFileChange(e)}
+                      required
+                      fullWidth
+                      id="url"
+                      type="file"
+                      name="file"
+                      onChange={(e) => onFileChange(e)}
                     />
                   </Grid>
                 </Grid>

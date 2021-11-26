@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Grid, Input, Button, Paper } from "@mui/material";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
-import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
 import UserInfoForm from "./UserInfoForm";
 import UserInfoText from "./UserInfoText";
