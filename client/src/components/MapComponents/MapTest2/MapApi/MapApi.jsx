@@ -11,13 +11,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-
 import Typography from '@mui/material/Typography';
-
-
-
-
-
 
 const mapState = { center: [55.831903, 37.411961], zoom: 10 };
 
@@ -39,11 +33,9 @@ export const MapApi = () => {
   const onPlaceMarkClick = (e, el) => {
     setModalTwo(true);
     e.preventDefault();
-      console.log(el)
     setSelected(el);
   };
 
-    console.log(selected?.url)
   return (
     <div style={{ zIndex: "400" }} draggable={false}>
       {/* <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
