@@ -15,7 +15,6 @@ const ProdavitoItem = ({ el, setCard, setModals }) => {
 
 
   return (
-
           <a className="cardprodavito" onClick={() => (setCard(el), setModals(true))}>
               <div className="cardprodavito__background"
                    style={{backgroundImage: `url(http://localhost:3001/items/${el?.url})`}}></div>
@@ -24,8 +23,6 @@ const ProdavitoItem = ({ el, setCard, setModals }) => {
                   <h3 className="cardprodavito__heading">Цена: {el?.price}₽</h3>
               </div>
           </a>
-
-
   );
 };
 

@@ -14,7 +14,7 @@ const Chat = () => {
   return (
     <div>
       <Container style={{ maxWidth: "512px" }}>
-        <h1 className="mt-2 text-center">React Chat App</h1>
+        <h1 className="mt-2 text-center">SnoopChat</h1>
         {routes.map(({ path, Component }) => (
           <Route key={path} path={path} exact>
             <Component />
