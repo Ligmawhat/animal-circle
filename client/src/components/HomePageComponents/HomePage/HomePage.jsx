@@ -10,18 +10,27 @@ import Tinder from "../Tinder/Tinder";
 const HomePage = () => {
   const history = useHistory();
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>Logo</h1>
+    <div className="first_home_page">
+      {/* <h1 style={{ textAlign: "center" }}>Logo</h1> */}
       <div className="Card">
-        <Link to="/prodavito">
-          <Sale />
-        </Link>
-        <Link to="/meeting">
-          <Tinder />
-        </Link>
-        <Link to="/apishka">
-          <Walk />
-        </Link>
+        <div>
+          <Link to="/prodavito">
+            <Sale />
+          </Link>
+        </div>
+        <div>
+          <Link to="/meeting">
+            <Tinder />
+          </Link>
+        </div>
+        <div>
+          <Link to="/apishka">
+            <Walk />
+          </Link>
+        </div>
+      </div>
+      <div className="first_home_page_logo ">
+        Snoopy
       </div>
     </div>
   );

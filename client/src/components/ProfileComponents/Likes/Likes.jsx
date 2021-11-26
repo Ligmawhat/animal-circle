@@ -1,3 +1,4 @@
+
 import React from 'react';
 import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -57,24 +58,37 @@ export const PostCardDemo = React.memo(function PostCard() {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getWhoLikedMyDog(currUser.id))
-    return () => {
-      dispatch(setWhoLikedMyDog([]))
-    }
-  }, [])
+    dispatch(getWhoLikedMyDog(currUser.id));
+    // return () => {
+    //   dispatch(setWhoLikedMyDog([]))
+    // }
+  }, []);
 
-  console.log(whoLikedMyDog, 'WHO')
+  console.log(whoLikedMyDog, "WHO");
   const deleteHandler = () => {
     //logika udaenia
-  }
+  };
+  const func = () => {
+    for (let i = 0; i < oneDog.length; i++) {
+      for (let j = 0; j < whoLikedMyDog.length; j++) {
+        if (oneDog[i].id === whoLikedMyDog[j].id) {
+          oneDog.splice(i, 1);
+        }
+      }
+    }
+    return oneDog;
+  };
+  func();
+  console.log(func(oneDog));
 
   const sendHandler = (id) => {
-    dispatch(approveSelectedDogs(id))
-  }
+    dispatch(approveSelectedDogs(id));
+  };
 
 
   return (
     <>
+
     <NavBar />
       <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
         <Input />
@@ -84,6 +98,7 @@ export const PostCardDemo = React.memo(function PostCard() {
       <Grid item xs={12} md={9}>
         <ProfileNav />
       </Grid>
+
 
 
 
@@ -172,3 +187,4 @@ disabled>
 })
 
 export default PostCardDemo;
+
