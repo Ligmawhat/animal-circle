@@ -39,8 +39,11 @@ export const MapApi = () => {
   const onPlaceMarkClick = (e, el) => {
     setModalTwo(true);
     e.preventDefault();
+      console.log(el)
     setSelected(el);
   };
+
+    console.log(selected?.url)
   return (
     <div style={{ zIndex: "400" }} draggable={false}>
       {/* <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
@@ -54,8 +57,8 @@ export const MapApi = () => {
       <CardMedia
         component="img"
         height="140"
-        image={`http://localhost:3001/${selected?.url}`}
-        alt="green iguana"
+        image={`http://localhost:3001/places/${selected?.url}`}
+        alt=""
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

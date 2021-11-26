@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ProdavitoInModal = ({el}) => {
+    console.log(el)
 
     return (
 
@@ -17,6 +18,9 @@ const ProdavitoInModal = ({el}) => {
                         </p>
                         <p className="text-gray-700 text-base">
                             {el?.price}
+                        </p>
+                        <p className="text-gray-700 text-base">
+
                         </p>
                     </div>
 
