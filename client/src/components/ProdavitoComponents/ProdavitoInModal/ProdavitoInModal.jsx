@@ -7,7 +7,10 @@ const ProdavitoInModal = ({el}) => {
 
         <div className="flex justify-center items-center h-screen">
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                <img className="w-full" src={`http://localhost:3001/items/${el?.url}`} alt="Sunset in the mountains"/>
+                <img src={`http://localhost:3001/items/${el?.url}`} alt="Sunset in the mountains"
+                    maxwidth="300px"
+                    maxheight="100px"
+                />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
                         <p className="text-gray-700 text-base">
