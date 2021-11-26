@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Good, Category, User } = require("../src/db/models");
+const { Good, Category, User, UserInfo } = require("../src/db/models");
 const Goods = require("../src/DTO/Goods");
 
 router.route("/").get(async (req, res) => {
@@ -8,11 +8,17 @@ router.route("/").get(async (req, res) => {
     const allGoodsNonShuffle = await Good.findAll({
       include: [
         { model: Category, attributes: ["category_title"] },
-        { model: User, attributes: ["login"] },
+        {
+          model: User,
+          attributes: ["login", "id", "userType"],
+          include: { model: UserInfo },
+        },
       ],
     });
     const allGoods = allGoodsNonShuffle.map((el) => new Goods(el));
+    console.log(allGoodsNonShuffle[0]);
     let allGoodsFromBack = shuffle(allGoods);
+    console.log(allGoods[0]);
     res.json({ allCategoryFromBack, allGoodsFromBack });
   } catch (err) {
     res.sendStatus(501);
@@ -24,7 +30,14 @@ router.route("/:id").get(async (req, res) => {
     const id = req.params.id;
     const allGoodsForOneCategory = await Good.findAll({
       where: { category_id: id },
-      include: [Category, User],
+      include: [
+        { model: Category, attributes: ["category_title", "id"] },
+        {
+          model: User,
+          attributes: ["login", "id", "userType"],
+          include: { model: UserInfo },
+        },
+      ],
     });
     const allGoodsForOneCategoryFromBack = allGoodsForOneCategory.map((el) => new Goods(el));
     res.json({ allGoodsForOneCategoryFromBack });
@@ -72,8 +85,8 @@ router.post("/new", async (req, res) => {
     sampleFile.mv(uploadPath, function (err) {
       if (err) return res.status(500).send(err);
     });
-console.log(req.body, 'REQ BODY AVITO')
-    const { good_title, description, price, category, id } = req.body
+    console.log(req.body, "REQ BODY AVITO");
+    const { good_title, description, price, category, id } = req.body;
     const newItem = await Good.create({
       good_title: good_title,
       description: description,
@@ -82,7 +95,7 @@ console.log(req.body, 'REQ BODY AVITO')
       category_id: category,
       user_id: req.session.userId,
     });
-    console.log(newItem, ' NEW ITEM ADD')
+    console.log(newItem, " NEW ITEM ADD");
     res.json(newItem);
   } catch (err) {
     res.sendStatus(501);
