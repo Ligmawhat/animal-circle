@@ -6,28 +6,15 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-
+import './style.css'
 const Sale = () => {
   return (
-    <div>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://www.iphones.ru/wp-content/uploads/2019/02/avito-otvet-logo-1.jpg"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              AvitoCard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Покупка/Продажа животных
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+    <div class="home_card_container">
+      <div class="home_content">
+        <h1>SnoopIto</h1>
+        <h3>Магазин</h3>
+      </div>
+      <div class="home_flap"></div>
     </div>
   );
 };

@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap");
+
+.home_card_container {
+  position: relative;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 400px;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 50% 50% 50% 50%;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0b2;
+}
+
+.home_content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  transform: translatey(-50%);
+  text-align: justify;
+  color: black;
+  padding: 40px;
+  font-family: "Merriweather", serif;
+}
+
+.home_card_container h1 {
+  font-weight: 900;
+  text-align: center;
+}
+
+.home_card_container h3 {
+  font-weight: 300;
+  text-align: center;
+}
+
+.home_flap {
+  width: 100%;
+  height: 100%;
+}
+
+.home_flap::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 50%;
+  background: url("http://localhost:3000/styleEmg/Daco_4277659.png") white;
+  background-position: 60px;
+  background-repeat: no-repeat;
+  background-size: 350px;
+  transition: 1s;
+}
+
+.home_flap::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 50%;
+  right: 0;
+  background: url("http://localhost:3000/styleEmg/Daco_4277659.png") white;
+  background-position: -140px;
+  background-repeat: no-repeat;
+  transition: 1s;
+  background-size: 350px;
+}
+
+.home_card_container:hover .home_flap::after {
+  transform: translatex(300px);
+}
+
+.home_card_container:hover .home_flap::before {
+  transform: translatex(-300px);
+}
