@@ -49,30 +49,31 @@ export const MapApi = () => {
       draggable={false}
     >
       {/* <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
+
         <div>
           <h1> О площадке {selected?.geotags_title}</h1>
           <p>{selected?.description}</p>
         </div>
       </MyModalTwo> */}
-      <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
-        <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={`http://localhost:3001/places/${selected?.url}`}
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {selected?.geotags_title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {selected?.description}
-            </Typography>
-          </CardContent>
-          <CardActions></CardActions>
-        </Card>
-      </MyModalTwo>
+            <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
+                <Card sx={{ maxWidth: 345 }}>
+                    <CardMedia
+                        component="img"
+                        height="140"
+                        image={`http://localhost:3001/places/${selected?.url}`}
+                        alt="green iguana"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {selected?.geotags_title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {selected?.description}
+                        </Typography>
+                    </CardContent>
+                    <CardActions></CardActions>
+                </Card>
+            </MyModalTwo>
 
       <MyModal visible={modal} setVisible={setModal}>
         <MapAddPoint
@@ -156,3 +157,4 @@ export const MapApi = () => {
     </div>
   );
 };
+

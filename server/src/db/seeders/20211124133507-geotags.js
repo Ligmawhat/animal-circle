@@ -111,8 +111,8 @@ module.exports = {
      * Add seed commands here.
      *
      * Example:
-  
-    */
+
+     */
   },
 
   down: async (queryInterface, Sequelize) => {

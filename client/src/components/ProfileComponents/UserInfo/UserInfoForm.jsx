@@ -68,10 +68,10 @@ function UserInfoForm() {
   return (
     <>
       {userInfo ? (
-        <>вы уже заполняли профиль</>
+        <></>
       ) : (
         <>
-          <>вы не заполняли профиль</>
+          <>Пожалуйста, заполните профиль</>
           <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>

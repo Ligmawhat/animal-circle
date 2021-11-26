@@ -18,6 +18,11 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import axios from "axios";
 import "./style.css";
+import HomeIcon from '@mui/icons-material/Home';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 const useStyles = makeStyles({
   button: {
@@ -130,29 +135,29 @@ export default function NavBar() {
           {currUser.id ? (
             <>
               <Typography className="navName" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Привет, {currUser.login}!
+                Привет {currUser.login}
               </Typography>
-              <Button
-                sx={{ mr: "1em" }}
-                className={classes.butto}
-                // component={Link}
-                // to="/user/logout"
-                variant="outlined"
-                color="inherit"
-                onClick={(e) => logHandler(e)}
-              >
-                Logout
-              </Button>
 
               <Button
                 sx={{ mr: "1em" }}
                 className={classes.butto}
                 component={Link}
                 to="/user/profile"
-                variant="outlined"
+                variant=""
                 color="inherit"
               >
-                Личный кабинет
+                <AccountCircleSharpIcon />
+              </Button>
+              <Button
+                sx={{ mr: "1em" }}
+                className={classes.butto}
+                // component={Link}
+                // to="/user/logout"
+                variant=""
+                color="inherit"
+                onClick={(e) => logHandler(e)}
+              >
+                <ExitToAppIcon />
               </Button>
             </>
           ) : (
@@ -162,11 +167,11 @@ export default function NavBar() {
                 className={classes.butto}
                 component={Link}
                 to="/user/signup"
-                variant="outlined"
+                variant=""
                 color="inherit"
                 // style={{margin: '1em' }}
               >
-                Sign Up
+                <PersonAddAltIcon />
               </Button>
 
               <Button
@@ -174,21 +179,21 @@ export default function NavBar() {
                 className={classes.butto}
                 component={Link}
                 to="/user/login"
-                variant="outlined"
+                variant=""
                 color="inherit"
               >
-                Login
+                <MeetingRoomIcon />
               </Button>
             </>
           )}
           <Button
             sx={{ mr: "1em" }}
             className={classes.butto}
-            variant="outlined"
+            variant=""
             color="inherit"
             onClick={() => history.push("/")}
           >
-            main
+           <HomeIcon />
           </Button>
         </Toolbar>
       </AppBar>
