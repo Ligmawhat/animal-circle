@@ -5,9 +5,9 @@ const sexReducer = (state = [], action) => {
   switch (type) {
     case SET_ALL_SEX:
       return payload;
-    default: {
+    default: 
       return state;
-    }
+    
   }
 };
 

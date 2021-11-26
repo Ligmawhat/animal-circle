@@ -7,6 +7,7 @@ import {
   CHANGE_DOG,
   ADD_NEW_DOG,
   WHO_LIKED_MY_DOG,
+  APPROVE_DOG,
 } from '../types/tinderType'
 
 export const setAllBreed = (value) => ({
@@ -113,4 +114,10 @@ export const getWhoLikedMyDog = (id) => async (dispatch) => {
 
     })
     .catch((err) => console.log(err))
+}
+
+
+export const approveSelectedDogs = (id) =>  async (dispatch) => {
+  axios.post('/tinder/changestatus', {id})
+  dispatch({type: APPROVE_DOG, payload: id})
 }
