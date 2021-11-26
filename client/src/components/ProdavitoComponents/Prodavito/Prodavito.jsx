@@ -21,11 +21,6 @@ const Prodavito = () => {
   return (
     <>
       <NavBar />
-      <div style={{ display: "flex", justifyContent: "flex-start" }}>
-        <Input />
-        <Button>Search</Button>
-      </div>
-      <hr />
       <Grid container spacing={2} sx={{ mt: 5 }}>
         <Grid item xs={12} md={3}>
           <CategoriesList />

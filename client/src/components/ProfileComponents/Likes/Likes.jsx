@@ -81,16 +81,11 @@ export const PostCardDemo = React.memo(function PostCard() {
   return (
     <>
       <NavBar />
-      <div style={{ display: "flex", justifyContent: "flex-start" }}>
-        <Input />
-        <Button>Search</Button>
-      </div>
-      <hr />
       <Grid item xs={12} md={9}>
         <ProfileNav />
       </Grid>
 
-      {currUser.usertype === "any"
+      {currUser.usertype === "user"
         ? whoLikedMyDog.length > 0 &&
           whoLikedMyDog.map((el) => (
             <Card sx={{ my: "50px" }} className={cx(cardStyles.root, shadowStyles.root)}>
