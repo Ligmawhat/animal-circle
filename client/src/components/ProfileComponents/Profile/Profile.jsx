@@ -14,11 +14,6 @@ const Profile = () => {
   return (
     <>
       <NavBar />
-      <div style={{ display: "flex", justifyContent: "flex-start" }}>
-        <Input />
-        <Button>Search</Button>
-      </div>
-      <hr />
       <Grid item xs={12} md={3}>
         <ProfileNav />
       </Grid>

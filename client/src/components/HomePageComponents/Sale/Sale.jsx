@@ -12,7 +12,7 @@ const Sale = () => {
     <div class="home_card_container">
       <div class="home_content">
         <h1>SnoopIto</h1>
-        <h3>Магазин</h3>
+        <h3></h3>
       </div>
       <div class="home_flap"></div>
     </div>
