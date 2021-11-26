@@ -3,13 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Grid, Input, Button, Paper } from "@mui/material";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
-import { useHistory } from "react-router";
 import ProfileNav from "../ProfileNav/ProfileNav";
-import ViewGoods from "../../ProdavitoComponents/ViewGoods/ViewGoods";
 import AddMyGood from "./AddMyGood";
-import { deleteGood, getMyGoods, setMyGoods } from "../../redux/ac/itemsProdavitoAc";
-import ProdavitoItem from "../../ProdavitoComponents/ProdavitoItem/ProdavitoItem";
-import MyGoodsItem from "./MyGoodsItem";
+import { getMyGoods } from "../../redux/ac/itemsProdavitoAc";
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -25,11 +21,7 @@ const MyGoods = () => {
   // console.log(myGoods);
   useEffect(() => {
     dispatch(getMyGoods(id));
-    // return () => {
-    //   dispatch(setMyGoods([]));
-    // };
-  }, [dispatch]);
-
+  }, []);
 
   return (
     <>
@@ -50,7 +42,10 @@ const MyGoods = () => {
               <AddMyGood />
             </Grid>
             <Grid item xs={12} md={9}>
-              {myGoods?.length > 0 && myGoods?.map((el) => <MyGoodsItem key={el.id} el={el} />)}
+              <ul>
+                {/* {myGoods?.length > 0 && myGoods?.map((el) => <MyGoodsItem key={el.id} el={el} />)} */}
+                {myGoods?.length > 0 && myGoods?.map((el) => <li key={el.id}>{el.title}</li>)}
+              </ul>
             </Grid>
           </Grid>
         </Grid>

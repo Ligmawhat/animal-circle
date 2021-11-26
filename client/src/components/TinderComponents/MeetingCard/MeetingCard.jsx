@@ -1,17 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  IconButton,
-  Typography,
-} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ClearIcon from "@mui/icons-material/Clear";
 import { useDispatch, useSelector } from "react-redux";
 import { changeDog, changeDogAndGetId, getOneDog } from "../../redux/ac/tinderAc";
 import { useSprings, animated, to as interpolate } from "react-spring";
