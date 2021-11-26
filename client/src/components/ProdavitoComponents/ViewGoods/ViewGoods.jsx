@@ -3,6 +3,8 @@ import ProdavitoItem from "../ProdavitoItem/ProdavitoItem";
 import { styled } from "@mui/material/styles";
 import MyModal from "../../MyModal/MyModal";
 import {useState} from "react";
+import './style.css'
+import ProdavitoInModal from "../ProdavitoInModal/ProdavitoInModal";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -20,18 +22,19 @@ const [card, setCard] = useState('')
   return (
       <>
       <MyModal visible={modal} setVisible={setModals} >
-          <ProdavitoItem el={card}/>
+          <ProdavitoInModal el={card}/>
       </MyModal>
-    <Grid container spacing={2}>
+<div className='container'>
+
+          <div className="card-grid">
       {goods?.length > 0 &&
         goods?.map((el) => (
-          <Grid key={el.id} item xs={6} md={4}>
-            <Item onClick={() => (setCard(el), setModals(true))}>
-              <ProdavitoItem el={el} />
-            </Item>
-          </Grid>
+              <ProdavitoItem setCard={setCard} setModals={setModals} el={el} />
+
         ))}
-    </Grid>
+          </div>
+
+</div>
       </>
   );
 };

@@ -5,7 +5,7 @@ import { getAllCategories } from "../../redux/ac/itemsProdavitoAc";
 import ProdavitoCategory from "../ProdavitoCategory/ProdavitoCategory";
 import { useHistory } from "react-router";
 import { styled } from "@mui/material/styles";
-
+import './style.css'
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -21,21 +21,17 @@ const CategoriesList = () => {
     dispatch(getAllCategories());
   }, []);
   return (
-    <Grid container direction="column" spacing={2} xs={4} md={3} position="fixed">
-      <Grid item>
-        <Item>
-          <Button onClick={() => history.push(`/prodavito`)}>Все категории</Button>
-        </Item>
-      </Grid>
+      <nav>
+      <ul>
+
       {categories?.length &&
         categories?.map((el) => (
-          <Grid key={el.id} item>
-            <Item>
+
               <ProdavitoCategory el={el} />
-            </Item>
-          </Grid>
+
         ))}
-    </Grid>
+      </ul>
+      </nav>
   );
 };
 
