@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 
 const mapState = { center: [55.831903, 37.411961], zoom: 10 };
 
+
 export const MapApi = () => {
   const [cords, setCords] = useState([]);
   const [modal, setModal] = useState(false);
