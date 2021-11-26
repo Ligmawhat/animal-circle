@@ -63,9 +63,9 @@ export const PostCardDemo = React.memo(function PostCard() {
   };
   const func = () => {
     for (let i = 0; i < oneDog.length; i++) {
-      for (let j = 0; j < whoLikedMyDog.length; j++) {
-        if (oneDog[i].id === whoLikedMyDog[j].id) {
-          oneDog.splice(i, 1);
+      for (let j = 0; j < whoLikedMyDog?.length; j++) {
+        if (oneDog[i]?.id === whoLikedMyDog[j]?.id) {
+          oneDog?.splice(i, 1);
         }
       }
     }
@@ -135,12 +135,12 @@ export const PostCardDemo = React.memo(function PostCard() {
                 />
               </CardContent>
               <Box px={2} pb={2} mt={-1}>
-                <IconButton>
+                {/* <IconButton>
                   <Share />
                 </IconButton>
                 <IconButton>
                   <FavoriteBorderRounded />
-                </IconButton>
+                </IconButton> */}
               </Box>
             </Card>
           ))}
