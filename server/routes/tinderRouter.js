@@ -162,6 +162,18 @@ router.route("/likedog").post(async (req, res) => {
   }
 });
 
+router.route('/changestatus').post(async (req, res) => {
+  console.log(req.body, 'bodyreq');
+  try {
+    const changeStatus = await Like.update({status: true}, {where: {id: req.body.id}, returning: true})
+    console.log(changeStatus, 'statusChange');
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(501);
+  }
+})
+
 const requestForLikes = {
   include: [
     {

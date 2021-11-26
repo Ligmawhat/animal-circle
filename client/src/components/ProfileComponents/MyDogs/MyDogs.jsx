@@ -8,7 +8,7 @@ import { Grid, Input, Button, Paper } from "@mui/material";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
 import ProfileNav from "../ProfileNav/ProfileNav";
-const Item = styled(Paper)(({ theme }) => ({
+const item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",

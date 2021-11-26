@@ -7,6 +7,18 @@ import './MapApi.css'
 import MyModalTwo from "../../../MyModalTwo/MyModalTwo";
 import MyModal from "../../../MyModal/MyModal";
 import { Button } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+
+import Typography from '@mui/material/Typography';
+
+
+
+
+
+
 const mapState = { center: [55.831903, 37.411961], zoom: 10 };
 
 export const MapApi = () => {
@@ -31,11 +43,31 @@ export const MapApi = () => {
   };
   return (
     <div style={{ zIndex: "400" }} draggable={false}>
-      <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
+      {/* <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
         <div>
           <h1> О площадке {selected?.geotags_title}</h1>
           <p>{selected?.description}</p>
         </div>
+      </MyModalTwo> */}
+      <MyModalTwo visible={modalTwo} setVisible={setModalTwo}>
+         <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={`http://localhost:3001/${selected?.url}`}
+        alt="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {selected?.geotags_title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        {selected?.description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+      </CardActions>
+    </Card>
       </MyModalTwo>
       
       <Button onClick={() => setModal(true)}>Создать метку</Button>
