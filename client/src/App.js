@@ -22,6 +22,8 @@ axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.withCredentials = true;
 
 function App() {
+
+  console.log(1)
   return (
     // <div>
       <Router>
