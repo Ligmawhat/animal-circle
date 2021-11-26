@@ -18,6 +18,26 @@ router.route("/").get(async (req, res) => {
       ],
     });
     let allDogFromBack = allDog.map((dog) => new Animals(dog));
+    // console.log(allDogFromBack.length, "первоначальное количество собак");
+    // let allMyDogNon = await Like.findAll({ where: { user_id: req.session.userId } });
+    // let allMyDoggggg = allMyDogNon.map((el) => el.animal_id).sort((a, b) => a - b);
+    // console.log(allMyDoggggg);
+    // const func = (a, b) => {
+    //   for (let i = 0; i < 16; i++) {
+    //     for (let j = 0; j < 16; j++) {
+    //       if (a[i].id === b[j]) {
+    //         console.log(b[j]);
+    //         a.splice(i, 1);
+    //       }
+    //     }
+    //   }
+    //   return a;
+    // };
+
+    // func(allDogFromBack, allMyDoggggg);
+    // allDogFromBack.reverse();
+    // console.log(allDogFromBack.length, "количество всех собак");
+    // console.log(allMyDoggggg.length, "количество лайкнутых мною собак");
     res.json({ allDogFromBack, allBreedFromBack, allSexFromBack });
   } catch (err) {
     res.sendStatus(501);
@@ -153,17 +173,20 @@ router.route("/likedog").post(async (req, res) => {
   }
 });
 
-router.route('/changestatus').post(async (req, res) => {
-  console.log(req.body, 'bodyreq');
+router.route("/changestatus").post(async (req, res) => {
+  console.log(req.body, "bodyreq");
   try {
-    const changeStatus = await Like.update({status: true}, {where: {id: req.body.id}, returning: true})
-    console.log(changeStatus, 'statusChange');
+    const changeStatus = await Like.update(
+      { status: true },
+      { where: { id: req.body.id }, returning: true }
+    );
+    console.log(changeStatus, "statusChange");
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.sendStatus(501);
   }
-})
+});
 
 const requestForLikes = {
   include: [

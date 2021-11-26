@@ -16,11 +16,14 @@ import MyGoods from "./components/ProfileComponents/MyGoods/MyGoods";
 import Profile from "./components/ProfileComponents/Profile/Profile";
 import UserInfo from "./components/ProfileComponents/UserInfo/UserInfo";
 import Likes from "./components/ProfileComponents/Likes/Likes";
+import PostCardDemo, { SocialCardDemo } from "./components/ProfileComponents/Likes/Likes";
 
 axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.withCredentials = true;
 
 function App() {
+
+  console.log(1)
   return (
     // <div>
       <Router>
@@ -39,7 +42,7 @@ function App() {
         <Route exact path="/user/profile/info" component={UserInfo} />
         <Route exact path="/user/profile/myDogs" component={MyDogs} />
         <Route exact path="/user/profile/myGoods" component={MyGoods} />
-        <Route exact path="/user/profile/likes" component={Likes} />
+        <Route exact path="/user/profile/likes" component={PostCardDemo} />
       </Router>
     // </div>
   );

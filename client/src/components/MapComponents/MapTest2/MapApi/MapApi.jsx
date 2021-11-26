@@ -76,69 +76,69 @@ export const MapApi = () => {
                 />
             </MyModal>
             <YMaps
-                border-radius="50% 50% 50% 50%"
-                width="600px"
-                height="600px"
-                query={{
-                    apikey: 'a1d74d39-8cef-45bf-b08e-15d2c7d52345',
+    border-radius="50% 50% 50% 50%"
+    width="600px"
+    height="600px"
+    query={{
+        apikey: 'a1d74d39-8cef-45bf-b08e-15d2c7d52345',
+    }}
+    version={'2.1'}
+>
+    <Map
+        options={{
+            zIndex: 0,
+        }}
+        defaultState={mapState}
+        width="600px"
+        height="600px"
+        onLoad={(ymaps) => console.log(ymaps)}
+        instanceRef={(ref) => {}}
+        onClick={(ev) => (
+            ev.preventDefault(),
+                setCords({ lat: ev.get('coords')[0], lon: ev.get('coords')[1] }),
+                setPoint(
+                    <Placemark
+                        geometry={{
+                            type: 'Point',
+                            coordinates: [ev.get('coords')[0], ev.get('coords')[1]],
+                        }}
+                        properties={{
+                            hintContent: 'Stack Overflow',
+                            balloonContent: 'Stack Overflow на русском',
+                        }}
+                        options={{
+                            iconLayout: 'default#image',
+                            iconImageHref: './paw6.png',
+                            iconImageSize: [50, 35],
+                            iconImageOffset: [-25, -18],
+                        }}
+                    />,
+                )
+        )}
+    >
+        {point}
+        {tags?.length &&
+        tags?.map((el, index) => (
+            <Placemark
+                key={el.id}
+                geometry={{
+                    type: 'Point',
+                    coordinates: [el.latitude, el.longitude],
                 }}
-                version={'2.1'}
-            >
-                <Map
-                    options={{
-                        zIndex: 0,
-                    }}
-                    defaultState={mapState}
-                    width="600px"
-                    height="600px"
-                    onLoad={(ymaps) => console.log(ymaps)}
-                    instanceRef={(ref) => {}}
-                    onClick={(ev) => (
-                        ev.preventDefault(),
-                            setCords({ lat: ev.get('coords')[0], lon: ev.get('coords')[1] }),
-                            setPoint(
-                                <Placemark
-                                    geometry={{
-                                        type: 'Point',
-                                        coordinates: [ev.get('coords')[0], ev.get('coords')[1]],
-                                    }}
-                                    properties={{
-                                        hintContent: 'Stack Overflow',
-                                        balloonContent: 'Stack Overflow на русском',
-                                    }}
-                                    options={{
-                                        iconLayout: 'default#image',
-                                        iconImageHref: './paw6.png',
-                                        iconImageSize: [50, 35],
-                                        iconImageOffset: [-25, -18],
-                                    }}
-                                />,
-                            )
-                    )}
-                >
-                    {point}
-                    {tags?.length &&
-                    tags?.map((el, index) => (
-                        <Placemark
-                            key={el.id}
-                            geometry={{
-                                type: 'Point',
-                                coordinates: [el.latitude, el.longitude],
-                            }}
-                            onClick={(e) => onPlaceMarkClick(e, el)}
-                            properties={{
-                                // hintContent: 'Stack Overflow',
-                                // balloonContent: 'Stack Overflow на русском',
-                            }}
-                            options={{
-                                iconLayout: 'default#image',
-                                iconImageHref: './snoopy5.png',
-                                iconImageSize: [50, 35],
-                            }}
-                        />
-                    ))}
-                </Map>
-            </YMaps>
-        </div>
-    )
+                onClick={(e) => onPlaceMarkClick(e, el)}
+                properties={{
+                    // hintContent: 'Stack Overflow',
+                    // balloonContent: 'Stack Overflow на русском',
+                }}
+                options={{
+                    iconLayout: 'default#image',
+                    iconImageHref: './snoopy5.png',
+                    iconImageSize: [50, 35],
+                }}
+            />
+        ))}
+    </Map>
+</YMaps>
+</div>
+)
 }

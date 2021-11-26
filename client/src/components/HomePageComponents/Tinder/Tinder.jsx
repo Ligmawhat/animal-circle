@@ -4,28 +4,15 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-
+import './style.css'
 const Tinder = () => {
   return (
-    <div>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="https://tinder.com/static/tinder.png"
-            alt="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              TinderCard
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Тиндер для собак
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+    <div class="tinder_card_container">
+      <div class="tinder_content">
+        <h1> SnoopInder</h1>
+        <h3>Найди себе собаку</h3>
+      </div>
+      <div class="tinder_flap"></div>
     </div>
   );
 };
