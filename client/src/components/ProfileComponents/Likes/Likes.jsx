@@ -1,6 +1,19 @@
-import { Input, Button, Grid, CardMedia } from '@mui/material'
-import React, { useEffect } from 'react'
-import { Card } from 'react-bootstrap'
+import React from 'react';
+import cx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteBorderRounded from '@material-ui/icons/FavoriteBorderRounded';
+import Share from '@material-ui/icons/Share';
+import { useSoftRiseShadowStyles } from '@mui-treasury/styles/shadow/softRise';
+import { useSlopeCardMediaStyles } from '@mui-treasury/styles/cardMedia/slope';
+import { useN01TextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/n01';
+import TextInfoContent from '@mui-treasury/components/content/textInfo';
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import NavBar from '../../Navbar/Navbar'
 import {
@@ -9,8 +22,37 @@ import {
   setWhoLikedMyDog,
 } from '../../redux/ac/tinderAc'
 import ProfileNav from '../ProfileNav/ProfileNav'
+import { Input, Button, Grid } from '@mui/material'
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import UnsubscribeIcon from '@mui/icons-material/Unsubscribe';
 
-const Likes = () => {
+
+const useStyles = makeStyles(() => ({
+  root: {
+    maxWidth: 304,
+    margin: 'auto',
+
+  },
+  content: {
+    padding: 24,
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    border: '2px solid #fff',
+    margin: '-48px 32px 0 auto',
+    '& > img': {
+      margin: 0,
+    },
+  },
+}));
+
+export const PostCardDemo = React.memo(function PostCard() {
+  const cardStyles = useStyles();
+  const mediaStyles = useSlopeCardMediaStyles();
+  const shadowStyles = useSoftRiseShadowStyles();
+  const textCardContentStyles = useN01TextInfoContentStyles();
+
   const { whoLikedMyDog, currUser } = useSelector((state) => state)
 
   const dispatch = useDispatch()
@@ -30,9 +72,10 @@ const Likes = () => {
     dispatch(approveSelectedDogs(id))
   }
 
+
   return (
     <>
-      <NavBar />
+    <NavBar />
       <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
         <Input />
         <Button>Search</Button>
@@ -41,85 +84,91 @@ const Likes = () => {
       <Grid item xs={12} md={9}>
         <ProfileNav />
       </Grid>
-      {currUser.usertype === 'user' ? (
-        <Grid container spacing={2} sx={{ mt: 5 }}>
-          <Grid item xs={12} md={9} sx={{ ml: 40 }}>
-            {whoLikedMyDog.length > 0 &&
-              whoLikedMyDog.map((el) => (
-                <Card
-                  sx={{ maxWidth: 300, height: 500 }}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-around',
-                  }}
-                >
-                  <p>
-                    Вы {el.whoLiked} лайкнули собаку по имени {el.name}, её
-                    порода: {el.breed}. Она содержится в приюте:{' '}
-                    {el.authorAnimal}
-                  </p>
-                  <CardMedia
-                    component="img"
-                    height="194"
-                    image={`http://localhost:3001/dogs/${el.url}`}
-                    alt="Paella dish"
-                  />
-                  <Button onClick={() => deleteHandler()}> Delete </Button>
-                  {el?.status ? (
-                    <Button disabled> Send </Button>
-                  ) : (
-                    <Button onClick={() => sendHandler(el.id)}> Send </Button>
-                  )}
-                </Card>
-              ))}
-          </Grid>
-        </Grid>
-      ) : (
-        <Grid container spacing={2} sx={{ mt: 5 }}>
-          <Grid item xs={12} md={9} sx={{ ml: 40 }}>
-            {whoLikedMyDog.length > 0 &&
-              whoLikedMyDog.map((el) =>
-                el.status === true ? (
-                  <Card
-                    sx={{ maxWidth: 300, height: 500 }}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-around',
-                    }}
-                  >
-                    <ul>
-                      <li>Потенциальный опекун: {el.whoLiked}</li>
-                      <li>Потенциальный выбор: {el.name}</li>
-                      <li>Электронная почта пользователя: {el.user_email}</li>
-                      <li>Контактный номер пользователя: {el.user_mobile_phone}</li>
 
-                      <li>
-                        <CardMedia
-                          component="img"
-                          height="95"
-                          image={`http://localhost:3001/dogs/${el.url}`}
-                        />
-                      </li>
-                    </ul>
 
-                    {/* <Button onClick={() => deleteHandler()}> Delete </Button>
-                    {el?.status ? (
-                      <Button disabled> Send </Button>
-                    ) : (
-                      <Button onClick={() => sendHandler(el.id)}> Send </Button>
-                    )} */}
-                  </Card>
-                ) : (
-                  ''
-                ),
-              )}
-          </Grid>
-        </Grid>
-      )}
+
+    
+    { currUser.usertype === 'any' ? whoLikedMyDog.length > 0 &&
+              whoLikedMyDog.map((el) => (<Card sx={{ my: '50px' }} className={cx(cardStyles.root, shadowStyles.root)}>
+      <CardMedia
+        classes={mediaStyles}
+        image={`http://localhost:3001/dogs/${el.url}`
+        }
+      />
+      {/* <Avatar className={cardStyles.avatar} src={'https://i.pravatar.cc/300'} /> */}
+      <CardContent className={cardStyles.content}>
+        <TextInfoContent
+          classes={textCardContentStyles}
+          heading={el.breed}
+          body={   `Собака содержится в приюте: ${el.authorAnimal} `
+          }
+        />
+      </CardContent>
+      <Box sx={{display: 'flex',
+      justifyContent: 'space-between'}}>
+
+
+
+
+
+
+        <IconButton>
+       <UnsubscribeIcon
+        onClick={() => deleteHandler()} />
+        </IconButton>
+
+
+
+{el?.status ?   (<IconButton
+disabled>
+        <ForwardToInboxIcon
+        onClick={() => sendHandler(el.id)}
+         />
+        </IconButton>)   :   (<IconButton>
+        <ForwardToInboxIcon
+        onClick={() => sendHandler(el.id)}
+         />
+        </IconButton>) }
+        
+        
+
+
+
+
+      </Box>
+    </Card>)) : whoLikedMyDog.length > 0 &&
+              whoLikedMyDog.map((el) => (<Card sx={{ my: '50px' }} className={cx(cardStyles.root, shadowStyles.root)}>
+      <CardMedia
+        classes={mediaStyles}
+        image={`http://localhost:3001/dogs/${el.url}`
+        }
+      />
+      <Avatar className={cardStyles.avatar} src={'https://i.pravatar.cc/300'} />
+      <CardContent className={cardStyles.content}>
+        <TextInfoContent
+          classes={textCardContentStyles}
+          heading={el.name}
+          body={  `Потенциальный опекун: ${el.whoLiked}\n
+           Электронная почта пользователя: ${el.user_email}\n
+           Контактный номер пользователя: ${el.user_mobile_phone}`
+          }
+        />
+      </CardContent>
+      <Box px={2} pb={2} mt={-1}>
+        <IconButton>
+          <Share />
+        </IconButton>
+        <IconButton>
+          <FavoriteBorderRounded />
+        </IconButton>
+      </Box>
+    </Card>))}
+
+
+    
+
     </>
-  )
-}
+  );
+})
 
-export default Likes
+export default PostCardDemo;
