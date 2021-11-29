@@ -15,7 +15,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { currGoogleUser, getCurrUser } from "../redux/ac/currUserAc";
 import { useDispatch } from "react-redux";
-import './style.css'
+import "./style.css";
 const useStyles = makeStyles((theme) => ({
   "@global": {
     body: {
@@ -53,34 +53,24 @@ const Login = () => {
   const [logPass, setLogPass] = useState("");
   const [userType, setUserType] = useState("");
 
-
-  const loginWithGoogle =  (e) => {
+  const loginWithGoogle = (e) => {
     e.preventDefault();
-// axios('/user/google')
-
-
-
+    // axios('/user/google')
 
     // window.open(`${process.env.REACT_APP_API_URL}/user/signIn`, "_self")
-    window.open(`${process.env.REACT_APP_API_URL}/user/google`, "_self")
+    window.open(`${process.env.REACT_APP_API_URL}/user/google`, "_self");
     // window.open('http://localhost:3001/user/google')
-dispatch(currGoogleUser())
+    dispatch(currGoogleUser());
+  };
 
+  //   const checkAuth = async () => {
+  //     const response = await fetch(`${process.env.REACT_APP_API_URL}/user/checkAuth`, {
+  //       credentials: 'include'
+  //     });
+  //     const currentuser = await response.json();
+  //     dispatch(getCurrentUser(currentuser))
 
-
-      }
-
-
-    //   const checkAuth = async () => {
-    //     const response = await fetch(`${process.env.REACT_APP_API_URL}/user/checkAuth`, {
-    //       credentials: 'include'
-    //     });
-    //     const currentuser = await response.json();
-    //     dispatch(getCurrentUser(currentuser))
-  
-    // }
-
-
+  // }
 
   const login = (e) => {
     e.preventDefault(e);
@@ -97,7 +87,8 @@ dispatch(currGoogleUser())
       if (res.data.id) {
         return (
           // localStorage.setItem('user', JSON.stringify(res.data)),
-          history.replace("/"), dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
+          history.replace("/user/profile"),
+          dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
         );
       } else {
         history.push("/failed");

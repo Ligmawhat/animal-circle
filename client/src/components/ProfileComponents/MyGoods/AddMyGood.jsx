@@ -78,96 +78,105 @@ function AddMyGood() {
   };
 
 return (
-    <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        {/* <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate> */}
-        <form onSubmit={(e) => submitHandler(e)}
-          className={classes.form}
-          method="post"
-          encType="multipart/form-data" noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                autoComplete="name"
-                variant="outlined"
-                required
-                fullWidth
-                id="name"
-                label="Название товара"
-                autoFocus
-                type="text"
-                onChange={(e) => setTitle(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="Описание товара"
-                type="text"
-                id="desc"
-                onChange={(e) => setDesc(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="url"
-                type="file" 
-                name="file"
-               onChange={(e)=>onFileChange(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                label="Цена товара"
-                type="text"
-                id="price"
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </Grid>
+  <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
+    <CssBaseline />
+    <div className={classes.paper}>
+      {/* <form onSubmit={(e) => submitHandler(e)} className={classes.form} noValidate> */}
+      <form
+        onSubmit={(e) => submitHandler(e)}
+        className={classes.form}
+        method="post"
+        encType="multipart/form-data"
+        noValidate
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              autoComplete="name"
+              variant="outlined"
+              required
+              fullWidth
+              id="name"
+              label="Название товара"
+              autoFocus
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </Grid>
-          <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-              <InputLabel sx={{ my: 2 }} id="demo-simple-select-label">
-                Категория товара
-              </InputLabel>
-              <Select
-                sx={{ my: 2 }}
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Категория товара"
-                onChange={(e) => setCat(e.target.value)}
-              >
-                {categories?.length &&
-                  categories?.map((el) => (
-                    <MenuItem key={el.id} value={el.id}>
-                      {el.category_title}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
-          </Box>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Добавить товар
-          </Button>
-        </form>
-      </div>
-    </Container>
-  );
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              label="Описание товара"
+              type="text"
+              id="desc"
+              onChange={(e) => setDesc(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <div class="file-input">
+              <input
+                variant="outlined"
+                required
+                fullWidth
+                type="file"
+                id="file"
+                class="file"
+                onChange={(e) => onFileChange(e)}
+              />
+              <label for="file">
+                Select file
+                <p class="file-name"></p>
+              </label>
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              label="Цена товара"
+              type="text"
+              id="price"
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </Grid>
+        </Grid>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel sx={{ my: 2 }} id="demo-simple-select-label">
+              Категория товара
+            </InputLabel>
+            <Select
+              sx={{ my: 2 }}
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Категория товара"
+              onChange={(e) => setCat(e.target.value)}
+            >
+              {categories?.length &&
+                categories?.map((el) => (
+                  <MenuItem key={el.id} value={el.id}>
+                    {el.category_title}
+                  </MenuItem>
+                ))}
+            </Select>
+          </FormControl>
+        </Box>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Добавить товар
+        </Button>
+      </form>
+    </div>
+  </Container>
+);
 }
 
 export default AddMyGood;
