@@ -71,7 +71,9 @@ function UserInfoForm() {
         <></>
       ) : (
         <>
-          <>Пожалуйста, заполните профиль</>
+          <div style={{ fontSize: "30px" }} className="first_home_page_logo ">
+            Пожалуйста, заполните профиль
+          </div>
           <Container sx={{ ml: 80 }} component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
@@ -124,15 +126,13 @@ function UserInfoForm() {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      variant="outlined"
-                      required
-                      fullWidth
-                      id="url"
-                      type="file"
-                      name="file"
-                      onChange={(e) => onFileChange(e)}
-                    />
+                    <div class="file-input">
+                      <input type="file" id="file" class="file" onChange={(e) => onFileChange(e)} />
+                      <label for="file">
+                        Select file
+                        <p class="file-name"></p>
+                      </label>
+                    </div>
                   </Grid>
                 </Grid>
                 <Button

@@ -17,43 +17,37 @@ const ProfileNav = () => {
 
   return (
     <>
-      { currUser.usertype === 'user' ?  ( <Grid container direction="column" spacing={2} xs={4} md={3} position="fixed">
-        <Grid item xs={12} md={3}>
-          <Item>
-            <Button onClick={() => history.push(`/user/profile/info`)}>Личная информация</Button>
-          </Item>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Item>
-            <Button onClick={() => history.push(`/user/profile/myGoods`)}>
-              Добавить товар
-            </Button>
-          </Item>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Item>
-            <Button onClick={() => history.push(`/user/profile/likes`)}>Избранное</Button>
-          </Item>
-        </Grid>
-      </Grid> )  :  ( <Grid container direction="column" spacing={2} xs={4} md={3} position="fixed">
-            <Grid item xs={12} md={3}>
-              <Item>
-                <Button onClick={() => history.push(`/user/profile/info`)}>Личная информация</Button>
-              </Item>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Item>
-                <Button onClick={() => history.push(`/user/profile/myDogs`)}> Добавить собаку </Button>
-              </Item>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Item>
-                <Button onClick={() => history.push(`/user/profile/likes`)}> Потенциальные опекуны </Button>
-              </Item>
-            </Grid>
-          </Grid> )}
+      {currUser.usertype === "user" ? (
+        <nav>
+          <ul>
+            <li onClick={() => history.push(`/user/profile/info`)}>
+              <span>Личная Информация</span>
+            </li>
 
+            <li onClick={() => history.push(`/user/profile/myGoods`)}>
+              <span>Добавить Товар</span>
+            </li>
 
+            <li onClick={() => history.push(`/user/profile/likes`)}>
+              <span>Избранное</span>
+            </li>
+          </ul>
+        </nav>
+      ) : (
+        <nav>
+          <ul>
+            <li onClick={() => history.push(`/user/profile/info`)}>
+              <span>Личная Информация</span>
+            </li>
+
+            <li onClick={() => history.push(`/user/profile/myDogs`)}>
+              <span>Добавить Собаку</span>{" "}
+            </li>
+
+            <li onClick={() => history.push(`/user/profile/likes`)}> <span>Потенциальные опекуны</span> </li>
+          </ul>
+        </nav>
+      )}
     </>
   );
 };

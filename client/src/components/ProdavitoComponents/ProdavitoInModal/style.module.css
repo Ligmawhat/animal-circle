@@ -1,0 +1,47 @@
+.myModal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 6000;
+}
+
+.myModalContent {
+  padding: 25px;
+  position: relative;
+ height: 653px;
+  width: 57%;
+
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 16px;
+  min-width: 250px;
+  background-size: 90% 25%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  border-style: double;
+}
+
+.myModal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inModal {
+  background-color: rgb(255 255 255 / 78%);
+
+}
+.topmodal {
+  position: absolute;
+  top: -11%;
+  width: 60%;
+  height: 100px;
+  background-size: 80% 100%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-image: url("http://localhost:3000/styleEmg/Daco_942128.png");
+}

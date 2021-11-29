@@ -24,6 +24,7 @@ const ProdavitoItem = ({ el, setCard, setModals }) => {
                   <h3 className="cardprodavito__heading">Цена: {el?.price}₽</h3>
               </div>
           </a>
+          
   );
 };
 

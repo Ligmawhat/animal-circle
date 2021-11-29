@@ -65,6 +65,20 @@
       "userId": "r1ohSLPD",
       "messageText": "fff",
       "senderName": "Misha"
+    },
+    {
+      "messageId": "JNO-UwyK",
+      "createdAt": "2021-11-26T14:21:46.656Z",
+      "userId": "xPdxR-Md",
+      "messageText": "привет, есть кто на площадке?",
+      "senderName": "Ilona"
+    },
+    {
+      "messageId": "PouWYnYI",
+      "createdAt": "2021-11-26T14:22:14.426Z",
+      "userId": "t3bq6Cia",
+      "messageText": "я сейчас на площадке, на площадке больше никого нет😉😉",
+      "senderName": "Tapac"
     }
   ],
   "Хамовники": [
@@ -131,13 +145,22 @@
       "userId": "sdGza5-_",
       "messageText": "123",
       "senderName": "John"
+    }
+  ],
+  "для прогулки с Беном": [
+    {
+      "messageId": "nP4dxERa",
+      "createdAt": "2021-11-28T13:01:51.687Z",
+      "userId": "pbCmxG95",
+      "messageText": "йоу всем привет есть тут?",
+      "senderName": "Anton"
     },
     {
-      "messageId": "UL8BsvK6",
-      "createdAt": "2021-11-26T08:23:02.638Z",
-      "userId": "twPdt_mI",
-      "messageText": "mn mnmnbmj",
-      "senderName": "jhvjkhbv "
+      "messageId": "E4gLUn9G",
+      "createdAt": "2021-11-28T13:02:38.848Z",
+      "userId": "f1iY-V3a",
+      "messageText": "да я тут",
+      "senderName": "laskoviy"
     }
   ]
 }

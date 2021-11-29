@@ -49,12 +49,6 @@ export default function SignUp() {
   let history = useHistory();
   const dispatch = useDispatch();
 
-  
-
-
-
-
-
   const register = (e) => {
     e.preventDefault(e);
     axios({
@@ -69,7 +63,7 @@ export default function SignUp() {
       if (res.data.id) {
         return (
           localStorage.setItem("user", JSON.stringify(res.data)),
-          history.replace("/"),
+          history.replace("/user/profile"),
           dispatch(getCurrUser(res.data.id, res.data.log, res.data.userType))
         );
       } else {
