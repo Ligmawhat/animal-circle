@@ -1,5 +1,16 @@
 # animal-circle
 
-Проект социальной направленности, который позволяет выбрать собаку из приюта, купить все необходимое в разделе "маркет", а также найти площадки на Яндекс картах для выгула своего питомца и единомышленников для общения в чатах. Реализована механика свайпов (как в Тиндер)
+## How to start
+
+* Clone repository
+
+* switch folder to 'server', type 'npm i'
+
+* switch folder to 'client', type 'npm i'
+
+after all packages and dependencies being installed, start the project using 
+
+* 'npm start' in folder 'client'
+* 'npm run dev' in folder 'server'
 
 ![Свайп анимация](./swipes.gif)
