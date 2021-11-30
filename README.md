@@ -14,3 +14,11 @@ after all packages and dependencies being installed, start the project using
 * 'npm run dev' in folder 'server'
 
 ![Свайп анимация](./swipes.gif)
+
+![Chat animation](./snoopChat.gif)
+ 
+ ![Market animation](./snoopMarket.gif)
+
+
+ ![Addpoint animation](./addPoint.gif)
+addPoint.gif
