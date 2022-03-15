@@ -3,7 +3,6 @@ import { useRef, useEffect } from 'react'
 import { ListGroup } from 'react-bootstrap'
 // components
 import { MessageListItem } from './MessageListItem'
-import '../../style.css'
 const listStyles = {
   height: '60vh',
   border: '1px solid rgba(0,0,0,.4)',

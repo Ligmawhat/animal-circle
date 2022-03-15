@@ -1,8 +1,8 @@
 import { CardMedia } from "@material-ui/core";
 import { CardContent, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo, setUserInfo } from "../../redux/ac/userInfoAc";
+import { getUserInfo } from "../../redux/ac/userInfoAc";
 
 const UserInfoText = () => {
   const { currUser } = useSelector((state) => state);
@@ -11,9 +11,6 @@ const UserInfoText = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserInfo(currUser.id));
-    // return () => {
-    //   dispatch(setUserInfo([]));
-    // };
   }, []);
   return (
     <>
@@ -28,7 +25,6 @@ const UserInfoText = () => {
             component="img"
         height="194"
         image= {`http://localhost:3001/useravatars/${userInfo?.avatar}`}>
-            
           </CardMedia>
         </CardContent>
       ) : (

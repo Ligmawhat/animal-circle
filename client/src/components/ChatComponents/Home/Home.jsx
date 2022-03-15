@@ -1,6 +1,4 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
-// styles
 import { Form, Button } from "react-bootstrap";
 import { useLocalStorage } from "../../../hooks";
 import { useSelector } from "react-redux";
@@ -9,9 +7,6 @@ import { ChatRoom } from "../ChatRoom";
 export function Home() {
   const { currUser } = useSelector((state) => state);
   const { map } = useSelector((state) => state);
-  // console.log(map)
-  // console.log(map.geotags_title)
-  console.log(currUser.login);
   const [username, setUsername] = useLocalStorage("username", `${currUser.login}`);
   const [roomId, setRoomId] = useState("");
   const linkRef = useRef(null);
@@ -53,10 +48,6 @@ export function Home() {
               {map?.map((el) => (
                 <option value={el.geotags_title}>{el.geotags_title}</option>
               ))}
-              {/*<option value="free">Free</option>*/}
-              {/*<option value="job" disabled>*/}
-              {/*  Job*/}
-              {/*</option>*/}
             </Form.Control>
           </Form.Group>
           {trimmed && (

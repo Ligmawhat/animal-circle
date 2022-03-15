@@ -1,8 +1,6 @@
 import React from 'react';
 import './style.css'
 const ProdavitoInModal = ({el}) => {
-    console.log(el)
-
     return (
       <div class="card-container">
         <div class="card u-clearfix">

@@ -84,8 +84,6 @@ const MeetingCard = () => {
             id={oneDog[i].id}
             style={{
               transform: interpolate([rot, scale], trans),
-              // backgroundImage: `url(http://localhost:3001/dogs/${oneDog[i].url})`,
-              // backgroundImage: `url(${oneDog[i].url})`,
             }}
           >
             <div className="insideCard">

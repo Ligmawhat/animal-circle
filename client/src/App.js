@@ -23,9 +23,8 @@ axios.defaults.withCredentials = true;
 
 function App() {
 
-  console.log(1)
+
   return (
-    // <div>
       <Router>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/user/login" component={Login} />
@@ -36,15 +35,12 @@ function App() {
         <Route exact path="/meeting" component={Meeting} />
         <Route exact path="/apishka" component={PlacemarkDemo} />
         <Route exact path="/apishka/:roomId" component={Chat} />
-
         <Route exact path="/user/profile" component={Profile} />
-
         <Route exact path="/user/profile/info" component={UserInfo} />
         <Route exact path="/user/profile/myDogs" component={MyDogs} />
         <Route exact path="/user/profile/myGoods" component={MyGoods} />
         <Route exact path="/user/profile/likes" component={PostCardDemo} />
       </Router>
-    // </div>
   );
 }
 

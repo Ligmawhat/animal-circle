@@ -76,11 +76,6 @@ export const getMyDogs = (id) => async (dispatch) => {
     .catch((err) => console.log(err))
 }
 
-// export const addNewDog = (name, desc, url, onebreed, onesex, id) => async (dispatch) => {
-//   const newDog = await axios.post("/tinder/new", { name, desc, url, onebreed, onesex, id });
-//   dispatch({ type: ADD_NEW_DOG, payload: newDog.data });
-// };
-
 export const addNewDog =
   (name, desc, file, onebreed, onesex, id) => async (dispatch) => {
     const data = new FormData()
@@ -108,14 +103,10 @@ export const setWhoLikedMyDog = (value) => ({
 export const getWhoLikedMyDog = (id) => async (dispatch) => {
   axios(`/tinder/like/${id}`)
     .then((res) => {
-
-
       return dispatch(setWhoLikedMyDog(res.data.allLikeFromBack))
-
     })
     .catch((err) => console.log(err))
 }
-
 
 export const approveSelectedDogs = (id) =>  async (dispatch) => {
   axios.post('/tinder/changestatus', {id})
