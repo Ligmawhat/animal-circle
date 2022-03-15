@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import NavBar from "../../Navbar/Navbar";
-import { Button, Input, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGoods, setAllGoods } from "../../redux/ac/itemsProdavitoAc";
 import CategoriesList from "../CategoriesList/CategoriesList";
@@ -12,7 +12,6 @@ const Prodavito = () => {
   const { goods } = useSelector((state) => state);
   useEffect(() => {
     dispatch(getAllGoods());
-    // console.log(goods, "goods");
     return () => {
       dispatch(setAllGoods([]));
     };

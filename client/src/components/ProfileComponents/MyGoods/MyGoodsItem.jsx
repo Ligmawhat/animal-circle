@@ -9,9 +9,6 @@ import { deleteGood } from "../../redux/ac/itemsProdavitoAc";
 
 const MyGoodsItem = ({ el }) => {
     const dispatch = useDispatch();
-    // useEffect(() => {
-    //   dispatch(deleteGood(el.id));
-    // }, []);
     const deleteHandler = () => {
         dispatch(deleteGood(el.id));
     };
@@ -29,11 +26,10 @@ const MyGoodsItem = ({ el }) => {
                     avatar={<Avatar aria-label="recipe">qq</Avatar>}
                     action={
                         <IconButton aria-label="settings">
-                            {/* <MoreVertIcon /> */}
                             bob
                         </IconButton>
                     }
-                    // title={el.title}
+        
                     subheader={el?.createdAt}
                 />
                 <CardMedia component="img" height="194" image={`http://localhost:3001/items/${el?.url}`} alt="Paella dish" />

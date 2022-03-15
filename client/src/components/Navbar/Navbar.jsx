@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
@@ -58,16 +57,11 @@ export default function NavBar() {
     });
   };
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
-    setOpen(false);
+    setOpen(false)
   };
 
   function handleListKeyDown(event) {
@@ -128,10 +122,6 @@ export default function NavBar() {
             </div>
           </IconButton>
 
-          {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Logo/PetProject
-          </Typography> */}
-
           {currUser.id ? (
             <>
               <Typography className="navName" variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -169,7 +159,7 @@ export default function NavBar() {
                 to="/user/signup"
                 variant=""
                 color="inherit"
-                // style={{margin: '1em' }}
+           
               >
                 <PersonAddAltIcon />
               </Button>

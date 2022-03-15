@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { useHistory } from "react-router";
 
 const ProdavitoCategory = ({ el }) => {

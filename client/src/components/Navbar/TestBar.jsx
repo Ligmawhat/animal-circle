@@ -1,13 +1,9 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { purple } from '@material-ui/core/colors';
 import { NavMenu, NavItem } from '@mui-treasury/components/menu/navigation';
 import { usePointNavigationMenuStyles } from '@mui-treasury/styles/navigationMenu/point';
-// import { Font, FontProvider } from 'website/src/components/Font';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
-import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 
 
@@ -31,15 +27,12 @@ export const PointNavigationMenuStyle = React.memo(
       flexDirection: 'column',
       border: '10px solid red'
       }}
-          
           useStyles={usePointNavigationMenuStyles}
           >
             <NavItem 
             sx={{height: '50px'}}
-            
             as={'div'} active={index === 0} onClick={handleClick(0)}>
             <VolunteerActivismIcon />
-
             </NavItem>
             <NavItem as={'div'} active={index === 1} onClick={handleClick(1)}>
             <ShoppingBagIcon />

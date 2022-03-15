@@ -18,7 +18,6 @@ const MyGoods = () => {
   const { myGoods } = useSelector((state) => state);
 
   const dispatch = useDispatch();
-  // console.log(myGoods);
   useEffect(() => {
     dispatch(getMyGoods(id));
   }, []);
@@ -37,7 +36,6 @@ const MyGoods = () => {
             </Grid>
             <Grid item xs={12} md={9}>
               <ul>
-                {/* {myGoods?.length > 0 && myGoods?.map((el) => <MyGoodsItem key={el.id} el={el} />)} */}
                 {myGoods?.length > 0 && myGoods?.map((el) => <li key={el.id}>{el.title}</li>)}
               </ul>
             </Grid>
