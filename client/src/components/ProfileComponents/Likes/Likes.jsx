@@ -7,8 +7,6 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import IconButton from "@material-ui/core/IconButton";
-import FavoriteBorderRounded from "@material-ui/icons/FavoriteBorderRounded";
-import Share from "@material-ui/icons/Share";
 import { useSoftRiseShadowStyles } from "@mui-treasury/styles/shadow/softRise";
 import { useSlopeCardMediaStyles } from "@mui-treasury/styles/cardMedia/slope";
 import { useN01TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n01";
@@ -18,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../Navbar/Navbar";
 import { approveSelectedDogs, getWhoLikedMyDog, setWhoLikedMyDog } from "../../redux/ac/tinderAc";
 import ProfileNav from "../ProfileNav/ProfileNav";
-import { Input, Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
 import UnsubscribeIcon from "@mui/icons-material/Unsubscribe";
 
@@ -52,14 +50,10 @@ export const PostCardDemo = React.memo(function PostCard() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getWhoLikedMyDog(currUser.id));
-    // return () => {
-    //   dispatch(setWhoLikedMyDog([]))
-    // }
   }, []);
 
   console.log(whoLikedMyDog, "WHO");
   const deleteHandler = () => {
-    //logika udaenia
   };
   const func = () => {
     for (let i = 0; i < oneDog.length; i++) {
@@ -90,7 +84,6 @@ export const PostCardDemo = React.memo(function PostCard() {
           whoLikedMyDog.map((el) => (
             <Card sx={{ my: "50px" }} className={cx(cardStyles.root, shadowStyles.root)}>
               <CardMedia classes={mediaStyles} image={`http://localhost:3001/dogs/${el.url}`} />
-              {/* <Avatar className={cardStyles.avatar} src={'https://i.pravatar.cc/300'} /> */}
               <CardContent className={cardStyles.content}>
                 <TextInfoContent
                   classes={textCardContentStyles}
@@ -130,12 +123,6 @@ export const PostCardDemo = React.memo(function PostCard() {
                 />
               </CardContent>
               <Box px={2} pb={2} mt={-1}>
-                {/* <IconButton>
-                  <Share />
-                </IconButton>
-                <IconButton>
-                  <FavoriteBorderRounded />
-                </IconButton> */}
               </Box>
             </Card>
           ))}

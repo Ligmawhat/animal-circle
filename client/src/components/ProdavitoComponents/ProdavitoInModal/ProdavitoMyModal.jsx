@@ -1,4 +1,3 @@
-import React from "react";
 import cl from "./style.module.css";
 
 const ProdavitoMyModal = ({ children, visible, setVisible }) => {

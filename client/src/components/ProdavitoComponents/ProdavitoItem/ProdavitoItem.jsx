@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { deleteGood } from "../../redux/ac/itemsProdavitoAc";
 
 const ProdavitoItem = ({ el, setCard, setModals }) => {
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(deleteGood(el.id));
-  // }, []);
+
+
   const deleteHandler = () => {
     dispatch(deleteGood(el.id));
   };

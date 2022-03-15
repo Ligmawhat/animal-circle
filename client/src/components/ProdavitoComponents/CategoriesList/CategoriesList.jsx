@@ -19,16 +19,14 @@ const CategoriesList = () => {
   useEffect(() => {
     dispatch(getAllCategories());
   }, []);
-  
+
   return (
       <nav>
       <ul>
 
       {categories?.length &&
         categories?.map((el) => (
-
               <ProdavitoCategory el={el} />
-
         ))}
       </ul>
       </nav>

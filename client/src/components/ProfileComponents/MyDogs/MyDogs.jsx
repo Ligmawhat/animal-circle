@@ -23,9 +23,6 @@ function MyDogs() {
 
   useEffect(() => {
     dispatch(getMyDogs(id));
-    // return () => {
-    //   dispatch(setMyDogs([]));
-    // };
   }, []);
 
 
