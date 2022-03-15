@@ -1,5 +1,4 @@
-import React from "react";
-import { Grid, Input, Button, Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import NavBar from "../../Navbar/Navbar";
 import { styled } from "@mui/material/styles";
 import ProfileNav from "../ProfileNav/ProfileNav";
@@ -15,11 +14,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const UserInfo = () => {
-  const {userInfo} =useSelector(state => state)
+  const {userInfo} = useSelector(state => state)
   return (
     <>
       <NavBar />
-
       <Grid container spacing={2} sx={{ mt: 5 }}>
         <Grid item xs={4} md={3}>
           <ProfileNav />
@@ -35,7 +33,6 @@ const UserInfo = () => {
                 <UserInfoForm />
               </Grid>
             )}
-
             <Grid item xs={12} md={9}></Grid>
           </Grid>
         </Grid>

@@ -5,7 +5,6 @@ const categoriesReducer = (state = [], action) => {
   switch (type) {
     case SET_ALL_CATEGORIES:
       return payload;
-
     default: {
       return state;
     }

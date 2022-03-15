@@ -50,7 +50,6 @@ export const MessageForm = ({ username, sendMessage }) => {
           </Button>
         </Form.Group>
       </Form>
-      {/* emoji */}
       {showEmoji && <Picker onSelect={handleEmojiSelect} emojiSize={20} />}
     </>
   )

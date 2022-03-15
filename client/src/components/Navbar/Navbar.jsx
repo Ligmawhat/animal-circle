@@ -53,7 +53,7 @@ export default function NavBar() {
           history.push("/user/login")
         );
       } else {
-        console.log("ne vishel");
+        console.error("ne vishel");
       }
     });
   };

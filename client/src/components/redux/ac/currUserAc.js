@@ -1,7 +1,5 @@
 import { GET_CURR_USER } from "../types/currUser"
 import { LOGOUT_USER } from "../types/currUser"
-import axios from 'axios'
-
 
 
 export function getCurrUser(id, login, usertype) {
@@ -9,7 +7,6 @@ export function getCurrUser(id, login, usertype) {
     dispatch(currUser(id, login, usertype))
   }
 }
-
 
 export const currUser = (id, login, usertype) => ({
   type: GET_CURR_USER,

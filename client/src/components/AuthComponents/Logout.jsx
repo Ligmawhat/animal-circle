@@ -20,7 +20,7 @@ function Logout() {
           history.push("/user/login")
         );
       } else {
-        console.log("ne vishel");
+        console.error("ne vishel");
       }
     });
   };

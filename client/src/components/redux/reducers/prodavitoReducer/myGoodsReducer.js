@@ -8,7 +8,7 @@ const myGoodsReducer = (state = [], action) => {
     case ADD_NEW_GOOD:
       return [...state, payload]
     case DELETE_GOOD:
-      state.filter((el) => el.id !== payload);
+      return state.filter((el) => el.id !== payload);
     default:
       return state;
   }

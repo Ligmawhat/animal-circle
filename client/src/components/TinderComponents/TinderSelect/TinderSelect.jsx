@@ -28,7 +28,6 @@ export default function TinderSelect() {
           id="demo-simple-select"
           value="breed"
           label="Пол"
-          // onChange={handleChange}
         >
           {breed?.length &&
             breed?.map((el) => (
@@ -45,7 +44,6 @@ export default function TinderSelect() {
           id="demo-simple-select"
           value="sex"
           label="Пол"
-          // onChange={handleChange}
         >
           {sex?.length &&
             sex?.map((el) => (

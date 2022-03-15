@@ -8,8 +8,6 @@ import {
   DELETE_GOOD,
 } from "../types/goodType";
 
-
-
 export const setAllGoods = (value) => ({
   type: SET_ALL_GOODS,
   payload: value,
@@ -63,8 +61,6 @@ export const getMyGoods = (id) => async (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
-
-
 
 export const deleteGood = (id) => async (dispatch) => {
   const delGood = await axios.delete(`/prodavito/goods/${id}`);
